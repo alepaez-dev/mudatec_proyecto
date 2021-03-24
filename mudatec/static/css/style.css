@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap");
 * {
   padding: 0px;
   margin: 0px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
 
 .test {
@@ -15,7 +16,42 @@
   background-image: url("paper.gif");
 }
 
+.contenedors {
+  background-image: url("../assets/mudanza_dog.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-position: center;
+  height: 812px;
+}
+
+.titulo {
+  margin-top: 250px;
+  margin-bottom: 200px;
+}
+
+.titulo h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #585757;
+  width: 60%;
+}
+
+.titulo .mudate {
+  margin: 10px;
+  margin-left: 68px;
+  padding: 12px 48px 12px 48px;
+  width: 154px;
+  height: 43px;
+  color: white;
+  background-color: #FF8754;
+  font-family: "Roboto", sans-serif;
+  border-radius: 8px;
+  border: none;
+}
+
 .navbar {
+  margin: 20px;
   padding: 30px;
 }
 
@@ -27,11 +63,29 @@
   font-weight: 900;
 }
 
-.navbar .nav-der .dropdown a {
+.navbar .nav-der .nav-der-botones {
   margin-bottom: 3px;
   margin: 10px;
   font-size: 11px;
   font-weight: 700;
   color: #585757;
+}
+
+.navbar .nav-der .dropdown .dropdown-menu {
+  min-width: 1rem;
+  width: 5rem;
+  background-color: #585757;
+  opacity: 0.6;
+  margin-top: 0 !important;
+}
+
+.navbar .nav-der .dropdown .dropdown-menu li {
+  text-align: center;
+}
+
+.navbar .nav-der .dropdown .dropdown-menu li a {
+  font-weight: 500;
+  color: white;
+  font-size: 11px;
 }
 /*# sourceMappingURL=style.css.map */

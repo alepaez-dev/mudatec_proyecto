@@ -1,4 +1,37 @@
+.contenedors {
+  background-image: url("../assets/mudanza_dog.jpg");
+  background-repeat: no-repeat, repeat;
+  // background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+  height: 812px;
+}
+
+.titulo {
+  margin-top: 250px;
+  margin-bottom: 200px;
+  h1{
+    font-family: $roboto-font;
+    font-weight: 600;
+    font-size: 2rem;
+    color: $acentos-color;
+    width: 60%;
+  }
+  .mudate {
+    margin: 10px;
+    margin-left: 68px;
+    padding: 12px 48px 12px 48px;
+    width: 154px;
+    height: 43px;
+    color: white;
+    background-color: $primary-color;
+    font-family: $roboto-font;
+    border-radius: 8px;
+    border: none;
+  }
+}
 .navbar {
+  margin: 20px;
   padding: 30px;
   
   a {
@@ -9,15 +42,32 @@
     font-weight: $roboto-weight-superbold;
     }
     .nav-der {
-      .dropdown {
-        a{
-          margin-bottom: 3px;
+      .nav-der-botones{
+        margin-bottom: 3px;
           margin: 10px;
           font-size: 11px;
           font-weight: $roboto-weight-bold;
           color: $acentos-color;
+      }
+      .dropdown {
+        .dropdown-menu{
+          min-width: 1rem;
+          width: 5rem;
+          background-color:$acentos-color;
+          opacity: 0.6;
+          margin-top: 0 !important;
+          // position: relative;
+          // top : 25px;
+          // left : 110px;
+          li{
+            text-align: center;
+            a {
+              font-weight: $roboto-weight-regular;
+              color: white;
+              font-size: 11px;
+            }
+          } 
         }
-
       }
     }
 }
