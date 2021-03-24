@@ -21,11 +21,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="navbar">
+                        <div class="navbar d-flex align-items-center">
                             <a href="#">Mudatec</a>
                             <div class="nav-der">
-                                <button href="#">Registrate</button>
-                                <a href="#">Inicia Sesion</a>
+                                <div class="dropdown show">
+                                    <a class="dropdown-toogle nav-der-botones" href="#" type="button" id="dropdownmenu"
+                                        data-toggle="dropdown">Regístrate</a>
+                                    <span class="caret"></span>
+                                    <ul class="dropdown-menu" aria-labelled-by="dropdownmenu">
+                                        <li><a href="#">Some text</a></li>
+                                        <li><a href="#">Some text</a></li>
+                                        <li><a href="#">Some text</a></li>
+                                    </ul>
+                                    <a class="nav-der-botones" href="#">Inicia Sesión</a>
+                                </div>
                             </div>
                         </div>
                         <div class="titulo">
@@ -109,8 +118,23 @@
 
 
     </div>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script> -->
 </body>
 
 </html>
