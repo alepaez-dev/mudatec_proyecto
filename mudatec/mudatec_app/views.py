@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 # Create your views here.
-def landingPage(request):
+def home(request):
     """Landing Page."""
     context = {}
     template = loader.get_template("mudatec_app/index.html")
