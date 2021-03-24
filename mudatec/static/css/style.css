@@ -5,7 +5,11 @@
           box-sizing: border-box;
 }
 
-.navbar {
+.test {
   background-color: red;
+}
+
+.test1 {
+  background-image: url("paper.gif");
 }
 /*# sourceMappingURL=style.css.map */

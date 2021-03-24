@@ -13,36 +13,102 @@
 </head>
 
 <body>
+    <!-- {% static 'assets/logo.svg' %} -->
     <div class="container-fluid">
+
+        <!-- ALE -->
         <div class="row">
             <div class="container">
-                <!-- primera seccion -->
                 <div class="row">
                     <div class="col">
-                        <nav class="navbar">
-                            <a href="#">MUDATEC</a>
-                            <div class="nav_der">
-                                <button class="soy_empresa">
-                                    Soy una empresa
-                                </button>
-                                <a href="#" class="registrate">Registrate</a>
+                        <div class="navbar">
+                            <a href="#">Mudatec</a>
+                            <div class="nav-der">
+                                <button href="#">Registrate</button>
+                                <a href="#">Inicia Sesion</a>
                             </div>
-                        </nav>
+                        </div>
+                        <div class="titulo">
+                            <h1>Te conectamos con las mejores mudanzas de la ciudad...</h1>
+                            <button class="mudate">Mudate!</button>
+                        </div>
                     </div>
                 </div>
-                <!-- primera seccion final -->
             </div>
         </div>
+
+        <!-- RUBEN -->
+        <!-- pasos -->
+        <div class="row">
+            <div class="col">
+                <div class="descubre-como">
+                    <p>eres empresa de mudanza, participa con nosotros...</p>
+                    <a href="#">Descubre como</a>
+                    <img src="" alt="">
+                </div>
+                <div class="pasos">
+                    <p>Mudatrec es asi de sencillo</p>
+                    <div class="pasos-nombre d-flex-row">
+                        <div class="paso">
+                            <img src="" alt="" class="iconos">
+                            <p>Registrate</p>
+                        </div>
+                        <div class="paso">
+                            <img src="" alt="" class="iconos">
+                            <p>LLena el formulario</p>
+                        </div>
+                        <div class="paso">
+                            <img src="" alt="" class="iconos">
+                            <p>Recibe tu cotizacion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ANDRE -->
+        <!-- reviews -->
+        <div class="row">
+            <div class="col">
+                <p class="d-none d-lg-block">estos opinan nuestros usuarios</p>
+                <div class="reviews">
+                    <div class="review">
+                        <img src="" alt="">
+                        <p>mudatec me salvo la vida</p>
+                        <div class="estrellas">
+                            estrellas
+                        </div>
+                    </div>
+                    <!-- review escondida en movil -->
+                    <div class="review d-none">
+                        <img src="" alt="">
+                        <p>mudatec me salvo la vida</p>
+                        <div class="estrellas">
+                            estrellas
+                        </div>
+                    </div>
+                </div>
+                <!-- boton se esconde en web -->
+                <button class="d-lg-none">Mudate!</button>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <div class="row">
+            <div class="col">
+                <p>2021 Mudatec, Inc. Todos los derechos reservados</p>
+            </div>
+            <div class="">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Mapa del sitio</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+
+
     </div>
-    <!-- {% block header %}
-    <h1>Base HTML</h1>
-    {% endblock header %} -->
-
-
-
-
-
-
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
