@@ -118,4 +118,10 @@
   color: white;
   font-size: 11px;
 }
+
+@media only screen and (min-width: 1200px) {
+  .nav-der {
+    width: 30% !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */
