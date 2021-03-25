@@ -1,11 +1,18 @@
-.contenedors {
-  background-image: url("../assets/mudanza_dog.jpg");
-  background-repeat: no-repeat, repeat;
-  // background-color: #cccccc;
-  background-size: cover;
-  background-position: center;
-  height: 812px;
+.col {
+  padding: 0;
+  #carouselExampleIndicators {
+    .carousel-inner {
+      .carousel-item {
+        height: 700px;
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
 }
+
 
 .titulo {
   margin-top: 250px;
@@ -31,8 +38,14 @@
   }
 }
 .navbar {
-  margin: 20px;
+  position: absolute;
+  // margin: 20px;
   padding: 30px;
+  z-index: 1;
+  top: -30px;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
   
   a {
     text-decoration: none;
