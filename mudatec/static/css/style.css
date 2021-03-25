@@ -107,47 +107,50 @@
   font-size: 11px;
 }
 
-.col .footer-items {
+.col.footer .mudatec_footer {
   margin-top: 40px;
+  padding-left: 40px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #585757;
+}
+
+.col.footer .footer-items {
   padding-left: 40px;
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
 
-.col .footer-items p {
-  font-size: 25px;
-  font-weight: 500;
-}
-
-.col .footer-items p:last-of-type {
+.col.footer .footer-items p:last-of-type {
   font-size: 20px;
 }
 
-.col .footer-items .footer-elementos {
+.col.footer .footer-items .footer-elementos {
   width: 90%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   margin-bottom: 30px;
 }
 
-.col .footer-items .footer-elementos a {
+.col.footer .footer-items .footer-elementos a {
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
 
-.col .footer-items .footer_redes_sociales {
-  height: 110px;
+.col.footer .footer-items .footer_redes_sociales {
+  height: 150px;
+  margin-bottom: 40px;
 }
 
-.col .footer-items .footer_redes_sociales .red_social {
+.col.footer .footer-items .footer_redes_sociales .red_social {
   width: 15%;
 }
 
-.col .footer-items .footer_redes_sociales .red_social .fab {
+.col.footer .footer-items .footer_redes_sociales .red_social .fab {
   font-size: 35px;
 }
 
-.col .footer-items .footer_redes_sociales .red_social a {
+.col.footer .footer-items .footer_redes_sociales .red_social a {
   margin-left: 10px;
   text-decoration: none;
   color: #585757;
@@ -156,11 +159,14 @@
 @media only screen and (min-width: 1200px) {
   .footer-items {
     padding: 0;
-    width: 90%;
-    margin: auto;
-  }
-  .footer-items .footer-elementos a {
+    width: 100%;
     margin-bottom: 20px;
+  }
+  .footer-items .footer-elementos {
+    width: 50%;
+  }
+  .footer-items .footer_redes_sociales {
+    width: 50%;
   }
 }
 /*# sourceMappingURL=style.css.map */

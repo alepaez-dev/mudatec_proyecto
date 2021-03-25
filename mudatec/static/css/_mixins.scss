@@ -1,12 +1,15 @@
 @media only screen and (min-width: 1200px) {
   .footer-items{
     padding: 0;
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
     .footer-elementos{
+      width: 50%;
       a{
-        margin-bottom: 20px;
       }
+    }
+    .footer_redes_sociales{
+      width: 50%;
     }
   }
 }

@@ -1,13 +1,15 @@
-.col {
-  .footer-items {
+.col.footer{
+  .mudatec_footer{
     margin-top: 40px;
+    padding-left: 40px;
+    font-size: 25px;
+    font-weight: $roboto-weight-regular;
+    color: $acentos-color;
+  }
+  .footer-items {
     padding-left: 40px;
     font-family: $roboto-font;
     color: $acentos-color;
-    p{
-      font-size: 25px;
-      font-weight: $roboto-weight-regular;
-    }
     p:last-of-type{
       font-size: 20px;
     }
@@ -24,7 +26,8 @@
       }
     }
     .footer_redes_sociales {
-      height: 110px;
+      height: 150px;
+      margin-bottom: 40px;
       
       .red_social {
         width: 15%;
@@ -40,3 +43,4 @@
     }
   }
 }
+
