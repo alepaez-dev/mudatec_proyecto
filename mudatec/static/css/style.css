@@ -76,10 +76,22 @@
 }
 
 .navbars .nav-der {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   width: 40%;
+}
+
+.navbars .nav-der .soy_empresa.nav-der-botones {
+  width: 150px;
+  height: 40px;
+  padding: 20px;
+  background-color: #16B5E5;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 8px;
+  border: none;
 }
 
 .navbars .nav-der .nav-der-botones {

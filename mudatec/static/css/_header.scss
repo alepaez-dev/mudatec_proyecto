@@ -57,8 +57,19 @@
     font-weight: $roboto-weight-superbold;
     }
     .nav-der {
-          justify-content: space-between;
-          width: 40%;
+      width: 40%;
+      .soy_empresa.nav-der-botones {
+        width: 150px;
+        height: 40px;
+        padding: 20px;
+        background-color:$secondary-color;
+        font-family: $roboto-font;
+        color: white;
+        text-align: center;
+        align-self: center;
+        border-radius: 8px;
+        border: none;
+      }
       .nav-der-botones{
         
           padding : 0px !important;
@@ -84,4 +95,9 @@
         }
       }
     }
+}
+
+// mixings
+@media only screen and (min-width: 1200px) {
+  
 }
