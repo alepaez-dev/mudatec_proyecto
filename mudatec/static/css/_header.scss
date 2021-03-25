@@ -3,7 +3,7 @@
   #carouselExampleIndicators {
     .carousel-inner {
       .carousel-item {
-        height: 700px;
+        height: 812px;
         img {
           height: 100%;
           object-fit: cover;
@@ -15,8 +15,12 @@
 
 
 .titulo {
-  margin-top: 250px;
-  margin-bottom: 200px;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  // margin-top: 250px;
+  // margin-bottom: 200px;
   h1{
     font-family: $roboto-font;
     font-weight: 600;
@@ -69,9 +73,6 @@
           background-color:$acentos-color;
           opacity: 0.8;
           margin-top: 0 !important;
-          // position: relative;
-          // top : 25px;
-          // left : 110px;
           li{
             text-align: center;
             a {

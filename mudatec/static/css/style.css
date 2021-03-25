@@ -21,7 +21,7 @@
 }
 
 .col #carouselExampleIndicators .carousel-inner .carousel-item {
-  height: 700px;
+  height: 812px;
 }
 
 .col #carouselExampleIndicators .carousel-inner .carousel-item img {
@@ -31,8 +31,10 @@
 }
 
 .titulo {
-  margin-top: 250px;
-  margin-bottom: 200px;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 5%;
 }
 
 .titulo h1 {
