@@ -56,51 +56,50 @@
   border: none;
 }
 
-.navbar {
+.navbars {
   position: absolute;
+  margin: 10px;
   padding: 30px;
   z-index: 1;
-  top: -30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: row;
-      -ms-flex: row;
-          flex: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  width: 100%;
+  right: -10px;
 }
 
-.navbar a {
+.navbars a {
   text-decoration: none;
   color: #585757;
-  font-size: 14px;
+  font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
 }
 
-.navbar .nav-der .nav-der-botones {
-  margin-bottom: 3px;
-  margin: 10px;
-  font-size: 11px;
+.navbars .nav-der {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40%;
+}
+
+.navbars .nav-der .nav-der-botones {
+  padding: 0px !important;
+  font-size: 16px;
   font-weight: 700;
   color: #585757;
 }
 
-.navbar .nav-der .dropdown .dropdown-menu {
+.navbars .nav-der .dropdown .dropdown-menu {
   min-width: 1rem;
   width: 5rem;
   background-color: #585757;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-top: 0 !important;
 }
 
-.navbar .nav-der .dropdown .dropdown-menu li {
+.navbars .nav-der .dropdown .dropdown-menu li {
   text-align: center;
 }
 
-.navbar .nav-der .dropdown .dropdown-menu li a {
+.navbars .nav-der .dropdown .dropdown-menu li a {
   font-weight: 500;
   color: white;
   font-size: 11px;
