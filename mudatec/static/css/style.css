@@ -120,8 +120,29 @@
 }
 
 @media only screen and (min-width: 1200px) {
+  .navbars a {
+    font-size: 30px;
+  }
+  .titulo {
+    left: 10%;
+  }
+  .titulo h1 {
+    font-size: 3rem;
+    width: 50%;
+  }
+  .titulo .mudate {
+    margin: 0px;
+    margin-left: 0px;
+    width: 300px;
+    height: 60px;
+    font-size: 25px;
+  }
   .nav-der {
     width: 30% !important;
+  }
+  #carouselExampleIndicators .carousel-indicators li {
+    height: 15px;
+    width: 150px;
   }
 }
 /*# sourceMappingURL=style.css.map */
