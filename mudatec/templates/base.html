@@ -7,15 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://kit.fontawesome.com/970d5800d0.js" crossorigin="anonymous"></script>
   {% block title %}
   <title>Base</title>
   {% endblock title %}
 </head>
 
 <body>
-  <!-- {% static 'assets/logo.svg' %} -->
   <div class="container-fluid">
     <div class="row">
       <div class="col">
@@ -122,11 +121,27 @@
         <hr style="height: 2px;background-color:#FF8754; border:none">
         <div class="footer-items">
           <p>2021 Mudatec, Inc. Todos los derechos reservados</p>
-          <div class="footer-elementos">
+          <div class="footer-elementos d-flex flex-row justify-content-between flex-lg-column">
             <a href="#">Terminos y condiciones</a>
             <a href="#">Sobre nosotros</a>
             <a href="#">Ayuda</a>
             <a href="#">Contacto</a>
+
+          </div>
+          <p>Redes Sociales</p>
+          <div class="footer_redes_sociales d-flex flex-column justify-content-between">
+            <div class="red_social d-flex align-items-center">
+              <i class="fab fa-twitter-square"></i>
+              <a href="#">Twitter</a>
+            </div>
+            <div class="red_social d-flex justify-content-between align-items-center">
+              <i class="fab fa-instagram-square"></i>
+              <a href="#">Instagram</a>
+            </div>
+            <div class="red_social d-flex justify-content-between align-items-center">
+              <i class="fab fa-facebook-square"></i>
+              <a href="#">Facebook</a>
+            </div>
           </div>
         </div>
       </div>
@@ -135,6 +150,7 @@
 
   </div>
 
+  <!-- scripts bootstrap 4 -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -144,23 +160,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <!-- 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
+  <!-- scripts bootstrap 4 -->
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-    integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-    integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-    crossorigin="anonymous"></script> -->
-
-  <!-- <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script> -->
 </body>
 
 </html>

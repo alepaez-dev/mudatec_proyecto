@@ -119,22 +119,48 @@
   font-weight: 500;
 }
 
+.col .footer-items p:last-of-type {
+  font-size: 20px;
+}
+
 .col .footer-items .footer-elementos {
   width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  margin-bottom: 30px;
 }
 
 .col .footer-items .footer-elementos a {
   font-family: "Roboto", sans-serif;
   color: #585757;
+}
+
+.col .footer-items .footer_redes_sociales {
+  height: 110px;
+}
+
+.col .footer-items .footer_redes_sociales .red_social {
+  width: 15%;
+}
+
+.col .footer-items .footer_redes_sociales .red_social .fab {
+  font-size: 35px;
+}
+
+.col .footer-items .footer_redes_sociales .red_social a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #585757;
+}
+
+@media only screen and (min-width: 1200px) {
+  .footer-items {
+    padding: 0;
+    width: 90%;
+    margin: auto;
+  }
+  .footer-items .footer-elementos a {
+    margin-bottom: 20px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

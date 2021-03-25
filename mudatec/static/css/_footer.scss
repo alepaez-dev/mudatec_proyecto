@@ -8,14 +8,34 @@
       font-size: 25px;
       font-weight: $roboto-weight-regular;
     }
+    p:last-of-type{
+      font-size: 20px;
+    }
     .footer-elementos{
       width: 90%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin-bottom: 30px;
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: space-between;
       a{
         font-family: $roboto-font;
         color: $acentos-color;
+      }
+    }
+    .footer_redes_sociales {
+      height: 110px;
+      
+      .red_social {
+        width: 15%;
+        .fab{
+          font-size: 35px;
+        }
+        a {
+          margin-left: 10px;
+          text-decoration: none;
+          color: $acentos-color;
+        }
       }
     }
   }
