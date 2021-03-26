@@ -120,6 +120,10 @@
   color: #585757;
 }
 
+.col.footer .footer-centro .mudatec_footer p:last-child {
+  font-size: 18px;
+}
+
 .col.footer .footer-centro .footer-items {
   padding-left: 40px;
   font-family: "Roboto", sans-serif;
