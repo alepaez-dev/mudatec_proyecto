@@ -151,6 +151,7 @@
 }
 
 .col.footer .footer-centro .footer-items .footer_redes_sociales .red_social .fab {
+  opacity: 0.8;
   font-size: 35px;
 }
 
@@ -174,8 +175,8 @@
   }
   .col.footer .footer-centro .footer-items .footer-elementos {
     text-align: center;
-    width: 70%;
-    margin: 20px auto 10px auto;
+    width: 50%;
+    margin: 0px auto 20px auto;
   }
   .col.footer .footer-centro .footer-items .footer_redes_sociales {
     width: 40%;
