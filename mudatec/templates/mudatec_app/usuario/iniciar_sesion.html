@@ -21,23 +21,28 @@
           <a href="#">Regresar</a>
         </div>
         {% endblock header %}
-
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col col_iniciar">
-        <div class="iniciar_sesion">
-          <p>Iniciar Sesion</p>
-          <input type="text" class="inputs_sesion" placeholder="Nombre">
-          <input type="text" class="inputs_sesion" placeholder="Apellido Paterno">
-          <input type="text" class="inputs_sesion" placeholder="Apellido Materno">
-          <input type="text" class="inputs_sesion" placeholder="Mail">
-          <input type="text" class="inputs_sesion" placeholder="Contraseña">
-          <input type="text" class="inputs_sesion" placeholder="Verificar Contraseña">
+        <div class="iniciar_sesion d-flex flex-column justify-content-around">
+          <p>¡Bienvenido!</p>
+          <input type="text" class="inputs_sesion" placeholder="NOMBRE">
+          <input type="text" class="inputs_sesion" placeholder="APELLIDO PATERNO">
+          <input type="text" class="inputs_sesion" placeholder="APELLIDO MATERNO">
+          <input type="text" class="inputs_sesion" placeholder="MAIL">
+          <input type="text" class="inputs_sesion" placeholder="CONTRASEÑA">
+          <input type="text" class="inputs_sesion" placeholder="VERIFICAR CONTRASEÑA">
+          <p>*YA TIENES UNA CUENTA <strong>INICIA SESIÓN</strong></p>
+          <div class="botones_sesion d-flex justify-content-around">
+            <button>Regresar</button>
+            <button>Crear Cuenta</button>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- <div class="row">
+      <div class="col col_iniciar">
+        
+      </div>
+    </div> -->
 
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
