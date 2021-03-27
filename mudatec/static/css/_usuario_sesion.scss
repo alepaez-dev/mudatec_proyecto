@@ -45,8 +45,27 @@
       font-size: 25px;
     }
     p:last-of-type{
-      margin-left: 40px ;
+      margin-left: 50px ;
       font-size: 12px;
+      transition: 0.5s;
+      cursor: pointer;
+      a {
+        font-weight: 900;
+        color: black;
+        transition: 0.5s;
+        &:hover{
+          color:$primary-color;
+          -webkit-transform: scale(1.3);
+          -ms-transform: scale(1.3);
+          transform: scale(1.3);
+        }  
+      }
+      &:hover{
+        color:black;
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.0);
+      }
     }
     p strong{
       color: black;
@@ -77,6 +96,7 @@
         font-size: 12px;
         border: none;
         transition: 0.3s;
+        overflow: hidden;
         &:hover{
           -webkit-transform: scale(1.2);
           -ms-transform: scale(1.2);

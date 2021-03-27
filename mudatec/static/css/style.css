@@ -171,8 +171,30 @@
 }
 
 .col_header .iniciar_sesion p:last-of-type {
-  margin-left: 40px;
+  margin-left: 50px;
   font-size: 12px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.col_header .iniciar_sesion p:last-of-type a {
+  font-weight: 900;
+  color: black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.col_header .iniciar_sesion p:last-of-type a:hover {
+  color: #FF8754;
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.col_header .iniciar_sesion p:last-of-type:hover {
+  color: black;
+  -webkit-transform: scale(1.2);
+  transform: scale(1);
 }
 
 .col_header .iniciar_sesion p strong {
@@ -230,6 +252,7 @@
   border: none;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .col_header .iniciar_sesion .botones_sesion button:hover {
