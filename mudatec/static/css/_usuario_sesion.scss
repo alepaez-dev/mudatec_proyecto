@@ -11,12 +11,11 @@
       color:white;
       opacity: 0.5;
       font-weight: 300;
-      // font-weight: lighter;
-      // opacity: 0.8;
       &:hover{
         color:$primary-color;
         opacity: 1;
         font-weight: 400;
+        border-bottom: solid 1px $primary-color;
       }
     }
   }

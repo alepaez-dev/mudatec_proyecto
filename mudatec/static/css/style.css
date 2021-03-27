@@ -139,6 +139,7 @@
   color: #FF8754;
   opacity: 1;
   font-weight: 400;
+  border-bottom: solid 1px #FF8754;
 }
 
 .col_header .iniciar_sesion {
