@@ -141,7 +141,8 @@
   margin-top: 100px;
   width: 80%;
   margin: 100px auto auto auto;
-  border-radius: 43px;
+  border-radius: 15px;
+  max-width: 781px;
 }
 
 .col_header .iniciar_sesion p {
@@ -252,6 +253,44 @@
   #carouselExampleIndicators .carousel-indicators li {
     height: 15px;
     width: 150px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .col_header .navbars {
+    padding: 0px;
+    left: 0px;
+    margin: auto;
+    width: 60%;
+    position: relative;
+    margin-top: 100px;
+    max-width: 750px;
+  }
+  .col_header .navbars a {
+    font-size: 22px;
+  }
+  .col_header .iniciar_sesion {
+    width: 60%;
+    height: 60%;
+    margin: 20px auto auto auto;
+  }
+  .col_header .iniciar_sesion p:last-of-type {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+  }
+  .col_header .iniciar_sesion .inputs_sesion {
+    width: 60%;
+    border-radius: 4px;
+  }
+  .col_header .iniciar_sesion .botones_sesion {
+    width: 60%;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+  }
+  .col_header .iniciar_sesion .botones_sesion button {
+    font-size: 14px;
   }
 }
 /*# sourceMappingURL=style.css.map */

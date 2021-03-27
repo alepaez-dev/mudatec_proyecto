@@ -32,3 +32,42 @@
     }
   }
 }
+
+// IniciarSesionUsuario
+@media only screen and (min-width: 1200px){
+    .col_header{
+        .navbars{
+            padding: 0px;
+            left: 0px;
+            margin: auto;
+            width: 60%;
+            position: relative;
+            margin-top: 100px;
+            max-width: 750px;
+            a{
+                font-size: 22px;
+            }
+        }
+        .iniciar_sesion{
+            width: 60%;
+            height: 60%;
+            margin: 20px auto auto auto;
+            p:last-of-type{
+                width: 60%;
+                margin: auto;
+                text-align: center;
+            }
+            .inputs_sesion{
+                width: 60%;
+                border-radius: 4px;
+            }
+            .botones_sesion{
+                width: 60%;
+                justify-content: space-between !important;
+                button {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
