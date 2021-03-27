@@ -9,7 +9,15 @@
     a{
       font-family:$roboto-font;
       color:white;
-      font-weight: normal;
+      opacity: 0.5;
+      font-weight: 300;
+      // font-weight: lighter;
+      // opacity: 0.8;
+      &:hover{
+        color:$primary-color;
+        opacity: 1;
+        font-weight: 400;
+      }
     }
   }
   .iniciar_sesion{
@@ -21,6 +29,10 @@
     margin: 100px auto auto auto;
     border-radius: 15px;
     max-width: 781px;
+    input, text{
+    font-size: 16px;
+    color: black;
+    }
     p{
       margin-bottom: 0px;
       font-family:$roboto-font;
@@ -39,37 +51,44 @@
     p strong{
       color: black;
     }
-      .inputs_sesion{
-        width: 80%;
-        height: 44.07px;
-        margin: auto;
-        border-radius: 8px;
-        border: 2px solid $primary-color;
-      }
-      .inputs_sesion::placeholder {
-        font-weight: 500;
+    .inputs_sesion{
+      width: 80%;
+      height: 44.07px;
+      margin: auto;
+      padding-left: 15px;
+      border-radius: 8px;
+      border: 2px solid $primary-color;
+    }
+    .inputs_sesion::placeholder {
+      font-weight: 500;
+      font-size: 12px;
+      // padding-left: 10px;
+      font-family: $roboto-font;
+      color: $acentos-color;
+    }
+    .botones_sesion{
+      width: 100%;
+      margin: auto;
+      button{
+        width: 30%;
+        padding: 10px;
+        border-radius: 6px;
+        color: white;
         font-size: 12px;
-        padding-left: 20px;
-        font-family: $roboto-font;
-        color: $acentos-color;
-      }
-      .botones_sesion{
-        width: 100%;
-        margin: auto;
-        button{
-          width: 30%;
-          padding: 10px;
-          border-radius: 6px;
-          color: white;
-          font-size: 12px;
-          border: none
-        }
-        button:first-child{
-          background-color: $delete-color;
-        }
-        button:last-child{
-          background-color: $accept-color;
+        border: none;
+        transition: 0.3s;
+        &:hover{
+          -webkit-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+          transform: scale(1.2);
         }
       }
+      button:first-child{
+        background-color: $delete-color;
+      }
+      button:last-child{
+        background-color: $accept-color;
+      }
+    }
   }
 }

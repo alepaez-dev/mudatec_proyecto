@@ -131,7 +131,14 @@
 .col_header .navbars a {
   font-family: "Roboto", sans-serif;
   color: white;
-  font-weight: normal;
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.col_header .navbars a:hover {
+  color: #FF8754;
+  opacity: 1;
+  font-weight: 400;
 }
 
 .col_header .iniciar_sesion {
@@ -143,6 +150,11 @@
   margin: 100px auto auto auto;
   border-radius: 15px;
   max-width: 781px;
+}
+
+.col_header .iniciar_sesion input, .col_header .iniciar_sesion text {
+  font-size: 16px;
+  color: black;
 }
 
 .col_header .iniciar_sesion p {
@@ -171,6 +183,7 @@
   width: 80%;
   height: 44.07px;
   margin: auto;
+  padding-left: 15px;
   border-radius: 8px;
   border: 2px solid #FF8754;
 }
@@ -178,7 +191,6 @@
 .col_header .iniciar_sesion .inputs_sesion::-webkit-input-placeholder {
   font-weight: 500;
   font-size: 12px;
-  padding-left: 20px;
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
@@ -186,7 +198,6 @@
 .col_header .iniciar_sesion .inputs_sesion:-ms-input-placeholder {
   font-weight: 500;
   font-size: 12px;
-  padding-left: 20px;
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
@@ -194,7 +205,6 @@
 .col_header .iniciar_sesion .inputs_sesion::-ms-input-placeholder {
   font-weight: 500;
   font-size: 12px;
-  padding-left: 20px;
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
@@ -202,7 +212,6 @@
 .col_header .iniciar_sesion .inputs_sesion::placeholder {
   font-weight: 500;
   font-size: 12px;
-  padding-left: 20px;
   font-family: "Roboto", sans-serif;
   color: #585757;
 }
@@ -219,6 +228,13 @@
   color: white;
   font-size: 12px;
   border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.col_header .iniciar_sesion .botones_sesion button:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .col_header .iniciar_sesion .botones_sesion button:first-child {
