@@ -32,3 +32,29 @@
     }
   }
 }
+@media only screen and (min-width: 1200px) {
+  .col.footer{
+    .footer-centro{
+      width: 70%;
+      margin: auto;
+      text-align: center;
+      .footer-items{
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        .footer-elementos{
+          text-align: center;
+          width: 50%;
+          margin: 0px auto 20px auto;
+          a{
+          }
+        }
+        .footer_redes_sociales{
+          width: 40%;
+          margin:auto;
+        }
+      }
+    }
+  }
+}
