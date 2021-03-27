@@ -7,7 +7,7 @@
         "_base.scss",
         "_main.scss",
         "_header.scss",
-        "_usuario_sesion.scss",
+        "_usuario_registro.scss",
         "_mixins.scss"
     ],
     "names": [],

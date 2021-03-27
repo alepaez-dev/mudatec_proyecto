@@ -9,9 +9,9 @@ def home(request):
     template = loader.get_template("mudatec_app/index.html")
     return HttpResponse(template.render(context,request))
 
-def usuario_iniciar_sesion(request):
+def usuario_registro(request):
     """Landing Page."""
     context = {}
-    template = loader.get_template("mudatec_app/usuario/iniciar_sesion.html")
+    template = loader.get_template("mudatec_app/usuario/registro.html")
     return HttpResponse(template.render(context,request))
 
