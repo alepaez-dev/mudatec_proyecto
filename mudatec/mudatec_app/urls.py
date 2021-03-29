@@ -5,6 +5,7 @@ from .views import (
   UsuarioIniciarSesion,
   MudanzaRegistro,
   MudanzaIniciarSesion,
+  PerfilUsuario,
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("usuario/iniciar_sesion", UsuarioIniciarSesion),
     path("mudanza/registro", MudanzaRegistro),
     path("mudanza/iniciar_sesion", MudanzaIniciarSesion),
+    path("usuario/perfil", PerfilUsuario),
 ]
