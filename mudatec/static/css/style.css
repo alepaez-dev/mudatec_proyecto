@@ -270,6 +270,24 @@
   background-color: #04AE85;
 }
 
+.col_header .iniciar_sesion.nuevo {
+  height: 450px;
+}
+
+.col_header .iniciar_sesion.nuevo p.bienvenido_iniciar.nuevo {
+  font-size: 25px;
+  margin-left: 0px;
+  margin-bottom: 50px;
+}
+
+.col_header .iniciar_sesion.nuevo .inputs_sesion.nuevo {
+  margin: 20px auto;
+}
+
+.col_header .iniciar_sesion.nuevo .botones_sesion.nuevo {
+  margin-top: 100px;
+}
+
 @media only screen and (min-width: 1200px) {
   .navbars a {
     font-size: 30px;

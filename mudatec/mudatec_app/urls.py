@@ -6,5 +6,5 @@ from .views import (
 urlpatterns = [
     path("", Home),
     path("usuario/registro", UsuarioRegistro),
-    path("usuario/iniciar_sesion", UsuarioRegistro),
+    path("usuario/iniciar_sesion", UsuarioIniciarSesion),
 ]
