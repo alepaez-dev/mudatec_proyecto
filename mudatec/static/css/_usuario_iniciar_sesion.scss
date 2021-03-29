@@ -11,7 +11,13 @@
       .inputs_sesion.nuevo{
         width: 100%;
         margin:auto;
-
+      }
+      .f-icons {
+        position: relative;
+        left: 95%;
+        font-size: 20px;
+        top: -33px;
+        color: $primary-color
       }
       .botones_sesion.nuevo{
         margin-top: 100px;

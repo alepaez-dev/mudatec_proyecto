@@ -289,6 +289,14 @@
   margin: auto;
 }
 
+.col_header .iniciar_sesion.nuevo .inputs_ini .f-icons {
+  position: relative;
+  left: 95%;
+  font-size: 20px;
+  top: -33px;
+  color: #FF8754;
+}
+
 .col_header .iniciar_sesion.nuevo .inputs_ini .botones_sesion.nuevo {
   margin-top: 100px;
 }
@@ -361,6 +369,9 @@
 @media only screen and (max-width: 1200px) {
   .col_header .iniciar_sesion.nuevo p.bienvenido_iniciar.nuevo {
     margin-left: 0px;
+  }
+  .col_header .iniciar_sesion.nuevo .inputs_ini .f-icons {
+    left: 91%;
   }
 }
 /*# sourceMappingURL=style.css.map */
