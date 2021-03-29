@@ -162,10 +162,10 @@
   padding-left: 25px;
 }
 
-.pasos-registro {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.pasos-registro img {
+  width: 30%;
+  margin: auto;
+  border-radius: 20px;
 }
 
 .pasos-registro p {
@@ -179,42 +179,13 @@
   text-align: center;
 }
 
-.pasos-formulario {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.pasos-formulario p {
-  margin-top: -10px;
-  padding-left: 24px;
-  font-family: "Roboto", sans-serif;
-  font-weight: lighter;
-  font-size: 22px;
+.pasos-registro .iconos {
+  height: 80px;
   width: 80%;
-  text-align: center;
-}
-
-.pasos-cotizacion {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.pasos-cotizacion p {
-  margin-top: -10px;
-  padding-left: 24px;
-  font-family: "Roboto", sans-serif;
-  font-weight: lighter;
-  font-size: 22px;
-  width: 80%;
-  text-align: center;
-}
-
-.iconos {
-  width: 25%;
   margin-left: 20px;
   padding: 10px;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 @media only screen and (min-width: 1200px) {

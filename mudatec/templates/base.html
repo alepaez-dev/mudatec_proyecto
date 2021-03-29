@@ -67,19 +67,27 @@
           <img src="{% static 'assets/mudanza-descubre-como.jpg' %}" alt="">
         </div>
         <div class="pasos">
-          <p>Mudatec es asi de sencillo!...</p>
+          <p class="d-xl-none">Mudatec es asi de sencillo!...</p>
+          <p class="d-none d-xl-block">Descubre que nuestra pagina es muy facil de usar..</p>
           <div class="pasos-general d-flex flex-column justify-content-center">
             <div class="pasos-registro d-flex flex-column justify-content-center">
-              <img src="{% static 'assets/Registrate.jpg' %}" alt="Registrate" class="iconos">
-              <p>Registrate</p>
-            </div>
-            <div class="pasos-formulario d-flex flex-column justify-content-center">
-              <img src="{% static 'assets/Registrate.jpg' %}" alt="Llena formulario" class="iconos">
-              <p>LLena el formulario</p>
-            </div>
-            <div class="pasos-cotizacion d-flex flex-column justify-content-center">
-              <img src="{% static 'assets/Registrate.jpg' %}" alt="Cotización" class="iconos">
-              <p>Recibe tu cotizacion</p>
+              <img class="d-xl-none iconos" src="{% static 'assets/Registrate.jpg' %}" alt="Registrate">
+              <p class="d-xl-none">Registrate</p>            
+              <img class="d-none d-xl-block" src="{% static 'assets/easyReg.jpg' %}" alt="img-registro">
+              <p class="d-none d-xl-block">¡ Registrarte en fácil, seguro y rapido ! </p>
+          </div>
+          <div class="pasos-registro">
+            <img class = "d-xl-none iconos" src="{% static 'assets/Registrate.jpg' %}" alt="Llena formulario">
+            <p class="d-xl-none">LLena el formulario</p>
+            <img class="d-none d-xl-blocks" src="{% static 'assets/formOnline.jpg' %}" alt="form Online">
+            <p class="d-none d-xl-block">Dejanos Saber que vas a mudar llenando el formulario para que las empresas de mudanza sepan tus necesidades</p>
+          </div>
+          <div class="pasos-registro">
+            <img class="d-xl-none iconos" src="{% static 'assets/Registrate.jpg' %}" alt="Cotización">
+            <p class="d-xl-none">Recibe tu cotizacion</p>
+            <img class="d-none d-xl-block" src="{% static 'assets/price.jpg' %}" alt="Price">
+            <p class="d-none d-xl-block">Elige la mejor Cotización ofrecida por las empresas</p>
+          </div>
             </div>
           </div>
         </div>
@@ -139,6 +147,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/41bdedddc7.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

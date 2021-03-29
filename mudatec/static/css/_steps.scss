@@ -38,9 +38,15 @@
 }
 
 .pasos-registro{
-  align-items: center;
-  
-  
+  // display: flex;
+  // flex-wrap: wrap;
+
+  img{
+    width: 30%;
+    margin: auto;
+    border-radius: 20px;
+  }
+    
   p{
     margin-top: -15px;
     padding-left: 24px;
@@ -50,46 +56,17 @@
     font-size: 22px;
     width: 80%;
     text-align: center;
-  
+    
   }
-  
-  
-}
-
-.pasos-formulario{
-  align-items: center;
-  p{
-    margin-top: -10px;
-    padding-left: 24px;
-    font-family: $roboto-font;
-    font-weight: lighter;
-    font-size: 22px;
+    
+  .iconos{
+    height: 80px;
     width: 80%;
-    text-align: center;
-  }
-
-
-}
-
-.pasos-cotizacion{
-  align-items: center;
-
-
-  p{
-    margin-top: -10px;
-    padding-left: 24px;
-    font-family: $roboto-font;
-    font-weight: lighter;
-    font-size: 22px;
-    width: 80%;
-    text-align: center;
+    margin-left: 20px;
+    padding: 10px;
+    align-content: center;
+    
   }
 }
 
-.iconos{
-  
-  width: 25%;
-  margin-left: 20px;
-  padding: 10px;    
-  
-}
+
