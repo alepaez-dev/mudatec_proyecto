@@ -279,11 +279,17 @@
   margin-bottom: 50px;
 }
 
-.col_header .iniciar_sesion.nuevo .inputs_sesion.nuevo {
-  margin: 20px auto;
+.col_header .iniciar_sesion.nuevo .inputs_ini {
+  width: 80%;
+  margin: auto;
 }
 
-.col_header .iniciar_sesion.nuevo .botones_sesion.nuevo {
+.col_header .iniciar_sesion.nuevo .inputs_ini .inputs_sesion.nuevo {
+  width: 100%;
+  margin: auto;
+}
+
+.col_header .iniciar_sesion.nuevo .inputs_ini .botones_sesion.nuevo {
   margin-top: 100px;
 }
 
