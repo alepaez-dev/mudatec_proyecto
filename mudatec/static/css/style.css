@@ -291,7 +291,7 @@
 
 .col_header .iniciar_sesion.nuevo .inputs_ini .f-icons {
   position: relative;
-  left: 95%;
+  left: 93%;
   font-size: 20px;
   top: -33px;
   color: #FF8754;
@@ -363,6 +363,32 @@
   font-weight: 300;
   font-size: 15px;
   color: #585757;
+}
+
+.col_perfil .perfil_main .seccion-perfil .fas {
+  color: grey;
+}
+
+.col_perfil .perfil_main .seccion-perfil:hover {
+  background-color: #f8f7f6;
+}
+
+.col_perfil .perfil_main .seccion-perfil:hover .fas {
+  color: #FF8754;
+}
+
+.col_perfil .perfil_main .seccion-perfil:hover a {
+  color: #FF8754;
+  font-weight: 500;
+}
+
+.col_perfil .perfil_main .seccion-perfil.cerrar a {
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+.col_perfil .perfil_main .seccion-perfil.cerrar .fas {
+  color: #FF8754;
 }
 
 @media only screen and (min-width: 1200px) {

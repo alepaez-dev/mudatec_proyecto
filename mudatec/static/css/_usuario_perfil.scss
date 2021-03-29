@@ -28,6 +28,28 @@
         font-size: 15px;
         color: $acentos-color;
       }
+      .fas {
+        color: grey;
+      }
+      &:hover{
+        background-color: $perfil-backgrounddiv-color;
+        .fas {
+          color: $primary-color;
+        }
+        a{
+          color: $primary-color;
+          font-weight: 500;
+        }
+      }
+    }
+    .seccion-perfil.cerrar{
+      a{
+        margin-left: 10px;
+        font-weight: 400;
+      }
+      .fas{
+        color: $primary-color;
+      }
     }
   }
 }
