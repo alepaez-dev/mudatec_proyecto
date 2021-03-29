@@ -33,7 +33,7 @@
   }
 }
 
-// IniciarSesionUsuario
+// RegistroUsuario - IniciarSesionUsuario
 @media only screen and (min-width: 1200px){
     .col_header{
         .navbars{
@@ -70,4 +70,15 @@
             }
         }
     }
+}
+
+// IniciarSesionUsuario
+@media only screen and (max-width: 1200px){
+  .col_header {
+    .iniciar_sesion.nuevo{
+      p.bienvenido_iniciar.nuevo{
+        margin-left: 0px;
+      }
+    }
+  }
 }
