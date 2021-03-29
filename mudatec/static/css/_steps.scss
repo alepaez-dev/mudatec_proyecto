@@ -32,12 +32,14 @@
   font-family: $roboto-font;
   font-weight: lighter;
   font-size: 22px;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-left: 25px;
+  
 
 }
 
 .pasos-registro{
+  padding-top: 25px;
 
   i{
     display: flex;
@@ -47,30 +49,26 @@
   
   }
 
+  p{
+    display: flex;
+    margin-left: 50px;
+    margin-top: -5px;
+    padding-top: -50px ;
+    font-family: $roboto-font;
+    font-weight: lighter;
+    font-size: 22px;
+    width: 80%;
+    justify-content: center;
+  }
+
   img{
     width: 30%;
     margin: auto;
     border-radius: 20px;
   }
     
-  p{
-    display: flex;
-    margin-top: -5px;
-    margin-left: 30px;
-    padding-left: 24px;
-    padding-top: -20px ;
-    font-family: $roboto-font;
-    font-weight: lighter;
-    font-size: 22px;
-    width: 80%;
-    justify-content: center;
-    
-  }
   
 }
 
-.web{
-  display: flex;
-  justify-content: start;
-}
+
 
