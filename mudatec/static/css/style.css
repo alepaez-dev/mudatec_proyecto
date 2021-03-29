@@ -327,6 +327,44 @@
   color: #16B5E5;
 }
 
+.col_perfil {
+  font-family: "Roboto", sans-serif;
+  background-color: #ececece1;
+}
+
+.col_perfil .perfil_header {
+  border-bottom: 2px solid #FF8754;
+}
+
+.col_perfil .perfil_header p {
+  text-align: center;
+  margin: 40px 0 5px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #585757;
+}
+
+.col_perfil .perfil_info {
+  border-bottom: 1px solid #FF8754;
+}
+
+.col_perfil .perfil_info p {
+  color: #585757;
+  font-size: 18px;
+  margin: 12px 12px 12px 15px;
+}
+
+.col_perfil .perfil_main .seccion-perfil {
+  padding: 8px 8px 8px 15px;
+  border-bottom: 1px solid #FF8754;
+}
+
+.col_perfil .perfil_main .seccion-perfil a {
+  font-weight: 300;
+  font-size: 15px;
+  color: #585757;
+}
+
 @media only screen and (min-width: 1200px) {
   .navbars a {
     font-size: 30px;
