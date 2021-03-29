@@ -38,8 +38,14 @@
 }
 
 .pasos-registro{
-  // display: flex;
-  // flex-wrap: wrap;
+
+  i{
+    display: flex;
+    color: #FF8754;
+    justify-content: center;
+
+  
+  }
 
   img{
     width: 30%;
@@ -48,25 +54,23 @@
   }
     
   p{
-    margin-top: -15px;
+    display: flex;
+    margin-top: -5px;
+    margin-left: 30px;
     padding-left: 24px;
     padding-top: -20px ;
     font-family: $roboto-font;
     font-weight: lighter;
     font-size: 22px;
     width: 80%;
-    text-align: center;
+    justify-content: center;
     
   }
-    
-  .iconos{
-    height: 80px;
-    width: 80%;
-    margin-left: 20px;
-    padding: 10px;
-    align-content: center;
-    
-  }
+  
 }
 
+.web{
+  display: flex;
+  justify-content: start;
+}
 

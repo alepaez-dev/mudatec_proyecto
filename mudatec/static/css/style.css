@@ -162,6 +162,16 @@
   padding-left: 25px;
 }
 
+.pasos-registro i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #FF8754;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .pasos-registro img {
   width: 30%;
   margin: auto;
@@ -169,23 +179,29 @@
 }
 
 .pasos-registro p {
-  margin-top: -15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: -5px;
+  margin-left: 30px;
   padding-left: 24px;
   padding-top: -20px;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
   font-size: 22px;
   width: 80%;
-  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.pasos-registro .iconos {
-  height: 80px;
-  width: 80%;
-  margin-left: 20px;
-  padding: 10px;
-  -ms-flex-line-pack: center;
-      align-content: center;
+.web {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 @media only screen and (min-width: 1200px) {
