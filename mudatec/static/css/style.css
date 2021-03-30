@@ -176,12 +176,14 @@
           justify-content: center;
 }
 
+.pasos-registro .iconos-movil {
+  margin: auto;
+}
+
 .pasos-registro p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 50px;
-  margin-top: -5px;
   padding-top: -50px;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;

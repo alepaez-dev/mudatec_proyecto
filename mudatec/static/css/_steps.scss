@@ -48,11 +48,13 @@
 
   
   }
-
+  .iconos-movil{
+    margin:auto;
+  }
   p{
     display: flex;
-    margin-left: 50px;
-    margin-top: -5px;
+    // margin-left: 50px;
+    // margin-top: -5px;
     padding-top: -50px ;
     font-family: $roboto-font;
     font-weight: lighter;
