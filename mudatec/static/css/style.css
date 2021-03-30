@@ -391,6 +391,55 @@
   color: #FF8754;
 }
 
+.col_perfil .perfil_header.info .fas {
+  position: absolute;
+  top: 47px;
+  left: 2%;
+  color: #FF8754;
+}
+
+.col_perfil .perfil_main.info .seccion-perfil {
+  padding-left: 0px;
+}
+
+.col_perfil .perfil_main.info .seccion-perfil a {
+  padding-left: 15px;
+  font-weight: 400;
+}
+
+.col_perfil .perfil_main.info .seccion-perfil input {
+  padding: 5px;
+  padding-left: 10px;
+  margin: 0px;
+  margin-left: 5px;
+  width: 60%;
+  border: none;
+  background-color: #ececece1;
+  font-size: 15px;
+  font-weight: 100;
+  margin-top: 7px;
+}
+
+.col_perfil .perfil_main.info .seccion-perfil input:hover {
+  border: 1px solid #FF8754;
+  border-radius: 6px;
+}
+
+.col_perfil .boton-info-guardar {
+  position: absolute;
+  top: 105%;
+  left: 80%;
+}
+
+.col_perfil .boton-info-guardar a {
+  border: none;
+  border: 2px solid #FF8754;
+  background-color: #FF8754;
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+}
+
 @media only screen and (min-width: 1200px) {
   .navbars a {
     font-size: 30px;

@@ -36,6 +36,11 @@ def MudanzaIniciarSesion(request):
 def PerfilUsuario(request):
     """Perfil Usuario"""
     context = {}
-    template = loader.get_template("mudatec_app/usuario/perfil.html")
+    template = loader.get_template("perfil.html")
     return HttpResponse(template.render(context,request))
   
+def PerfilPerfilUsuario(request):
+    """Perfil Usuario"""
+    context = {}
+    template = loader.get_template("mudatec_app/usuario/perfil.html")
+    return HttpResponse(template.render(context,request))
