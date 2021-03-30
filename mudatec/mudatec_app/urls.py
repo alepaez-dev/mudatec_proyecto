@@ -6,7 +6,8 @@ from .views import (
   MudanzaRegistro,
   MudanzaIniciarSesion,
   PerfilUsuario,
-  PerfilPerfilUsuario,
+  PerfilUsuarioInfo,
+  PerfilUsuarioPost,
 )
 
 urlpatterns = [
@@ -16,5 +17,6 @@ urlpatterns = [
     path("mudanza/registro/", MudanzaRegistro),
     path("mudanza/iniciar_sesion/", MudanzaIniciarSesion),
     path("usuario/perfil/", PerfilUsuario),
-    path("usuario/perfil/info/", PerfilPerfilUsuario),
+    path("usuario/perfil/info/", PerfilUsuarioInfo),
+    path("usuario/perfil/post/", PerfilUsuarioPost),
 ]

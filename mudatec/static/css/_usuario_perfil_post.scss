@@ -1,0 +1,66 @@
+.perfil_main{
+  .post_main{
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 15px;
+    .mudan{
+      p{
+        color: $acentos-color;
+        &:first-of-type{
+          font-weight: 400;
+          font-size: 18px;
+        }
+        &:last-of-type{
+          font-weight: lighter;
+          margin: 0px;
+        }
+      }
+    }
+    .add_fecha{
+      .add_muebles{
+        width: 40%;
+
+        i{
+          color: $accept-color;
+          font-size: 30px;
+        }
+        a{
+          font-size: 18px;
+          width: 80%;
+          color: $acentos-color;
+          font-weight: 600;
+        }
+      }
+      .fechas{
+        p{
+          margin-bottom: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $acentos-color;
+          text-align: center;
+          &:last-of-type{
+            margin-bottom: 0px;
+            font-size: 16px;
+            border: 1px solid $primary-color;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+    .post-box{
+      margin-top: 10px;
+      border-radius: 8px;
+      background-color: $post-background-color;
+      padding: 15px;
+      .single-post{
+        background-color: $single-post-background-color;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        padding: 10px;
+      }
+    }
+  }
+}

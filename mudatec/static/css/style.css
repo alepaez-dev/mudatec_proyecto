@@ -329,7 +329,7 @@
 
 .col_perfil {
   font-family: "Roboto", sans-serif;
-  background-color: #ececece1;
+  background-color: #f7f7f7e1;
 }
 
 .col_perfil .perfil_header {
@@ -414,7 +414,7 @@
   margin-left: 5px;
   width: 60%;
   border: none;
-  background-color: #ececece1;
+  background-color: #f7f7f7e1;
   font-size: 15px;
   font-weight: 100;
   margin-top: 7px;
@@ -440,6 +440,74 @@
 .col_perfil .boton-info-guardar:hover {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
+}
+
+.perfil_main .post_main {
+  border: 1px solid #FF8754;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.perfil_main .post_main .mudan p {
+  color: #585757;
+}
+
+.perfil_main .post_main .mudan p:first-of-type {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.perfil_main .post_main .mudan p:last-of-type {
+  font-weight: lighter;
+  margin: 0px;
+}
+
+.perfil_main .post_main .add_fecha .add_muebles {
+  width: 40%;
+}
+
+.perfil_main .post_main .add_fecha .add_muebles i {
+  color: #04AE85;
+  font-size: 30px;
+}
+
+.perfil_main .post_main .add_fecha .add_muebles a {
+  font-size: 18px;
+  width: 80%;
+  color: #585757;
+  font-weight: 600;
+}
+
+.perfil_main .post_main .add_fecha .fechas p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #585757;
+  text-align: center;
+}
+
+.perfil_main .post_main .add_fecha .fechas p:last-of-type {
+  margin-bottom: 0px;
+  font-size: 16px;
+  border: 1px solid #FF8754;
+  border-radius: 4px;
+}
+
+.perfil_main .post_main .post-box {
+  margin-top: 10px;
+  border-radius: 8px;
+  background-color: #e5e8ecca;
+  padding: 15px;
+}
+
+.perfil_main .post_main .post-box .single-post {
+  background-color: #F6F6F6;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 10px;
 }
 
 @media only screen and (min-width: 1200px) {

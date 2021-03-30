@@ -9,6 +9,7 @@ def Home(request):
     template = loader.get_template("mudatec_app/index.html")
     return HttpResponse(template.render(context,request))
 
+#Usuarios
 def UsuarioRegistro(request):
     """Usuario Registro"""
     context = {}
@@ -21,6 +22,26 @@ def UsuarioIniciarSesion(request):
     template = loader.get_template("mudatec_app/usuario/iniciar_sesion.html")
     return HttpResponse(template.render(context,request))
 
+#Usuarios perfiles
+def PerfilUsuario(request):
+    """Perfil Usuario"""
+    context = {}
+    template = loader.get_template("perfil.html")
+    return HttpResponse(template.render(context,request))
+
+def PerfilUsuarioInfo(request):
+    """Perfil Usuario Info"""
+    context = {}
+    template = loader.get_template("mudatec_app/usuario/info.html")
+    return HttpResponse(template.render(context,request))
+
+def PerfilUsuarioPost(request):
+    """Perfil Usuario Info"""
+    context = {}
+    template = loader.get_template("mudatec_app/usuario/post.html")
+    return HttpResponse(template.render(context,request))
+
+#Mudanza
 def MudanzaRegistro(request):
     """Mudanza Registro."""
     context = {}
@@ -33,14 +54,6 @@ def MudanzaIniciarSesion(request):
     template = loader.get_template("mudatec_app/mudanza/iniciar_sesion.html")
     return HttpResponse(template.render(context,request))
 
-def PerfilUsuario(request):
-    """Perfil Usuario"""
-    context = {}
-    template = loader.get_template("perfil.html")
-    return HttpResponse(template.render(context,request))
+
   
-def PerfilPerfilUsuario(request):
-    """Perfil Usuario"""
-    context = {}
-    template = loader.get_template("mudatec_app/usuario/perfil.html")
-    return HttpResponse(template.render(context,request))
+
