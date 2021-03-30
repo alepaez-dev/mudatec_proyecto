@@ -516,6 +516,7 @@
   margin-bottom: 10px;
   border-radius: 4px;
   padding: 10px;
+  background-color: #F6F6F6;
 }
 
 .perfil_main .post_main .post-box .single-post .item {
@@ -530,10 +531,13 @@
   height: 25px;
   width: 70%;
   border-radius: 4px;
-  border: 2px solid #FF8754;
   margin-right: 5px;
-  background-color: #F6F6F6;
   padding: 3px;
+  border: none;
+}
+
+.perfil_main .post_main .post-box .single-post .item input:hover {
+  border: 2px solid #FF8754;
 }
 
 .perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad {
@@ -551,8 +555,11 @@
   padding: 3px;
   margin-left: 8px;
   border-radius: 4px;
+  border: none;
+}
+
+.perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad input:hover {
   border: 2px solid #FF8754;
-  background-color: #F6F6F6;
 }
 
 .perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad i {
@@ -639,9 +646,13 @@
 .perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input input {
   padding: 3px;
   height: 35px;
-  border: 2px solid #FF8754;
   border-radius: 4px;
   width: 100%;
+  border: none;
+}
+
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input input:hover {
+  border: 2px solid #FF8754;
 }
 
 .perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input textarea {
