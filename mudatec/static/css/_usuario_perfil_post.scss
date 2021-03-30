@@ -1,6 +1,6 @@
 .perfil_main{
   .post_main{
-    border: 1px solid $primary-color;
+    border: 2px solid $primary-color;
     border-radius: 10px;
     width: 90%;
     margin: auto;
@@ -44,7 +44,7 @@
           &:last-of-type{
             margin-bottom: 0px;
             font-size: 16px;
-            border: 1px solid $primary-color;
+            border: 2px solid $primary-color;
             border-radius: 4px;
           }
         }
@@ -60,6 +60,39 @@
         margin-bottom: 10px;
         border-radius: 4px;
         padding: 10px;
+        .item{
+          width: 60%;
+          input{
+            height: 25px;
+            width: 70%;
+            border-radius: 4px;
+            border: 2px solid $primary-color;
+            margin-right: 5px;
+            background-color: $single-post-background-color;
+          }
+        }
+        .tamano_cantidad{
+          .cantidad{
+            width: 40%;
+            p{
+              width: 35%;
+            }
+            input{
+              width: 20%;
+              height: 25px;
+              margin-left: 8px;
+              border-radius: 4px;
+              border: 2px solid $primary-color; 
+              background-color: $single-post-background-color;
+            }
+            i{
+              font-size: 24px;
+              width: 20%;
+              margin-left: 5px;
+              color: $delete-color;
+            }
+          }
+        }
       }
     }
   }
