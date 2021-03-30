@@ -420,15 +420,12 @@
   margin-top: 7px;
 }
 
-.col_perfil .perfil_main.info .seccion-perfil input:hover {
-  border: 1px solid #FF8754;
-  border-radius: 6px;
-}
-
 .col_perfil .boton-info-guardar {
   position: absolute;
   top: 105%;
-  left: 80%;
+  left: 77%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .col_perfil .boton-info-guardar a {
@@ -438,6 +435,11 @@
   border-radius: 6px;
   padding: 10px;
   color: white;
+}
+
+.col_perfil .boton-info-guardar:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 @media only screen and (min-width: 1200px) {
