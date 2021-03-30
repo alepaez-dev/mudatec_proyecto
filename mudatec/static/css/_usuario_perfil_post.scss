@@ -5,6 +5,7 @@
     width: 90%;
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 10px;
     padding: 15px;
     .mudan{
       p{
@@ -26,6 +27,12 @@
         i{
           color: $accept-color;
           font-size: 30px;
+          transition: 0.1s;
+          &:hover{
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+          }
         }
         a{
           font-size: 18px;
@@ -62,6 +69,9 @@
         padding: 10px;
         .item{
           width: 60%;
+          p{
+            color: $acentos-color;
+          }
           input{
             height: 25px;
             width: 70%;
@@ -69,6 +79,7 @@
             border: 2px solid $primary-color;
             margin-right: 5px;
             background-color: $single-post-background-color;
+            padding: 3px;
           }
         }
         .tamano_cantidad{
@@ -76,10 +87,12 @@
             width: 40%;
             p{
               width: 35%;
+              color: $acentos-color;
             }
             input{
               width: 20%;
               height: 25px;
+              padding: 3px;
               margin-left: 8px;
               border-radius: 4px;
               border: 2px solid $primary-color; 
@@ -90,10 +103,97 @@
               width: 20%;
               margin-left: 5px;
               color: $delete-color;
+              transition: 0.1s;
+              &:hover{
+                -webkit-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                transform: scale(1.1);
+              }
             }
           }
         }
       }
+    }
+    .direcciones{
+      .direccion-texto{
+        margin-top: 10px;
+        padding: 15px;        
+        p{
+          color: $acentos-color;
+          margin: 0px;
+          &:first-of-type{
+            font-size: 20px;
+            font-weight: 800;
+          }
+          &:last-of-type{
+            a{
+              color: $primary-color;
+            }
+          }
+        }
+      }
+      .direcciones_inputs{
+        padding: 15px;
+        border-radius: 8px;
+        background-color: $post-background-color;
+        .direccion-input{
+          margin-bottom: 10px;
+          p{
+            margin: 0px 0 8px 0;
+            color: $acentos-color;
+          }
+          input{
+            padding: 3px;
+            height: 35px;
+            border: 2px solid $primary-color;
+            border-radius: 4px;
+            width: 100%;
+          }
+          textarea{
+            width: 100%;
+            border: 2px solid $primary-color;
+            border-radius: 4px;
+          }
+          .calle{
+            input{
+              margin-bottom: 10px;
+            }
+          }
+          .numeros{
+            .num input{
+              width: 30%;
+            }
+            .num.interior{
+              input{
+                width: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .crear-editar{
+      margin-top: 15px;
+    }
+    .a-editar{
+      a{
+        font-size: 15px;
+        color: $acentos-color;
+        font-weight: 600;
+      }
+      i{
+        font-size: 20px;
+        color: $primary-color;
+      }
+      .a-post-izq{
+        margin-left: 12px;
+      }
+      .a-post-der{
+        margin-right: 12px;
+      }
+    }
+    .a-editar.a-first{
+      margin-top: 15px;
     }
   }
 }

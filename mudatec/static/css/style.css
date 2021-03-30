@@ -423,7 +423,7 @@
 .col_perfil .boton-info-guardar {
   position: absolute;
   top: 105%;
-  left: 77%;
+  left: 83%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -448,6 +448,7 @@
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 10px;
   padding: 15px;
 }
 
@@ -472,6 +473,13 @@
 .perfil_main .post_main .add_fecha .add_muebles i {
   color: #04AE85;
   font-size: 30px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.perfil_main .post_main .add_fecha .add_muebles i:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .perfil_main .post_main .add_fecha .add_muebles a {
@@ -514,6 +522,10 @@
   width: 60%;
 }
 
+.perfil_main .post_main .post-box .single-post .item p {
+  color: #585757;
+}
+
 .perfil_main .post_main .post-box .single-post .item input {
   height: 25px;
   width: 70%;
@@ -521,6 +533,7 @@
   border: 2px solid #FF8754;
   margin-right: 5px;
   background-color: #F6F6F6;
+  padding: 3px;
 }
 
 .perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad {
@@ -529,11 +542,13 @@
 
 .perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad p {
   width: 35%;
+  color: #585757;
 }
 
 .perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad input {
   width: 20%;
   height: 25px;
+  padding: 3px;
   margin-left: 8px;
   border-radius: 4px;
   border: 2px solid #FF8754;
@@ -545,6 +560,100 @@
   width: 20%;
   margin-left: 5px;
   color: #E53F3F;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.perfil_main .post_main .post-box .single-post .tamano_cantidad .cantidad i:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.perfil_main .post_main .direcciones .direccion-texto {
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.perfil_main .post_main .direcciones .direccion-texto p {
+  color: #585757;
+  margin: 0px;
+}
+
+.perfil_main .post_main .direcciones .direccion-texto p:first-of-type {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.perfil_main .post_main .direcciones .direccion-texto p:last-of-type a {
+  color: #FF8754;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #e5e8ecca;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input {
+  margin-bottom: 10px;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input p {
+  margin: 0px 0 8px 0;
+  color: #585757;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input input {
+  padding: 3px;
+  height: 35px;
+  border: 2px solid #FF8754;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input textarea {
+  width: 100%;
+  border: 2px solid #FF8754;
+  border-radius: 4px;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .calle input {
+  margin-bottom: 10px;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .numeros .num input {
+  width: 30%;
+}
+
+.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .numeros .num.interior input {
+  width: 50%;
+}
+
+.perfil_main .post_main .crear-editar {
+  margin-top: 15px;
+}
+
+.perfil_main .post_main .a-editar a {
+  font-size: 15px;
+  color: #585757;
+  font-weight: 600;
+}
+
+.perfil_main .post_main .a-editar i {
+  font-size: 20px;
+  color: #FF8754;
+}
+
+.perfil_main .post_main .a-editar .a-post-izq {
+  margin-left: 12px;
+}
+
+.perfil_main .post_main .a-editar .a-post-der {
+  margin-right: 12px;
+}
+
+.perfil_main .post_main .a-editar.a-first {
+  margin-top: 15px;
 }
 
 @media only screen and (min-width: 1200px) {

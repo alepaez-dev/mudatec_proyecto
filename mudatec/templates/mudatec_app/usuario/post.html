@@ -138,9 +138,13 @@
         </div>
       </div>
     </div>
+    <div class="a-editar a-first d-flex align-items-center flex-row-reverse">
+      <i class="fas fa-chevron-right"></i>
+      <a href="#" class="a-post-der">Crear/Editar</a>
+    </div>
     <div class="direcciones">
       <div class="direccion-texto">
-        <p>Agregar una nueva dirección</p>
+        <p>Agregar/Editar una nueva dirección</p>
         <p>O elige la dirección que ya tienes en tu perfil <a>aquí</a></p>
       </div>
       <div class="direcciones_inputs">
@@ -158,20 +162,20 @@
         </div>
         <div class="direccion-input">
           <p>Colonia</p>
-          <input type="text">
+          <input type="text" class="col_calle_input">
         </div>
         <div class="direccion-input">
           <div class="calle">
             <p>Calle</p>
-            <input type="text">
+            <input class="col_calle_input" type="text">
           </div>
           <div class="numeros d-flex">
-            <div class="interior">
-              <p>Int</p>
+            <div class="num exterior">
+              <p>Num.Ext</p>
               <input type="text">
             </div>
-            <div class="exterior">
-              <p>Ext</p>
+            <div class="num interior">
+              <p>Num.Int</p>
               <input type="text">
             </div>
           </div>
@@ -182,11 +186,20 @@
         </div>
         <div class="direccion-input">
           <p>Referencias</p>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <textarea name="" id="" cols="30" rows="5"></textarea>
         </div>
       </div>
     </div>
-    <a href="#">Editar</a>
+    <div class="crear-editar d-flex flex-row justify-content-between">
+      <div class="a-editar d-flex align-items-center">
+        <i class="fas fa-chevron-left"></i>
+        <a href="#" class="a-post-izq">Regresar</a>
+      </div>
+      <div class="a-editar d-flex align-items-center">
+        <a href="#" class="a-post-der">Crear/Editar</a>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock info-main %}
