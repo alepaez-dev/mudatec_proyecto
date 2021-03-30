@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAEI,WAFO,CACT,cAAc,CACZ,IAAI,CAAC;EACH,QAAQ,EAAE,QAAQ;CACnB",
-    "sources": [
-        "perfil_info.scss"
-    ],
-    "names": [],
-    "file": "perfil_info.css"
-}

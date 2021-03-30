@@ -204,7 +204,7 @@
 }
 
 .col_header .iniciar_sesion .inputs_sesion {
-  width: 60%;
+  width: 80%;
   height: 44.07px;
   margin: auto;
   padding-left: 15px;
@@ -306,11 +306,11 @@
   border-bottom: solid 1px #16B5E5;
 }
 
-.col_header .iniciar_sesion p:last-of-type a:hover {
+.col_header .iniciar_sesion.mudanza_reg p:last-of-type a:hover {
   color: #16B5E5;
 }
 
-.col_header .iniciar_sesion .inputs_sesion.nuevo_registro {
+.col_header .iniciar_sesion.mudanza_reg .inputs_sesion.nuevo_registro {
   border-color: #16B5E5;
 }
 
@@ -491,7 +491,7 @@
     text-align: center;
   }
   .col_header .iniciar_sesion .inputs_sesion {
-    width: 60%;
+    width: 50%;
     border-radius: 4px;
   }
   .col_header .iniciar_sesion .botones_sesion {
