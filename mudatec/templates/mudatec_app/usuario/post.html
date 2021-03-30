@@ -42,7 +42,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -60,7 +59,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -78,7 +76,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -96,7 +93,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -114,7 +110,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -132,7 +127,6 @@
           <div class="cantidad d-flex justify-content-around">
             <p>Cantidad</p>
             <input type="text">
-            <!-- <i class="fas fa-trash-alt"></i> -->
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
@@ -142,54 +136,112 @@
       <i class="fas fa-chevron-right"></i>
       <a href="#" class="a-post-der">Crear/Editar</a>
     </div>
-    <div class="direcciones">
-      <div class="direccion-texto">
-        <p>Agregar/Editar una nueva dirección</p>
-        <p>O elige la dirección que ya tienes en tu perfil <a>aquí</a></p>
+    <div class="direcciones-desplazar">
+      <dir class="dir dir-inicial d-flex justify-content-between align-items-center">
+        <p>Direccion inicial</p>
+        <i class="fas fa-chevron-down"></i>
+      </dir>
+      <div class="direcciones d-none">
+        <div class="direccion-texto">
+          <p>Agregar/Editar la dirección donde <strong>EMPIEZA</strong> tu mudanza</p>
+          <p>O elige la dirección que ya tienes en tu perfil <a href="#">aquí</a></p>
+        </div>
+        <div class="direcciones_inputs">
+          <div class="direccion-input">
+            <p>Nombre</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Apellido Paterno</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Apellido Materno</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Colonia</p>
+            <input type="text" class="col_calle_input">
+          </div>
+          <div class="direccion-input">
+            <div class="calle">
+              <p>Calle</p>
+              <input class="col_calle_input" type="text">
+            </div>
+            <div class="numeros d-flex">
+              <div class="num exterior">
+                <p>Num.Ext</p>
+                <input type="text">
+              </div>
+              <div class="num interior">
+                <p>Num.Int</p>
+                <input type="text">
+              </div>
+            </div>
+          </div>
+          <div class="direccion-input">
+            <p>Código postal</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Referencias</p>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
+        </div>
       </div>
-      <div class="direcciones_inputs">
-        <div class="direccion-input">
-          <p>Nombre</p>
-          <input type="text">
+      <div class="dir dir-final d-flex justify-content-between align-items-center">
+        <p>Direccion final</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="direcciones d-none">
+        <div class="direccion-texto">
+          <p>Agregar/Editar la dirección donde <strong>FINALIZA</strong> tu mudanza</p>
         </div>
-        <div class="direccion-input">
-          <p>Apellido Paterno</p>
-          <input type="text">
-        </div>
-        <div class="direccion-input">
-          <p>Apellido Materno</p>
-          <input type="text">
-        </div>
-        <div class="direccion-input">
-          <p>Colonia</p>
-          <input type="text" class="col_calle_input">
-        </div>
-        <div class="direccion-input">
-          <div class="calle">
-            <p>Calle</p>
-            <input class="col_calle_input" type="text">
+        <div class="direcciones_inputs">
+          <div class="direccion-input">
+            <p>Nombre</p>
+            <input type="text">
           </div>
-          <div class="numeros d-flex">
-            <div class="num exterior">
-              <p>Num.Ext</p>
-              <input type="text">
+          <div class="direccion-input">
+            <p>Apellido Paterno</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Apellido Materno</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Colonia</p>
+            <input type="text" class="col_calle_input">
+          </div>
+          <div class="direccion-input">
+            <div class="calle">
+              <p>Calle</p>
+              <input class="col_calle_input" type="text">
             </div>
-            <div class="num interior">
-              <p>Num.Int</p>
-              <input type="text">
+            <div class="numeros d-flex">
+              <div class="num exterior">
+                <p>Num.Ext</p>
+                <input type="text">
+              </div>
+              <div class="num interior">
+                <p>Num.Int</p>
+                <input type="text">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="direccion-input">
-          <p>Código postal</p>
-          <input type="text">
-        </div>
-        <div class="direccion-input">
-          <p>Referencias</p>
-          <textarea name="" id="" cols="30" rows="5"></textarea>
+          <div class="direccion-input">
+            <p>Código postal</p>
+            <input type="text">
+          </div>
+          <div class="direccion-input">
+            <p>Referencias</p>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="crear-editar d-flex flex-row justify-content-between">
       <div class="a-editar d-flex align-items-center">
         <i class="fas fa-chevron-left"></i>

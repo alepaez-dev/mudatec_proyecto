@@ -569,41 +569,74 @@
   transform: scale(1.1);
 }
 
-.perfil_main .post_main .direcciones .direccion-texto {
+.perfil_main .post_main .direcciones-desplazar .dir {
+  margin-top: 20px;
+  background-color: #e5e8ecca;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.perfil_main .post_main .direcciones-desplazar .dir p {
+  color: #585757;
+  margin: 0px;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.perfil_main .post_main .direcciones-desplazar .dir i {
+  margin-right: 20px;
+  font-size: 25px;
+  color: #FF8754;
+}
+
+.perfil_main .post_main .direcciones-desplazar .dir:hover {
+  background-color: #f1f0f0;
+  cursor: pointer;
+}
+
+.perfil_main .post_main .direcciones-desplazar .dir:hover p {
+  color: #FF8754;
+}
+
+.perfil_main .post_main .direcciones-desplazar .direcciones .direccion-texto {
   margin-top: 10px;
   padding: 15px;
 }
 
-.perfil_main .post_main .direcciones .direccion-texto p {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direccion-texto p {
   color: #585757;
   margin: 0px;
 }
 
-.perfil_main .post_main .direcciones .direccion-texto p:first-of-type {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direccion-texto p strong {
+  color: #FF8754;
+}
+
+.perfil_main .post_main .direcciones-desplazar .direcciones .direccion-texto p:first-of-type {
   font-size: 20px;
   font-weight: 800;
 }
 
-.perfil_main .post_main .direcciones .direccion-texto p:last-of-type a {
-  color: #FF8754;
+.perfil_main .post_main .direcciones-desplazar .direcciones .direccion-texto p:last-of-type a {
+  color: blue;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs {
   padding: 15px;
   border-radius: 8px;
   background-color: #e5e8ecca;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input {
   margin-bottom: 10px;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input p {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input p {
   margin: 0px 0 8px 0;
   color: #585757;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input input {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input input {
   padding: 3px;
   height: 35px;
   border: 2px solid #FF8754;
@@ -611,26 +644,30 @@
   width: 100%;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input textarea {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input textarea {
   width: 100%;
   border: 2px solid #FF8754;
   border-radius: 4px;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .calle input {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input .calle input {
   margin-bottom: 10px;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .numeros .num input {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input .numeros .num input {
   width: 30%;
 }
 
-.perfil_main .post_main .direcciones .direcciones_inputs .direccion-input .numeros .num.interior input {
+.perfil_main .post_main .direcciones-desplazar .direcciones .direcciones_inputs .direccion-input .numeros .num.interior input {
   width: 50%;
 }
 
-.perfil_main .post_main .crear-editar {
+.perfil_main .post_main .direcciones-desplazar .crear-editar {
   margin-top: 15px;
+}
+
+.perfil_main .post_main .crear-editar {
+  margin-top: 20px;
 }
 
 .perfil_main .post_main .a-editar a {

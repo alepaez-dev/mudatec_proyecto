@@ -114,86 +114,121 @@
         }
       }
     }
-    .direcciones{
-      .direccion-texto{
-        margin-top: 10px;
-        padding: 15px;        
+    .direcciones-desplazar{
+      .dir{
+        margin-top: 20px;
+        background-color: $post-background-color;
+        height: 50px;
+        border-radius: 8px;
+        // transition: 0.5s;
         p{
+          // margin: auto;
           color: $acentos-color;
           margin: 0px;
-          &:first-of-type{
-            font-size: 20px;
-            font-weight: 800;
-          }
-          &:last-of-type{
-            a{
+          font-size: 20px;
+          margin-left: 20px;
+        }
+        i{
+          // margin: auto;
+          margin-right: 20px;
+          font-size: 25px;
+          color: $primary-color;
+        }
+        &:hover{
+          background-color: rgb(241, 240, 240);
+          cursor: pointer;
+          p{
+            color: $primary-color;
+          }          
+        }
+      }
+      .direcciones{
+        .direccion-texto{
+          margin-top: 10px;
+          padding: 15px;        
+          p{
+            color: $acentos-color;
+            margin: 0px;
+            strong{
               color: $primary-color;
+            }
+            &:first-of-type{
+              font-size: 20px;
+              font-weight: 800;
+            }
+            &:last-of-type{
+              a{
+                color: blue;
+              }
             }
           }
         }
-      }
-      .direcciones_inputs{
-        padding: 15px;
-        border-radius: 8px;
-        background-color: $post-background-color;
-        .direccion-input{
-          margin-bottom: 10px;
-          p{
-            margin: 0px 0 8px 0;
-            color: $acentos-color;
-          }
-          input{
-            padding: 3px;
-            height: 35px;
-            border: 2px solid $primary-color;
-            border-radius: 4px;
-            width: 100%;
-          }
-          textarea{
-            width: 100%;
-            border: 2px solid $primary-color;
-            border-radius: 4px;
-          }
-          .calle{
+        .direcciones_inputs{
+          padding: 15px;
+          border-radius: 8px;
+          background-color: $post-background-color;
+          .direccion-input{
+            margin-bottom: 10px;
+            p{
+              margin: 0px 0 8px 0;
+              color: $acentos-color;
+            }
             input{
-              margin-bottom: 10px;
+              padding: 3px;
+              height: 35px;
+              border: 2px solid $primary-color;
+              border-radius: 4px;
+              width: 100%;
             }
-          }
-          .numeros{
-            .num input{
-              width: 30%;
+            textarea{
+              width: 100%;
+              border: 2px solid $primary-color;
+              border-radius: 4px;
             }
-            .num.interior{
+            .calle{
               input{
-                width: 50%;
+                margin-bottom: 10px;
+              }
+            }
+            .numeros{
+              .num input{
+                width: 30%;
+              }
+              .num.interior{
+                input{
+                  width: 50%;
+                }
               }
             }
           }
         }
       }
-    }
-    .crear-editar{
-      margin-top: 15px;
-    }
-    .a-editar{
-      a{
-        font-size: 15px;
-        color: $acentos-color;
-        font-weight: 600;
+      .crear-editar{
+        margin-top: 15px;
       }
-      i{
-        font-size: 20px;
-        color: $primary-color;
-      }
-      .a-post-izq{
-        margin-left: 12px;
-      }
-      .a-post-der{
-        margin-right: 12px;
-      }
+  }
+  .crear-editar{
+    margin-top: 20px;
+  }
+  .a-editar{
+    a{
+      font-size: 15px;
+      color: $acentos-color;
+      font-weight: 600;
     }
-    .a-editar.a-first{
-      margin-top: 15px;
+    i{
+      font-size: 20px;
+      color: $primary-color;
     }
+    .a-post-izq{
+      margin-left: 12px;
+    }
+    .a-post-der{
+      margin-right: 12px;
+    }
+  }
+  .a-editar.a-first{
+    margin-top: 15px;
+  }
   }
 }
