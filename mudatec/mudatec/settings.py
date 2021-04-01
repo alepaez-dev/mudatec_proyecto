@@ -129,3 +129,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+#AUTH USER MODEL
+AUTH_USER_MODEL = 'mudatec_app.CustomUser'
