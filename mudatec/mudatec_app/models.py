@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 class Address(models.Model):
@@ -10,10 +11,10 @@ class Address(models.Model):
     num_ext = models.CharField(max_length=10)
     address = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=5)
-    references = models.CharField(max_length=255)
+    references = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 
-    def __Estr__(self):
+    def __str__(self):
         return f"{self.street} {self.address} {self.zip_code}"
 
 
@@ -21,18 +22,17 @@ class Company(models.Model):
     """Empresas."""
 
     name = models.CharField(max_length=50)
-    password = models.CharField(max_length=30)
     rfc = models.CharField(max_length=13)
     social_name = models.CharField(max_length=60, unique=True)
-    email = models.EmailField(max_length=60, unique=True)
+    email = models.EmailField(max_length=60, blank=True)
     phone = models.CharField(max_length=15)
-    phone = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
     address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="companies")
 
     def __str__(self):
-        return f"{self.name} {self.email}"
+        return f"{self.name}"
 
 class CustomUser(AbstractUser):
     """Usuarios."""
@@ -56,27 +56,27 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
 
     STATUS_TYPES = (
-        ("no_demand", "No_demand"),
-        ("in_demand", "In_demand"),
+        ("no_demand", "No Demand"),
+        ("in_demand", "In Demand"),
         ("complete", "Complete"),
     )
-    status = models.CharField(max_length=50,choices=STATUS_TYPES, default="sin_cotizar")
+    status = models.CharField(max_length=50,choices=STATUS_TYPES, default="no_demand")
     dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
     edited = models.BooleanField(default=False)
+    #User
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     mother_last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=60, unique=True)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, blank=True)
     date_edited = models.DateTimeField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    initial_address = models.ForeignKey(Direccion, on_delete=models.PROTECT, related_name="initial_posts")
-    ending_address = models.ForeignKey(Direccion, on_delete=models.PROTECT, related_name="ending_posts")
+    initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts")
+    ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts")
 
     def __str__(self):
-    return f"{self.title} {self.status}"
+        return f"{self.title} {self.status}"
 
 class Forms(models.Model):
     """Formularios"""
@@ -85,7 +85,6 @@ class Forms(models.Model):
     quantity = models.IntegerField(blank=True)
     size = models.CharField(max_length=50)
     date_created = models.DateTimeField(auto_now_add=True)
-
 
     #Relations
     post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="forms")
@@ -101,9 +100,9 @@ class Budget(models.Model):
     ("accepted", "Accepted"),
     ("rejected", "Rejected"),
     )
-    status = models.CharField(max_length=50, choices=STATUS_TYPES)
+    status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending")
     available_dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
-    agreed_date = models.DateTimeField(blank= True)
+    agreed_date = models.DateTimeField(blank=True)
     amount = models.DecimalField(max_digits=8, decimal_places=2, min_value=0)
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -123,12 +122,12 @@ class Review(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    customUser = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name="reviews") 
+    customuser = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name="reviews") 
     budget = models.ForeignKey(Budget, on_delete=models.PROTECT, related_name="reviews")
     company = models.ForeignKey(Company, on_delete=models.PROTECT, related_name="reviews")
 
     def __str__(self):
-    return f"{self.score} {self.date_created}"
+        return f"{self.score} {self.date_created}"
 
 
 class Transaction(models.Model):
@@ -141,10 +140,13 @@ class Transaction(models.Model):
     ("rejected", "Rejected"),
     ("completed", "Completed"),
     )
+    status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending")
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    customUser = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name="transactions")
+    customuser = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name="transactions")
     budget = models.ForeignKey(Budget, on_delete=models.PROTECT, related_name="transactions")
     company = models.ForeignKey(Company, on_delete=models.PROTECT, related_name="transactions")
 
+    def __str__(self):
+        return f"{self.amount} {self.status} {self.date_created}"
