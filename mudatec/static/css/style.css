@@ -159,11 +159,27 @@
   font-weight: lighter;
   font-size: 22px;
   padding-top: 30px;
-  padding-left: 25px;
+  padding-left: 35px;
 }
 
 .pasos-registro {
-  padding-top: 25px;
+  margin-top: 35px;
+  padding-right: 50px;
+  padding-left: 30px;
+}
+
+.pasos-registro .web-registro {
+  margin-right: 300px;
+}
+
+.pasos-registro .web-formulario {
+  margin-left: 30px;
+  padding: 20px;
+}
+
+.pasos-registro .web-cotizacion {
+  margin-right: 30px;
+  padding: 20px;
 }
 
 .pasos-registro i {
@@ -176,27 +192,8 @@
           justify-content: center;
 }
 
-.pasos-registro .iconos-movil {
-  margin: auto;
-}
-
-.pasos-registro p {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: -50px;
-  font-family: "Roboto", sans-serif;
-  font-weight: lighter;
-  font-size: 22px;
-  width: 80%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .pasos-registro img {
-  width: 25%;
-  margin: auto;
+  width: 40%;
   border-radius: 20px;
 }
 
