@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'mudatec.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mudatec_bd',
+        'NAME': 'mudatec_base',
         'USER': 'ale',
         'PASSWORD': '123456',
         'HOST': 'localhost',
