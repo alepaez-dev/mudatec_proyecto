@@ -121,6 +121,7 @@
 
 .descubre-como p {
   margin-top: 30px;
+  margin-left: 30px;
   padding-left: 24px;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
@@ -166,23 +167,19 @@
   margin-top: 35px;
   padding-right: 50px;
   padding-left: 30px;
+  padding: 20px;
 }
 
 .pasos-registro .web-registro {
   margin-right: 300px;
 }
 
-.pasos-registro .web-formulario {
-  margin-left: 30px;
-  padding: 20px;
-}
-
-.pasos-registro .web-cotizacion {
+.web-cotizacion {
   margin-right: 30px;
   padding: 20px;
 }
 
-.pasos-registro i {
+i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,7 +189,7 @@
           justify-content: center;
 }
 
-.pasos-registro img {
+img {
   width: 40%;
   border-radius: 20px;
 }
