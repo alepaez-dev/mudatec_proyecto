@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap");
 * {
   padding: 0px;
   margin: 0px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
 
 .test {
@@ -13,13 +16,332 @@
   background-image: url("paper.gif");
 }
 
+.col {
+  padding: 0;
+}
+
+.col #carouselExampleIndicators .carousel-inner .carousel-item {
+  height: 812px;
+}
+
+.col #carouselExampleIndicators .carousel-inner .carousel-item img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.titulo {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+
+.titulo h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #585757;
+  width: 60%;
+}
+
+.titulo .mudate {
+  margin: 10px;
+  margin-left: 68px;
+  padding: 12px 48px 12px 48px;
+  width: 154px;
+  height: 43px;
+  color: white;
+  background-color: #FF8754;
+  font-family: "Roboto", sans-serif;
+  border-radius: 8px;
+  border: none;
+}
+
+.navbars {
+  position: absolute;
+  margin: 10px;
+  padding: 30px;
+  z-index: 1;
+  width: 100%;
+  right: -10px;
+}
+
+.navbars a {
+  text-decoration: none;
+  color: #585757;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+.navbars .nav-der {
+  width: 40%;
+}
+
+.navbars .nav-der .soy_empresa.nav-der-botones {
+  width: 150px;
+  height: 40px;
+  padding: 20px;
+  background-color: #16B5E5;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 8px;
+  border: none;
+}
+
+.navbars .nav-der .nav-der-botones {
+  padding: 0px !important;
+  font-size: 16px;
+  font-weight: 700;
+  color: #585757;
+}
+
+.navbars .nav-der .dropdown .dropdown-menu {
+  min-width: 1rem;
+  width: 5rem;
+  background-color: #585757;
+  opacity: 0.8;
+  margin-top: 0 !important;
+}
+
+.navbars .nav-der .dropdown .dropdown-menu li {
+  text-align: center;
+}
+
+.navbars .nav-der .dropdown .dropdown-menu li a {
+  font-weight: 500;
+  color: white;
+  font-size: 11px;
+}
+
+.col_header {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-image: url("../assets/usuario_sesion_background.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+}
+
+.col_header .navbars a {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.col_header .navbars a:hover {
+  color: #FF8754;
+  opacity: 1;
+  font-weight: 400;
+  border-bottom: solid 1px #FF8754;
+}
+
+.col_header .iniciar_sesion {
+  height: 700px;
+  background-color: #f5f5f5;
+  opacity: 0.9;
+  margin-top: 100px;
+  width: 80%;
+  margin: 100px auto auto auto;
+  border-radius: 15px;
+  max-width: 781px;
+}
+
+.col_header .iniciar_sesion input, .col_header .iniciar_sesion text {
+  font-size: 14px;
+  color: black;
+  text-transform: uppercase;
+}
+
+.col_header .iniciar_sesion p {
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+  color: #585757;
+}
+
+.col_header .iniciar_sesion p:first-of-type {
+  font-weight: 900;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.col_header .iniciar_sesion p:last-of-type {
+  margin-left: 50px;
+  font-size: 12px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.col_header .iniciar_sesion p:last-of-type a {
+  font-weight: 900;
+  color: black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.col_header .iniciar_sesion p:last-of-type a:hover {
+  color: #FF8754;
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.col_header .iniciar_sesion p:last-of-type:hover {
+  color: black;
+  -webkit-transform: scale(1.2);
+  transform: scale(1);
+}
+
+.col_header .iniciar_sesion p strong {
+  color: black;
+}
+
+.col_header .iniciar_sesion .inputs_sesion {
+  width: 80%;
+  height: 44.07px;
+  margin: auto;
+  padding-left: 15px;
+  border-radius: 8px;
+  border: 2px solid #FF8754;
+}
+
+.col_header .iniciar_sesion .inputs_sesion::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #585757;
+}
+
+.col_header .iniciar_sesion .inputs_sesion:-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #585757;
+}
+
+.col_header .iniciar_sesion .inputs_sesion::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #585757;
+}
+
+.col_header .iniciar_sesion .inputs_sesion::placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #585757;
+}
+
+.col_header .iniciar_sesion .botones_sesion {
+  width: 100%;
+  margin: auto;
+}
+
+.col_header .iniciar_sesion .botones_sesion button {
+  width: 30%;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.col_header .iniciar_sesion .botones_sesion button:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.col_header .iniciar_sesion .botones_sesion button:first-child {
+  background-color: #E53F3F;
+}
+
+.col_header .iniciar_sesion .botones_sesion button:last-child {
+  background-color: #04AE85;
+}
+
+@media only screen and (min-width: 1200px) {
+  .navbars a {
+    font-size: 30px;
+  }
+  .titulo {
+    left: 10%;
+  }
+  .titulo h1 {
+    font-size: 3rem;
+    width: 50%;
+  }
+  .titulo .mudate {
+    margin: 0px;
+    margin-left: 0px;
+    width: 300px;
+    height: 60px;
+    font-size: 25px;
+  }
+  .nav-der {
+    width: 30% !important;
+  }
+  #carouselExampleIndicators .carousel-indicators li {
+    height: 15px;
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .col_header .navbars {
+    padding: 0px;
+    left: 0px;
+    margin: auto;
+    width: 60%;
+    position: relative;
+    margin-top: 100px;
+    max-width: 750px;
+  }
+  .col_header .navbars a {
+    font-size: 22px;
+  }
+  .col_header .iniciar_sesion {
+    width: 60%;
+    height: 60%;
+    margin: 20px auto auto auto;
+  }
+  .col_header .iniciar_sesion p:last-of-type {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+  }
+  .col_header .iniciar_sesion .inputs_sesion {
+    width: 60%;
+    border-radius: 4px;
+  }
+  .col_header .iniciar_sesion .botones_sesion {
+    width: 60%;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+  }
+  .col_header .iniciar_sesion .botones_sesion button {
+    font-size: 14px;
+  }
+}
+
 .card1 {
   border: 4px solid #FF8754;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #adadad;
+  background-color: white;
   border-radius: 24px;
-  width: 332px;
+  width: 300px;
   height: 180px;
   margin-top: -30px;
 }
@@ -53,5 +375,14 @@
   height: auto;
   padding: 11px;
   text-align: center;
+}
+
+.div-boton .boton-mudateb {
+  color: white;
+  border: none;
+  width: 150px;
+  height: 40px;
+  background: #FF8754;
+  border-radius: 8px;
 }
 /*# sourceMappingURL=style.css.map */

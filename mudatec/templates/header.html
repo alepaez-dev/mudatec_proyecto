@@ -1,0 +1,18 @@
+{% block header %}
+<div class="navbar navbars d-flex flex-row justify-content-space-between align-items-baseline">
+  <a href="#">Mudatec</a>
+  <div class="nav-der d-flex flex-row justify-content-between align-items-center">
+    <button class="soy_empresa d-none d-xl-block nav-der-botones" href="#">Soy una Empresa</button>
+    <div class="dropdown show">
+      <a class="dropdown-toogle nav-der-botones" href="#" type="button" id="dropdownmenu"
+        data-toggle="dropdown">Regístrate</a>
+      <span class="caret"></span>
+      <ul class="dropdown-menu" aria-labelled-by="dropdownmenu">
+        <li><a href="#">Empresa</a></li>
+        <li><a href="#">Usuario</a></li>
+      </ul>
+    </div>
+    <a class="nav-der-botones" href="#">Inicia sesión</a>
+  </div>
+</div>
+{% endblock header %}
