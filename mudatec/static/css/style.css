@@ -335,6 +335,10 @@
   }
 }
 
+.bg-reviews {
+  background-color: #c98181;
+}
+
 .card1 {
   border: 4px solid #FF8754;
   -webkit-box-sizing: border-box;
