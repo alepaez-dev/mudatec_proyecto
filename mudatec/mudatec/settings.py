@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #custom apps
     'mudatec_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
