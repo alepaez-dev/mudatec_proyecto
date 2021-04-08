@@ -1,17 +1,17 @@
 from django.db import models
+from rest_framework import serializers
 from django.contrib.auth.models import AbstractUser
 from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 class Address(models.Model):
     """Direccion."""
-
     street = models.CharField(max_length=50)
-    num_int = models.CharField(max_length=10)
+    num_int = models.CharField(max_length=10, blank=True)
     num_ext = models.CharField(max_length=10)
     address = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=5)
-    references = models.TextField()
+    references = models.TextField(blank = True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
