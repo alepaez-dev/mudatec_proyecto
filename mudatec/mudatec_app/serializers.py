@@ -89,10 +89,27 @@ class CustomUserSerializer(serializers.ModelSerializer):
     customuser.set_password(validated_data['password'])
     customuser.save()
     return customuser
-
+  
   def update(self, instance, validated_data):
-    instance.set_password(validated_data['password'])
-    return instance
+    customuser = super(CustomUserSerializer, self).update(instance, validated_data)
+    customuser.set_password(validated_data['password'])
+    return customuser
+
+class CustomUserCompanyReadSerializer(serializers.ModelSerializer):
+  company = CompanyAddressSerializer()
+  class Meta:
+      model = CustomUser
+      fields = [
+        "username",
+        "first_name",
+        "last_name",
+        "mother_last_name",
+        "email",
+        "phone",
+        "payment_id",
+        "is_company",
+        "company",
+      ]
 
 class CustomUserCompanySerializer(serializers.ModelSerializer):
   company = CompanyAddressSerializer()
@@ -123,8 +140,21 @@ class CustomUserCompanySerializer(serializers.ModelSerializer):
     return customuser
 
   def update(self, instance, validated_data):
-    instance.set_password(validated_data['password'])
-    return instance
+    company_id = self.validated_data.pop("company")
+    address_id = company_id.pop("address")
+    validated_data.pop("company")
+    instance.company.address = super().update(instance.company.address, address_id)
+    instance.company = super().update(instance.company, company_id)
+    instance = super().update(instance, validated_data)
+    customuser = super(CustomUserCompanySerializer, self).update(instance, validated_data)
+    customuser.set_password(validated_data["password"])
+    customuser.save()
+    return customuser
+
+  
+
+
+
 
 
 class CustomUserReadSerializer(serializers.ModelSerializer):
