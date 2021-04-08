@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+
 from .models import Address, Company
 
 # Serializers define the API representation.
@@ -47,8 +48,8 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
     address = AddressSerializer()
 
     class Meta:
-        model = Company
-        fields = '__all__'
+      model = Company
+      fields = '__all__'
 
     def create(self, validated_data):
       address_id = self.validated_data.pop("address")
@@ -57,6 +58,24 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
       company = Company.objects.create(address=address, **validated_data)
       return company
 
+class CompanyAddressSerializer_2(serializers.ModelSerializer):
+    address = AddressSerializer()
+
+    class Meta:
+      model = Company
+      fields = '__all__'
+
+    def update(self, instance, validated_data):
+      if validated_data.get('address'):
+        address_data = validated_data.get('address')
+        address_serializer = AddressSerializer(data=address_data)
+        if address_serializer.is_valid():
+          address = address_serializer.update(instance=instance.address,validated_data=address_serializer.validated_data)
+          validated_data['address'] = address
+
+      return super().update(instance, validated_data)
+      
 
 
+  
 
