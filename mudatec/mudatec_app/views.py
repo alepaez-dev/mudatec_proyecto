@@ -72,7 +72,7 @@ class CreateUserAPIView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
-class RetrieveAddressAPIView(generics.RetrieveAPIView):
+class RetrieveUserAPIView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserReadSerializer
 
@@ -84,3 +84,16 @@ class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
 class CreateUserCompanyAPIView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserCompanySerializer
+
+
+class RetrieveUserCompanyAPIView(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserCompanySerializer
+
+class RetrieveUserFilterIsCompanyAPIView(generics.ListAPIView):
+    serializer_class = CustomUserCompanySerializer
+
+    def get_queryset(self):
+        """Filtering with the URL"""
+        is_company = self.kwargs["pk"]
+        return CustomUser.objects.filter(is_company=is_company)
