@@ -22,6 +22,7 @@ from .views import (
   ListUserAPIView,
   UpdateUserAPIView,
   RetrieveAddressAPIView,
+  CreateUserCompanyAPIView,
 )
 
 urlpatterns = [
@@ -39,5 +40,6 @@ urlpatterns = [
   #User
   path("user/", ListUserAPIView.as_view(), name="list_user"),
   path("user/create/", CreateUserAPIView.as_view(), name="create_user"),
+  path("user/create-company/", CreateUserCompanyAPIView.as_view(), name="create_user_company"),
   path("user/<int:pk>/", RetrieveAddressAPIView.as_view(), name="retrieve_user"),
   path("user/<int:pk>/update/", UpdateUserAPIView.as_view(), name="update_user"),]

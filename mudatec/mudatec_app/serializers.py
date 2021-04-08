@@ -70,30 +70,61 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
 
 #CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = [
-          "username",
-          "password",
-          "first_name",
-          "last_name",
-          "mother_last_name",
-          "email",
-          "is_company",
-          "phone",
-          "payment_id",
-          "company",
-        ]
+  
+  class Meta:
+      model = CustomUser
+      fields = [
+        "username",
+        "password",
+        "first_name",
+        "last_name",
+        "mother_last_name",
+        "email",
+        "phone",
+        "payment_id",
+      ]
       
-    def create(self, validated_data):
-      customuser = super(CustomUserSerializer, self).create(validated_data)
-      customuser.set_password(validated_data['password'])
-      customuser.save()
-      return customuser
+  def create(self, validated_data):
+    customuser = super(CustomUserSerializer, self).create(validated_data)
+    customuser.set_password(validated_data['password'])
+    customuser.save()
+    return customuser
 
-    def update(self, instance, validated_data):
-      instance.set_password(validated_data['password'])
-      return instance
+  def update(self, instance, validated_data):
+    instance.set_password(validated_data['password'])
+    return instance
+
+class CustomUserCompanySerializer(serializers.ModelSerializer):
+  company = CompanyAddressSerializer()
+  class Meta:
+      model = CustomUser
+      fields = [
+        "username",
+        "password",
+        "first_name",
+        "last_name",
+        "mother_last_name",
+        "email",
+        "phone",
+        "payment_id",
+        "is_company",
+        "company",
+      ]
+      
+  def create(self, validated_data):
+    company_id = self.validated_data.pop("company")
+    address_id = company_id.pop("address")
+    address = Address.objects.create(**address_id)
+    company = Company.objects.create(address=address, **company_id)
+    validated_data.pop("company")
+    customuser = CustomUser.objects.create(company=company, **validated_data)
+    customuser.set_password(validated_data['password'])
+    customuser.save()
+    return customuser
+
+  def update(self, instance, validated_data):
+    instance.set_password(validated_data['password'])
+    return instance
 
 
 class CustomUserReadSerializer(serializers.ModelSerializer):

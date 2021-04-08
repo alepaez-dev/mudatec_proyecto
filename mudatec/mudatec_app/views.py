@@ -14,6 +14,7 @@ from .serializers import (
   #User
   CustomUserSerializer,
   CustomUserReadSerializer,
+  CustomUserCompanySerializer,
 )
 
 # Create your views here.
@@ -78,3 +79,8 @@ class RetrieveAddressAPIView(generics.RetrieveAPIView):
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+#USER-COMPANY
+class CreateUserCompanyAPIView(generics.CreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserCompanySerializer
