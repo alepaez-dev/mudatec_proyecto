@@ -18,7 +18,7 @@ from .views import (
   RetrieveUpdateCompanyAPIView,
   RetrieveUpdateCompanyAddressAPIView,
 )
-
+0
 urlpatterns = [
   path("address/", ListAddressAPIView.as_view(), name="list_address"),
   path("address/create/", CreateAddressAPIView.as_view(), name="create_address"),
