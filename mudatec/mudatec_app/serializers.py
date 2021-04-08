@@ -1,10 +1,11 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from .models import Address, Company
+from .models import Address, Company, CustomUser
 
 # Serializers define the API representation.
 
+#Address
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
@@ -27,7 +28,7 @@ class AddressListSerializer(serializers.ModelSerializer):
           "zip_code",
         ]
 
-
+#Company
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
@@ -67,7 +68,45 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
           validated_data['address'] = address
       return super().update(instance, validated_data)
 
+#CustomUser
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = [
+          "username",
+          "password",
+          "first_name",
+          "last_name",
+          "mother_last_name",
+          "email",
+          "is_company",
+          "phone",
+          "payment_id",
+          "company",
+        ]
+      
+    def create(self, validated_data):
+      customuser = super(CustomUserSerializer, self).create(validated_data)
+      customuser.set_password(validated_data['password'])
+      customuser.save()
+      return customuser
+
+    def update(self, instance, validated_data):
+      instance.set_password(validated_data['password'])
+      return instance
 
 
-  
-
+class CustomUserReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = [
+          "username",
+          "first_name",
+          "last_name",
+          "mother_last_name",
+          "email",
+          "phone",
+          "payment_id",
+          "company",
+          "id",
+        ]

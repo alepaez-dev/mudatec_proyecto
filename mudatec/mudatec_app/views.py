@@ -1,6 +1,6 @@
 from rest_framework import generics
 from django.contrib.auth.models import User
-from .models import Address, Company
+from .models import Address, Company, CustomUser
 from rest_framework import viewsets
 
 from .serializers import (
@@ -11,6 +11,9 @@ from .serializers import (
   CompanySerializer,
   CompanyListSerializer,
   CompanyAddressSerializer,
+  #User
+  CustomUserSerializer,
+  CustomUserReadSerializer,
 )
 
 # Create your views here.
@@ -37,6 +40,8 @@ class CreateCompanyAPIView(generics.CreateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
+
+#COMPANY-ADDRESS
 class CreateCompanyAddressAPIView(generics.CreateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanyAddressSerializer
@@ -56,3 +61,20 @@ class RetrieveUpdateCompanyAPIView(generics.RetrieveUpdateAPIView):
 class RetrieveUpdateCompanyAddressAPIView(generics.RetrieveUpdateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanyAddressSerializer
+
+#USER
+class ListUserAPIView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserReadSerializer
+
+class CreateUserAPIView(generics.CreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+
+class RetrieveAddressAPIView(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserReadSerializer
+
+class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
