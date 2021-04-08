@@ -11,7 +11,6 @@ from .serializers import (
   CompanySerializer,
   CompanyListSerializer,
   CompanyAddressSerializer,
-  CompanyAddressSerializer_2,
 )
 
 # Create your views here.
@@ -56,4 +55,4 @@ class RetrieveUpdateCompanyAPIView(generics.RetrieveUpdateAPIView):
 
 class RetrieveUpdateCompanyAddressAPIView(generics.RetrieveUpdateAPIView):
     queryset = Company.objects.all()
-    serializer_class = CompanyAddressSerializer_2
+    serializer_class = CompanyAddressSerializer

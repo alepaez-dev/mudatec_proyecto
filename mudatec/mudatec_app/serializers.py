@@ -58,13 +58,6 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
       company = Company.objects.create(address=address, **validated_data)
       return company
 
-class CompanyAddressSerializer_2(serializers.ModelSerializer):
-    address = AddressSerializer()
-
-    class Meta:
-      model = Company
-      fields = '__all__'
-
     def update(self, instance, validated_data):
       if validated_data.get('address'):
         address_data = validated_data.get('address')
@@ -72,9 +65,8 @@ class CompanyAddressSerializer_2(serializers.ModelSerializer):
         if address_serializer.is_valid():
           address = address_serializer.update(instance=instance.address,validated_data=address_serializer.validated_data)
           validated_data['address'] = address
-
       return super().update(instance, validated_data)
-      
+
 
 
   
