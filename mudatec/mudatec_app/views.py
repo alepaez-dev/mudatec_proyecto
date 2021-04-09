@@ -137,3 +137,12 @@ class ListPostAPIView(generics.ListAPIView):
 class CreatePostAddressAPIView(generics.CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostAddressSerializer
+
+class RetrievePostAddressAPIView(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostAddressSerializer
+
+class UpdatePostAddressAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostAddressSerializer
+

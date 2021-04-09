@@ -7,69 +7,73 @@ from .models import Address, Company, CustomUser, Post
 
 #Address
 class AddressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Address
-        fields = [
-          "street",
-          "num_int",
-          "num_ext",
-          "address",
-          "zip_code",
-          "references",
-        ]
+  """Address"""
+  class Meta:
+    model = Address
+    fields = [
+      "id",
+      "street",
+      "num_int",
+      "num_ext",
+      "address",
+      "zip_code",
+      "references",
+    ]
 
 class AddressListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Address
-        fields = [
-          "id", 
-          "street",
-          "address",
-          "zip_code",
-        ]
+  """Address List"""
+  class Meta:
+    model = Address
+    fields = [
+      "id", 
+      "street",
+      "address",
+      "zip_code",
+    ]
 
 #Company
 class CompanySerializer(serializers.ModelSerializer):
+  """Company"""
   class Meta:
     model = Company
     fields = "__all__"
 
 class CompanyListSerializer(serializers.ModelSerializer):
-  #llave foranea
-
-    class Meta:
-        model = Company
-        fields = [
-          "id", 
-          "name",
-          "email",
-        ]
+  """Company List"""
+  class Meta:
+    model = Company
+    fields = [
+      "id", 
+      "name",
+      "email",
+    ]
 
 class CompanyAddressSerializer(serializers.ModelSerializer):
-    address = AddressSerializer()
+  """Company y Address"""
+  address = AddressSerializer()
+  class Meta:
+    model = Company
+    fields = '__all__'
 
-    class Meta:
-      model = Company
-      fields = '__all__'
+  def create(self, validated_data):
+    address_id = self.validated_data.pop("address")
+    address = Address.objects.create(**address_id)
+    validated_data.pop("address");
+    company = Company.objects.create(address=address, **validated_data)
+    return company
 
-    def create(self, validated_data):
-      address_id = self.validated_data.pop("address")
-      address = Address.objects.create(**address_id)
-      validated_data.pop("address");
-      company = Company.objects.create(address=address, **validated_data)
-      return company
-
-    def update(self, instance, validated_data):
-      if validated_data.get('address'):
-        address_data = validated_data.get('address')
-        address_serializer = AddressSerializer(data=address_data)
-        if address_serializer.is_valid():
-          address = address_serializer.update(instance=instance.address,validated_data=address_serializer.validated_data)
-          validated_data['address'] = address
-      return super().update(instance, validated_data)
+  def update(self, instance, validated_data):
+    if validated_data.get('address'):
+      address_data = validated_data.get('address')
+      address_serializer = AddressSerializer(data=address_data)
+      if address_serializer.is_valid():
+        address = address_serializer.update(instance=instance.address,validated_data=address_serializer.validated_data)
+        validated_data['address'] = address
+    return super().update(instance, validated_data)
 
 #CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
+  """User"""
   
   class Meta:
       model = CustomUser
@@ -96,6 +100,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     return customuser
 
 class CustomUserCompanyReadSerializer(serializers.ModelSerializer):
+  """User con Company y Address para ver"""
   company = CompanyAddressSerializer()
   class Meta:
       model = CustomUser
@@ -112,6 +117,7 @@ class CustomUserCompanyReadSerializer(serializers.ModelSerializer):
       ]
 
 class CustomUserCompanySerializer(serializers.ModelSerializer):
+  """User con Company y Address"""
   company = CompanyAddressSerializer()
   class Meta:
       model = CustomUser
@@ -152,27 +158,30 @@ class CustomUserCompanySerializer(serializers.ModelSerializer):
     return customuser
 
 class CustomUserReadSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = [
-          "username",
-          "first_name",
-          "last_name",
-          "mother_last_name",
-          "email",
-          "phone",
-          "payment_id",
-          "company",
-          "id",
-        ]
+  """User solo para ver"""
+  class Meta:
+    model = CustomUser
+    fields = [
+      "username",
+      "first_name",
+      "last_name",
+      "mother_last_name",
+      "email",
+      "phone",
+      "payment_id",
+      "company",
+      "id",
+    ]
 
 #Post
 class PostSerializer(serializers.ModelSerializer):
+  """Post"""
   class Meta:
     model = Post
     fields = "__all__"
 
 class PostAddressSerializer(serializers.ModelSerializer):
+  """Post con Address"""
   initial_address = AddressSerializer()
   ending_address = AddressSerializer()
   class Meta:
@@ -181,10 +190,22 @@ class PostAddressSerializer(serializers.ModelSerializer):
 
   def create(self, validated_data):
     initial_address_id = self.validated_data.pop("initial_address")
-    ending_address = self.validated_data.pop("ending_address")
+    ending_address_id = self.validated_data.pop("ending_address")
     initial_address = Address.objects.create(**initial_address_id)
-    ending_address = Address.objects.create(**ending_address)
+    ending_address = Address.objects.create(**ending_address_id)
     validated_data.pop("initial_address");
     validated_data.pop("ending_address");
     post = Post.objects.create(initial_address=initial_address,ending_address=ending_address, **validated_data)
+    return post
+
+  def update(self, instance, validated_data):
+    initial_address_id = self.validated_data.pop("initial_address")
+    ending_address_id = self.validated_data.pop("ending_address")
+    validated_data.pop("initial_address")
+    validated_data.pop("ending_address")
+    instance.initial_address = super().update(instance.initial_address, initial_address_id)
+    instance.ending_address = super().update(instance.ending_address, ending_address_id)
+    instance = super().update(instance, validated_data)
+    post = super(PostAddressSerializer, self).update(instance, validated_data)
+    post.save()
     return post
