@@ -86,6 +86,11 @@ class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
+class DestroyUserAPIView(generics.DestroyAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserCompanySerializer
+
+
 #USER-COMPANY
 class CreateUserCompanyAPIView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
@@ -106,3 +111,4 @@ class RetrieveUserFilterIsCompanyAPIView(generics.ListAPIView):
 class UpdateUserCompanyAPIView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserCompanySerializer
+
