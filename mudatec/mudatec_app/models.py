@@ -1,6 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import AbstractUser
+from rest_framework.authtoken.models import Token
 from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
@@ -45,8 +46,7 @@ class CustomUser(AbstractUser):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    company = models.ForeignKey(Company, on_delete=models.PROTECT, blank=True, null=True, related_name="customusers")
-
+    company = models.ForeignKey(Company, on_delete=models.PROTECT, blank=True, null=True, related_name="customuser")
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.email}"
 
@@ -72,7 +72,7 @@ class Post(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts")
+    customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts", blank=True, null=True)
     initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts")
     ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts")
 

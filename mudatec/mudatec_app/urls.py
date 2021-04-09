@@ -40,11 +40,7 @@ from .views import (
   ListPostAPIView,
   CreatePostAddressAPIView,
   RetrievePostAddressAPIView,
-  UpdatePostAddressAPIView,
-
-  # Form
-  CreateFormAPIView,
-  ListFormAPIView,
+  UpdatePostAddressAPIView
 )
 
 urlpatterns = [
@@ -75,10 +71,8 @@ urlpatterns = [
   path("user/company/<int:pk>/destroy/", DestroyUserCompanyAPIView.as_view(), name="destroy_user-company"),
   #Post
   path("post/", ListPostAPIView.as_view(), name="list_post"),
-  path("post/create/", CreatePostAPIView.as_view(), name="create_post"),
+  path("post/<int:pk>/", RetrievePostAddressAPIView.as_view(), name="retrieve_post"),
+  path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post"),
+  path("post/create/", RetrievePostAddressAPIView.as_view(), name="create_post"),
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
-  path("post/<int:pk>/", RetrievePostAddressAPIView.as_view(), name="retrieve_post-address"),
-  path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post-address"),
-  path("form/", ListFormAPIView.as_view(), name="list_form"),
-  path("form/create/", CreateFormAPIView.as_view(), name="create_form"),
   ]

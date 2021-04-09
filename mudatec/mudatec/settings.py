@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     #custom apps
     'mudatec_app',
     'rest_framework',
-    "rest_framework.authtoken",
+    # "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'mudatec.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mudatec_base',
+        'NAME': 'mudatec',
         'USER': 'ale',
         'PASSWORD': '123456',
         'HOST': 'localhost',
@@ -134,10 +134,10 @@ STATICFILES_DIRS = [
 
 #AUTH USER MODEL
 AUTH_USER_MODEL = 'mudatec_app.CustomUser'
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.TokenAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-}
+# REST_FRAMEWORK = {
+#     "DEFAULT_AUTHENTICATION_CLASSES": (
+#         "rest_framework.authentication.TokenAuthentication",
+#     ),
+#     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+#     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+# }

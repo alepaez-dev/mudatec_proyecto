@@ -240,8 +240,14 @@ class PostAddressSerializer(serializers.ModelSerializer):
   def update(self, instance, validated_data):
     initial_address_id = self.validated_data.pop("initial_address")
     ending_address_id = self.validated_data.pop("ending_address")
+    forms_id = self.validated_data.pop("forms")
     validated_data.pop("initial_address")
     validated_data.pop("ending_address")
+    forms_viejo = list(Form.objects.filter(post_id=instance.id))
+    for form in range(len(forms_id)):
+      forms_nuevo = super().update(forms_viejo[form], forms_id[form])
+    validated_data.pop("forms")
+    
     instance.initial_address = super().update(instance.initial_address, initial_address_id)
     instance.ending_address = super().update(instance.ending_address, ending_address_id)
     instance = super().update(instance, validated_data)
