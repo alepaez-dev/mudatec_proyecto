@@ -41,6 +41,10 @@ from .views import (
   CreatePostAddressAPIView,
   RetrievePostAddressAPIView,
   UpdatePostAddressAPIView,
+
+  # Form
+  CreateFormAPIView,
+  ListFormAPIView,
 )
 
 urlpatterns = [
@@ -75,4 +79,6 @@ urlpatterns = [
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
   path("post/<int:pk>/", RetrievePostAddressAPIView.as_view(), name="retrieve_post-address"),
   path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post-address"),
+  path("form/", ListFormAPIView.as_view(), name="list_form"),
+  path("form/create/", CreateFormAPIView.as_view(), name="create_form"),
   ]

@@ -1,7 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from .models import Address, Company, CustomUser, Post
+from .models import (
+  Address, 
+  Company,
+  CustomUser,
+  Post,
+  Form,
+)
+  
 
 # Serializers define the API representation.
 
@@ -209,3 +216,10 @@ class PostAddressSerializer(serializers.ModelSerializer):
     post = super(PostAddressSerializer, self).update(instance, validated_data)
     post.save()
     return post
+
+#Form
+class FormSerializer(serializers.ModelSerializer):
+  """Post"""
+  class Meta:
+    model = Form
+    fields = "__all__"
