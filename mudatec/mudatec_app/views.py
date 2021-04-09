@@ -47,6 +47,10 @@ class CreateCompanyAPIView(generics.CreateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
+class DestroyCompanyAPIView(generics.DestroyAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
 
 #COMPANY-ADDRESS
 class CreateCompanyAddressAPIView(generics.CreateAPIView):
@@ -111,4 +115,7 @@ class RetrieveUserFilterIsCompanyAPIView(generics.ListAPIView):
 class UpdateUserCompanyAPIView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserCompanySerializer
-
+    
+class DestroyUserCompanyAPIView(generics.DestroyAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserCompanySerializer

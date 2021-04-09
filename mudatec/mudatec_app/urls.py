@@ -11,24 +11,29 @@ from .views import (
   ListAddressAPIView,
   RetrieveAddressAPIView,
   DestroyAddressAPIView,
+  
   #Company
   ListCompanyAPIView,
+  DestroyCompanyAPIView,
   RetrieveCompanyAddressAPIView,
   CreateCompanyAddressAPIView,
   UpdateCompanyAddressAPIView,
   RetrieveUpdateCompanyAPIView,
   RetrieveUpdateCompanyAddressAPIView,
+
   #User
   CreateUserAPIView,
   ListUserAPIView,
   UpdateUserAPIView,
   RetrieveUserAPIView,
   DestroyUserAPIView,
+
   #User-Company
   CreateUserCompanyAPIView,
   RetrieveUserFilterIsCompanyAPIView,
   RetrieveUserCompanyAPIView,
-  UpdateUserCompanyAPIView
+  UpdateUserCompanyAPIView,
+  DestroyUserCompanyAPIView,
 )
 
 urlpatterns = [
@@ -41,6 +46,7 @@ urlpatterns = [
   path("company/", ListCompanyAPIView.as_view(), name="list_company"),
   path("company/create/", CreateCompanyAddressAPIView.as_view(), name="create_company"),
   path("company/<int:pk>/", RetrieveCompanyAddressAPIView.as_view(), name="retrieve_company"),
+  path("company/<int:pk>/destroy/", DestroyCompanyAPIView.as_view(), name="destroy_company"),
   path("company/<int:pk>/update/", UpdateCompanyAddressAPIView.as_view(), name="update_company"),
   path("company/<int:pk>/patch/", RetrieveUpdateCompanyAPIView.as_view(), name="patch_company"),
   path("company/<int:pk>/patch-address/", RetrieveUpdateCompanyAddressAPIView.as_view(), name="patch_company-address"),
@@ -55,4 +61,5 @@ urlpatterns = [
   path("user/company/<int:pk>/", RetrieveUserCompanyAPIView.as_view(), name="retrieve_user-company"),
   path("user/is_company=<str:pk>/",RetrieveUserFilterIsCompanyAPIView.as_view(), name="retrieve_users_with_company"),
   path("user/company/<int:pk>/update/", UpdateUserCompanyAPIView.as_view(), name="update_user-company"),
+  path("user/company/<int:pk>/destroy/", DestroyUserCompanyAPIView.as_view(), name="destroy_user-company"),
   ]
