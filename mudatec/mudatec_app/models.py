@@ -68,10 +68,11 @@ class Post(models.Model):
     last_name = models.CharField(max_length=50)
     mother_last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True)
-    date_edited = models.DateTimeField(blank=True)
+    date_edited = models.DateTimeField(blank=True, null= True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
+    customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts")
     initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts")
     ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts")
 

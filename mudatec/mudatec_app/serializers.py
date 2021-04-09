@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from .models import Address, Company, CustomUser
+from .models import Address, Company, CustomUser, Post
 
 # Serializers define the API representation.
 
@@ -30,9 +30,9 @@ class AddressListSerializer(serializers.ModelSerializer):
 
 #Company
 class CompanySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Company
-        fields = "__all__"
+  class Meta:
+    model = Company
+    fields = "__all__"
 
 class CompanyListSerializer(serializers.ModelSerializer):
   #llave foranea
@@ -151,12 +151,6 @@ class CustomUserCompanySerializer(serializers.ModelSerializer):
     customuser.save()
     return customuser
 
-  
-
-
-
-
-
 class CustomUserReadSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -171,3 +165,26 @@ class CustomUserReadSerializer(serializers.ModelSerializer):
           "company",
           "id",
         ]
+
+#Post
+class PostSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Post
+    fields = "__all__"
+
+class PostAddressSerializer(serializers.ModelSerializer):
+  initial_address = AddressSerializer()
+  ending_address = AddressSerializer()
+  class Meta:
+    model = Post
+    fields = "__all__"
+
+  def create(self, validated_data):
+    initial_address_id = self.validated_data.pop("initial_address")
+    ending_address = self.validated_data.pop("ending_address")
+    initial_address = Address.objects.create(**initial_address_id)
+    ending_address = Address.objects.create(**ending_address)
+    validated_data.pop("initial_address");
+    validated_data.pop("ending_address");
+    post = Post.objects.create(initial_address=initial_address,ending_address=ending_address, **validated_data)
+    return post
