@@ -34,6 +34,10 @@ class RetrieveAddressAPIView(generics.RetrieveAPIView):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
 
+class DestroyAddressAPIView(generics.DestroyAPIView):
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer
+
 #COMPANY
 class ListCompanyAPIView(generics.ListAPIView):
     queryset = Company.objects.all()

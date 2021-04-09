@@ -10,6 +10,7 @@ from .views import (
   CreateAddressAPIView,
   ListAddressAPIView,
   RetrieveAddressAPIView,
+  DestroyAddressAPIView,
   #Company
   ListCompanyAPIView,
   RetrieveCompanyAddressAPIView,
@@ -34,6 +35,7 @@ urlpatterns = [
   path("address/", ListAddressAPIView.as_view(), name="list_address"),
   path("address/create/", CreateAddressAPIView.as_view(), name="create_address"),
   path("address/<int:pk>/", RetrieveAddressAPIView.as_view(), name="retrieve_address"),
+  path("address/<int:pk>/destroy/", DestroyAddressAPIView.as_view(), name="destroy_address"),
   #Company
   path("company/", ListCompanyAPIView.as_view(), name="list_company"),
   path("company/create/", CreateCompanyAddressAPIView.as_view(), name="create_company"),
@@ -48,7 +50,7 @@ urlpatterns = [
   path("user/<int:pk>/update/", UpdateUserAPIView.as_view(), name="update_user"),
   #User-Company
   path("user/create-company/", CreateUserCompanyAPIView.as_view(), name="create_user_company"),
-  path("user/is_company=<str:pk>/",RetrieveUserFilterIsCompanyAPIView.as_view(), name="retrieve_users_with_company"),
   path("user/company/<int:pk>/", RetrieveUserCompanyAPIView.as_view(), name="retrieve_user-company"),
+  path("user/is_company=<str:pk>/",RetrieveUserFilterIsCompanyAPIView.as_view(), name="retrieve_users_with_company"),
   path("user/company/<int:pk>/update/", UpdateUserCompanyAPIView.as_view(), name="update_user-company"),
   ]
