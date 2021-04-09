@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #custom apps
     'mudatec_app',
     'rest_framework',
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,10 @@ STATICFILES_DIRS = [
 
 #AUTH USER MODEL
 AUTH_USER_MODEL = 'mudatec_app.CustomUser'
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+}

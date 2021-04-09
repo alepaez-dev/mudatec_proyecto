@@ -187,22 +187,54 @@ class PostSerializer(serializers.ModelSerializer):
     model = Post
     fields = "__all__"
 
+#Form
+class FormSerializer(serializers.ModelSerializer):
+  """Post"""
+  class Meta:
+    model = Form
+    fields = "__all__"
+
+#Post-Addres
 class PostAddressSerializer(serializers.ModelSerializer):
   """Post con Address"""
+  #llaves foraneas
+  forms = FormSerializer(many=True)
   initial_address = AddressSerializer()
   ending_address = AddressSerializer()
+
   class Meta:
     model = Post
-    fields = "__all__"
+    fields = [
+      "title",
+      "status",
+      "dates",
+      "edited",
+      "name",
+      "last_name",
+      "mother_last_name",
+      "phone",
+      "date_edited",
+      "customuser",
+      "initial_address",
+      "ending_address",
+      "forms",
+    ]
 
   def create(self, validated_data):
     initial_address_id = self.validated_data.pop("initial_address")
     ending_address_id = self.validated_data.pop("ending_address")
+    forms_id = self.validated_data.pop("forms")
     initial_address = Address.objects.create(**initial_address_id)
     ending_address = Address.objects.create(**ending_address_id)
-    validated_data.pop("initial_address");
-    validated_data.pop("ending_address");
+    array_forms = []
+    for form_id in forms_id:
+      form = Form.objects.create(**form_id)
+      array_forms.append(form)
+    validated_data.pop("initial_address")
+    validated_data.pop("ending_address")
+    validated_data.pop("forms")
     post = Post.objects.create(initial_address=initial_address,ending_address=ending_address, **validated_data)
+    post.forms.set(array_forms)
     return post
 
   def update(self, instance, validated_data):
@@ -217,9 +249,3 @@ class PostAddressSerializer(serializers.ModelSerializer):
     post.save()
     return post
 
-#Form
-class FormSerializer(serializers.ModelSerializer):
-  """Post"""
-  class Meta:
-    model = Form
-    fields = "__all__"

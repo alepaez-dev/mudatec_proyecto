@@ -88,7 +88,7 @@ class Form(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="forms")
+    post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="forms", blank=True, null=True)
     
     def __str__(self):
         return f"{self.furniture} {self.quantity} {self.size}"
