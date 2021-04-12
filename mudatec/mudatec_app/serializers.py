@@ -101,7 +101,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
     customuser.set_password(validated_data['password'])
     Token.objects.create(user=customuser)
     customuser.save()
-    # creamos el token al usuario
     return customuser
   
   def update(self, instance, validated_data):
@@ -152,6 +151,7 @@ class CustomUserCompanySerializer(serializers.ModelSerializer):
     validated_data.pop("company")
     customuser = CustomUser.objects.create(company=company, **validated_data)
     customuser.set_password(validated_data['password'])
+    Token.objects.create(user=customuser)
     customuser.save()
     return customuser
 
