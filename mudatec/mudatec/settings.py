@@ -26,7 +26,8 @@ SECRET_KEY = 'q2m7c=@j#yqejf2gz&-%-^o8=+u%4fxj@p$!27z9^h&^1oa=%a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -42,9 +43,11 @@ INSTALLED_APPS = [
     'mudatec_app',
     'rest_framework',
     "rest_framework.authtoken",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -139,5 +142,4 @@ AUTH_USER_MODEL = 'mudatec_app.CustomUser'
 #         "rest_framework.authentication.TokenAuthentication",
 #     ),
 #     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-#     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 # }

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 
 from .models import (
   Address, 
@@ -98,7 +99,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
   def create(self, validated_data):
     customuser = super(CustomUserSerializer, self).create(validated_data)
     customuser.set_password(validated_data['password'])
+    Token.objects.create(user=customuser)
     customuser.save()
+    # creamos el token al usuario
     return customuser
   
   def update(self, instance, validated_data):
@@ -247,7 +250,6 @@ class PostAddressSerializer(serializers.ModelSerializer):
     for form in range(len(forms_id)):
       forms_nuevo = super().update(forms_viejo[form], forms_id[form])
     validated_data.pop("forms")
-    
     instance.initial_address = super().update(instance.initial_address, initial_address_id)
     instance.ending_address = super().update(instance.ending_address, ending_address_id)
     instance = super().update(instance, validated_data)

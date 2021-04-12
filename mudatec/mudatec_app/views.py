@@ -98,6 +98,14 @@ class RetrieveUserAPIView(generics.RetrieveAPIView):
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserReadSerializer
 
+class RetrieveUserWithUsernameAPIView(generics.ListAPIView):
+  queryset = CustomUser.objects.all()
+  serializer_class = CustomUserReadSerializer
+  def get_queryset(self):
+    """Filtering with the URL"""
+    username = self.kwargs["pk"]
+    return CustomUser.objects.filter(username=username)
+
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserSerializer
@@ -147,8 +155,8 @@ class CreatePostAddressAPIView(generics.CreateAPIView):
   serializer_class = PostAddressSerializer
 
 class RetrievePostAddressAPIView(generics.RetrieveAPIView):
-  queryset = Post.objects.all()
   serializer_class = PostAddressSerializer
+  queryset = Post.objects.all()
 
 class UpdatePostAddressAPIView(generics.RetrieveUpdateAPIView):
   queryset = Post.objects.all()
