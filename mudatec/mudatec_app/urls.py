@@ -42,6 +42,10 @@ from .views import (
   CreatePostAddressAPIView,
   RetrievePostAddressAPIView,
   UpdatePostAddressAPIView,
+
+  #Token
+  ListTokenUserAPIView,
+  RetrievePostAddressAPIView,
 )
 
 urlpatterns = [
@@ -78,4 +82,7 @@ urlpatterns = [
   path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post"),
   path("post/create/", RetrievePostAddressAPIView.as_view(), name="create_post"),
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
+  # Token
+  path("token/", ListTokenUserAPIView.as_view(), name="list_token_user"),
+  path("token/<str:pk>", RetrievePostAddressAPIView.as_view(), name="retrieve_token_user"),
   ]

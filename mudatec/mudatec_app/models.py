@@ -39,7 +39,7 @@ class CustomUser(AbstractUser):
     """Usuarios."""
 
     #Aditional Fields
-    mother_last_name = models.CharField(max_length=50)
+    mother_last_name = models.CharField(max_length=50,blank=True)
     is_company = models.BooleanField(default=False)
     phone = models.CharField(max_length=15, blank=True)
     payment_id = models.CharField(max_length=255, blank=True)

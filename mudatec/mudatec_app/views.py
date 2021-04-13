@@ -1,5 +1,6 @@
 from rest_framework import generics
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 from .models import(
   Address,
   Company, 
@@ -29,6 +30,8 @@ from .serializers import (
   PostAddressSerializer,
   #Form
   FormSerializer,
+  # Token
+  TokenUserSerializer,
 )
 
 # Create your views here.
@@ -171,5 +174,12 @@ class ListFormAPIView(generics.ListAPIView):
   queryset = Form.objects.all()
   serializer_class = FormSerializer
 
+# 
 
+class ListTokenUserAPIView(generics.ListAPIView):
+  queryset = Token.objects.all()
+  serializer_class = TokenUserSerializer
 
+class RetrievePostAddressAPIView(generics.RetrieveAPIView):
+  queryset = Token.objects.all()
+  serializer_class = TokenUserSerializer

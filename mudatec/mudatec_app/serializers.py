@@ -257,3 +257,11 @@ class PostAddressSerializer(serializers.ModelSerializer):
     post.save()
     return post
 
+#Token
+class TokenUserSerializer(serializers.ModelSerializer):
+  """Token"""
+  user = CustomUserReadSerializer()
+
+  class Meta:
+    model = Token  
+    fields = "__all__"
