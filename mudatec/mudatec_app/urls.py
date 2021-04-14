@@ -3,7 +3,6 @@ from rest_framework import routers
 from rest_framework.authtoken import views 
 from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
 
 from .views import (
   #Address
@@ -45,7 +44,7 @@ from .views import (
 
   #Token
   ListTokenUserAPIView,
-  RetrievePostAddressAPIView,
+  RetrieveTokenUserAPIView,
 )
 
 urlpatterns = [
@@ -65,13 +64,12 @@ urlpatterns = [
   #User
   path("user/", ListUserAPIView.as_view(), name="list_user"),
   path("user/login/", views.obtain_auth_token, name="login_users"),
-  path("user/create/", CreateUserAPIView.as_view(), name="create_user"),
-  # path("user/<int:pk>/", RetrieveUserAPIView.as_view(), name="retrieve_user"),
-  path("user/<str:pk>/", RetrieveUserWithUsernameAPIView.as_view(), name="retrieve_user-username"),
+  path("user/create/", CreateUserCompanyAPIView.as_view(), name="create_user"),
+  path("user/<int:pk>/", RetrieveUserAPIView.as_view(), name="retrieve_user-username"),
   path("user/<int:pk>/update/", UpdateUserAPIView.as_view(), name="update_user"),
   path("user/<int:pk>/destroy/", DestroyUserAPIView.as_view(), name="destroy_user"),
   #User-Company
-  path("user/create-company/", CreateUserCompanyAPIView.as_view(), name="create_user_company"),
+  path("user/company/create/", CreateUserCompanyAPIView.as_view(), name="create_user_company"),
   path("user/company/<int:pk>/", RetrieveUserCompanyAPIView.as_view(), name="retrieve_user-company"),
   path("user/is_company=<str:pk>/",RetrieveUserFilterIsCompanyAPIView.as_view(), name="retrieve_users_with_company"),
   path("user/company/<int:pk>/update/", UpdateUserCompanyAPIView.as_view(), name="update_user-company"),
@@ -84,5 +82,5 @@ urlpatterns = [
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
   # Token
   path("token/", ListTokenUserAPIView.as_view(), name="list_token_user"),
-  path("token/<str:pk>", RetrievePostAddressAPIView.as_view(), name="retrieve_token_user"),
+  path("token/<str:pk>/", RetrieveTokenUserAPIView.as_view(), name="retrieve_token_user"),
   ]

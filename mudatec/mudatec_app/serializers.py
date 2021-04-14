@@ -94,6 +94,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         "email",
         "phone",
         "payment_id",
+        "id",
       ]
       
   def create(self, validated_data):
@@ -260,7 +261,7 @@ class PostAddressSerializer(serializers.ModelSerializer):
 #Token
 class TokenUserSerializer(serializers.ModelSerializer):
   """Token"""
-  user = CustomUserReadSerializer()
+  user = CustomUserSerializer()
 
   class Meta:
     model = Token  

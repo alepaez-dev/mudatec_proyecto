@@ -1,6 +1,7 @@
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 from .models import(
   Address,
   Company, 
@@ -110,6 +111,7 @@ class RetrieveUserWithUsernameAPIView(generics.ListAPIView):
     return CustomUser.objects.filter(username=username)
 
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
+  permission_classes = [IsAuthenticated]
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserSerializer
 
@@ -174,12 +176,14 @@ class ListFormAPIView(generics.ListAPIView):
   queryset = Form.objects.all()
   serializer_class = FormSerializer
 
-# 
-
+#Token 
 class ListTokenUserAPIView(generics.ListAPIView):
+  # permission_classes = [IsAuthenticated]
   queryset = Token.objects.all()
   serializer_class = TokenUserSerializer
 
-class RetrievePostAddressAPIView(generics.RetrieveAPIView):
+class RetrieveTokenUserAPIView(generics.RetrieveAPIView):
+  permission_classes = [IsAuthenticated]
   queryset = Token.objects.all()
   serializer_class = TokenUserSerializer
+
