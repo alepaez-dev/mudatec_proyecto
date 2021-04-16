@@ -102,7 +102,7 @@ class Budget(models.Model):
     ("rejected", "Rejected"),
     )
     status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending")
-    available_dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
+    # available_dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
     agreed_date = models.DateTimeField(blank=True)
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     date_created = models.DateTimeField(auto_now_add=True)

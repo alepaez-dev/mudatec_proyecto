@@ -8,6 +8,7 @@ from .models import (
   CustomUser,
   Post,
   Form,
+  Budget,
 )
   
 
@@ -293,6 +294,7 @@ class PostAddressSerializer(serializers.ModelSerializer):
   class Meta:
     model = Post
     fields = [
+      "id",
       "title",
       "status",
       "dates",
@@ -359,3 +361,12 @@ class TokenUserCompanySerializer(serializers.ModelSerializer):
     model = Token  
     fields = "__all__"
 
+# Budget
+class BudgetSerializer(serializers.ModelSerializer):
+  """Budget"""
+  # post = PostSerializer()
+  # company = CompanySerializer()
+
+  class Meta:
+    model = Budget
+    fields = "__all__"

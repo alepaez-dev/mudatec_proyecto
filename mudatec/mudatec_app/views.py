@@ -8,6 +8,7 @@ from .models import(
   CustomUser,
   Post,
   Form,
+  Budget,
 )
 from rest_framework import viewsets
 
@@ -36,6 +37,8 @@ from .serializers import (
   # Token
   TokenUserSerializer,
   TokenUserCompanySerializer,
+  #Budget
+  BudgetSerializer,
 )
 
 # Create your views here.
@@ -103,7 +106,7 @@ class RetrieveUpdateCompanyAddressAPIView(generics.RetrieveUpdateAPIView):
 
 #USER
 class ListUserAPIView(generics.ListAPIView):
-  queryset = CustomUser.objects.all()
+  queryset = CustomUser.objects.all().order_by("date_created").reverse()
   serializer_class = CustomUserReadSerializer
 
 class CreateUserAPIView(generics.CreateAPIView):
@@ -149,7 +152,7 @@ class RetrieveUserFilterIsCompanyAPIView(generics.ListAPIView):
   def get_queryset(self):
     """Filtering with the URL"""
     is_company = self.kwargs["pk"]
-    return CustomUser.objects.filter(is_company=is_company)
+    return CustomUser.objects.filter(is_company=is_company).order_by("date_created").reverse()
 
 class UpdateUserCompanyAPIView(generics.RetrieveUpdateAPIView):
   queryset = CustomUser.objects.all()
@@ -169,6 +172,10 @@ class ListPostAPIView(generics.ListAPIView):
   serializer_class = PostSerializer
 
 #POST-ADDRESS
+class ListPostAddressAPIView(generics.ListAPIView):
+  queryset = Post.objects.all()
+  serializer_class = PostAddressSerializer
+
 class CreatePostAddressAPIView(generics.CreateAPIView):
   queryset = Post.objects.all()
   serializer_class = PostAddressSerializer
@@ -206,3 +213,27 @@ class RetrieveTokenUserCompanyAPIView(generics.RetrieveAPIView):
   queryset = Token.objects.all()
   serializer_class = TokenUserCompanySerializer
 
+# Budget
+class CreateBudgetAPIView(generics.CreateAPIView):
+  queryset = Budget.objects.all()
+  serializer_class = BudgetSerializer
+
+class ListBudgetAPIView(generics.ListAPIView):
+  queryset = Budget.objects.all()
+  serializer_class = BudgetSerializer
+
+class RetrieveBudgetCompanyAPIView(generics.ListAPIView):
+  serializer_class = BudgetSerializer
+
+  def get_queryset(self):
+    """Filtering with the URL"""
+    company = self.kwargs["pk"]
+    return Budget.objects.filter(company=company).order_by("date_created").reverse()
+
+class RetrieveBudgetPostAPIView(generics.ListAPIView):
+  serializer_class = BudgetSerializer
+
+  def get_queryset(self):
+    """Filtering with the URL"""
+    post = self.kwargs["pk"]
+    return Budget.objects.filter(post=post).order_by("date_created").reverse()
