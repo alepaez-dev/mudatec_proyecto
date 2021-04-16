@@ -27,6 +27,7 @@ class AddressSerializer(serializers.ModelSerializer):
       "zip_code",
       "references",
     ]
+  
 
 class AddressListSerializer(serializers.ModelSerializer):
   """Address List"""
@@ -78,6 +79,24 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
         address = address_serializer.update(instance=instance.address,validated_data=address_serializer.validated_data)
         validated_data['address'] = address
     return super().update(instance, validated_data)
+    
+class CompanyForAddressSerializer(serializers.ModelSerializer):
+  """Company y Address"""
+  address = AddressSerializer()
+  class Meta:
+    model = Company
+    fields = [
+      "id",
+      "address",
+    ]
+  def update(self, instance, validated_data):
+    pam = validated_data.pop("address")
+    compas = Company.objects.get(id=instance.id)
+    address = Address.objects.create(**pam)
+    compas.address = address
+    compas.save()
+    return compas
+
 
 #CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -126,7 +145,7 @@ class CustomUserCompanyReadSerializer(serializers.ModelSerializer):
         "company",
       ]
 
-class CustomUserCompanySerializer(serializers.ModelSerializer):
+class CustomUserCompanyAddressSerializer(serializers.ModelSerializer):
   """User con Company y Address"""
   company = CompanyAddressSerializer()
   class Meta:
@@ -161,6 +180,45 @@ class CustomUserCompanySerializer(serializers.ModelSerializer):
     address_id = company_id.pop("address")
     validated_data.pop("company")
     instance.company.address = super().update(instance.company.address, address_id)
+    instance.company = super().update(instance.company, company_id)
+    instance = super().update(instance, validated_data)
+    customuser = super(CustomUserCompanySerializer, self).update(instance, validated_data)
+    customuser.set_password(validated_data["password"])
+    customuser.save()
+    return customuser
+
+class CustomUserCompanySerializer(serializers.ModelSerializer):
+  """User con Company y Address"""
+  company = CompanySerializer()
+  class Meta:
+      model = CustomUser
+      fields = [
+        "username",
+        "password",
+        "first_name",
+        "last_name",
+        "mother_last_name",
+        "email",
+        "phone",
+        "payment_id",
+        "is_company",
+        "company",
+        "id",
+      ]
+      
+  def create(self, validated_data):
+    company_id = self.validated_data.pop("company")
+    company = Company.objects.create(**company_id)
+    validated_data.pop("company")
+    customuser = CustomUser.objects.create(company=company, **validated_data)
+    customuser.set_password(validated_data['password'])
+    Token.objects.create(user=customuser)
+    customuser.save()
+    return customuser
+
+  def update(self, instance, validated_data):
+    company_id = self.validated_data.pop("company")
+    validated_data.pop("company")
     instance.company = super().update(instance.company, company_id)
     instance = super().update(instance, validated_data)
     customuser = super(CustomUserCompanySerializer, self).update(instance, validated_data)
@@ -266,3 +324,12 @@ class TokenUserSerializer(serializers.ModelSerializer):
   class Meta:
     model = Token  
     fields = "__all__"
+
+class TokenUserCompanySerializer(serializers.ModelSerializer):
+  """Token"""
+  user = CustomUserCompanySerializer()
+
+  class Meta:
+    model = Token  
+    fields = "__all__"
+

@@ -23,14 +23,14 @@ class Company(models.Model):
     """Empresas."""
 
     name = models.CharField(max_length=50)
-    rfc = models.CharField(max_length=13)
-    social_name = models.CharField(max_length=60, unique=True)
+    rfc = models.CharField(max_length=13, blank=True)
+    social_name = models.CharField(max_length=60,blank=True)
     email = models.EmailField(max_length=60, blank=True)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15,  blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="companies")
+    address = models.ForeignKey(Address, on_delete=models.PROTECT,blank=True, null=True, related_name="companies")
 
     def __str__(self):
         return f"{self.name}"

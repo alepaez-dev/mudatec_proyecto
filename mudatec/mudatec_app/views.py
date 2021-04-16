@@ -15,6 +15,7 @@ from .serializers import (
   # Address
   AddressSerializer,
   AddressListSerializer,
+  CompanyForAddressSerializer,
   #Company
   CompanySerializer,
   CompanyListSerializer,
@@ -33,6 +34,7 @@ from .serializers import (
   FormSerializer,
   # Token
   TokenUserSerializer,
+  TokenUserCompanySerializer,
 )
 
 # Create your views here.
@@ -43,6 +45,10 @@ class ListAddressAPIView(generics.ListAPIView):
   serializer_class = AddressListSerializer
 
 class CreateAddressAPIView(generics.CreateAPIView):
+  queryset = Address.objects.all()
+  serializer_class = AddressSerializer
+
+class UpdateAddressAPIView(generics.UpdateAPIView):
   queryset = Address.objects.all()
   serializer_class = AddressSerializer
 
@@ -69,6 +75,10 @@ class DestroyCompanyAPIView(generics.DestroyAPIView):
 
 
 #COMPANY-ADDRESS
+class ListCompanyAddressAPIView(generics.ListAPIView):
+  queryset = Company.objects.all()
+  serializer_class = CompanyAddressSerializer
+
 class CreateCompanyAddressAPIView(generics.CreateAPIView):
   queryset = Company.objects.all()
   serializer_class = CompanyAddressSerializer
@@ -79,9 +89,10 @@ class RetrieveCompanyAddressAPIView(generics.RetrieveAPIView):
 
 class UpdateCompanyAddressAPIView(generics.UpdateAPIView):
   queryset = Company.objects.all()
-  serializer_class = CompanyAddressSerializer
+  serializer_class = CompanyForAddressSerializer
 
 class RetrieveUpdateCompanyAPIView(generics.RetrieveUpdateAPIView):
+  permission_classes = [IsAuthenticated]
   queryset = Company.objects.all()
   serializer_class = CompanySerializer
 
@@ -105,10 +116,7 @@ class RetrieveUserAPIView(generics.RetrieveAPIView):
 class RetrieveUserWithUsernameAPIView(generics.ListAPIView):
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserReadSerializer
-  def get_queryset(self):
-    """Filtering with the URL"""
-    username = self.kwargs["pk"]
-    return CustomUser.objects.filter(username=username)
+
 
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
   permission_classes = [IsAuthenticated]
@@ -186,4 +194,9 @@ class RetrieveTokenUserAPIView(generics.RetrieveAPIView):
   permission_classes = [IsAuthenticated]
   queryset = Token.objects.all()
   serializer_class = TokenUserSerializer
+
+class RetrieveTokenUserCompanyAPIView(generics.RetrieveAPIView):
+  permission_classes = [IsAuthenticated]
+  queryset = Token.objects.all()
+  serializer_class = TokenUserCompanySerializer
 
