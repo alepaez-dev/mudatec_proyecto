@@ -23,6 +23,7 @@ from .serializers import (
   #User
   CustomUserSerializer,
   CustomUserReadSerializer,
+  CustomUserPassSerializer,
   #User-Company
   CustomUserCompanySerializer,
   CustomUserCompanyReadSerializer,
@@ -119,9 +120,14 @@ class RetrieveUserWithUsernameAPIView(generics.ListAPIView):
 
 
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
-  permission_classes = [IsAuthenticated]
+  # permission_classes = [IsAuthenticated]
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserSerializer
+
+class UpdateUserPassAPIView(generics.RetrieveUpdateAPIView):
+  # permission_classes = [IsAuthenticated]
+  queryset = CustomUser.objects.all()
+  serializer_class = CustomUserPassSerializer
 
 class DestroyUserAPIView(generics.DestroyAPIView):
   queryset = CustomUser.objects.all()

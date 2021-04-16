@@ -125,7 +125,32 @@ class CustomUserSerializer(serializers.ModelSerializer):
   
   def update(self, instance, validated_data):
     customuser = super(CustomUserSerializer, self).update(instance, validated_data)
+    # customuser.set_password(validated_data['password'])
+    # customuser.save()
+    customuser.save()
+    return customuser
+  
+class CustomUserPassSerializer(serializers.ModelSerializer):
+  """User"""
+  
+  class Meta:
+      model = CustomUser
+      fields = [
+        "username",
+        "password",
+        "id",
+      ]
+      
+  def update(self, instance, validated_data):
+    customuser = super(CustomUserPassSerializer, self).update(instance, validated_data)
+    token1 = Token.objects.get(user=customuser)
+    print("token11111111", token1)
+    token1 = Token.objects.get(user=customuser).delete()
     customuser.set_password(validated_data['password'])
+    customuser.save()
+    token2 = Token.objects.create(user=customuser)
+    customuser.save()
+    print("token22222222", token2)
     return customuser
 
 class CustomUserCompanyReadSerializer(serializers.ModelSerializer):
@@ -184,6 +209,7 @@ class CustomUserCompanyAddressSerializer(serializers.ModelSerializer):
     instance = super().update(instance, validated_data)
     customuser = super(CustomUserCompanySerializer, self).update(instance, validated_data)
     customuser.set_password(validated_data["password"])
+
     customuser.save()
     return customuser
 
