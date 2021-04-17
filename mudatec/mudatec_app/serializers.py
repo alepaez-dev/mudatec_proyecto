@@ -308,6 +308,7 @@ class PostAddressSerializer(serializers.ModelSerializer):
       "initial_address",
       "ending_address",
       "forms",
+      "date_created",
     ]
 
   def create(self, validated_data):

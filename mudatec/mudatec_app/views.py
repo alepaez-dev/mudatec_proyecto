@@ -188,6 +188,14 @@ class UpdatePostAddressAPIView(generics.RetrieveUpdateAPIView):
   queryset = Post.objects.all()
   serializer_class = PostAddressSerializer
 
+class RetrievePostAddressUserAPIView(generics.ListAPIView):
+  serializer_class = PostAddressSerializer
+
+  def get_queryset(self):
+    """Filtering with the URL"""
+    customuser = self.kwargs["pk"]
+    return Post.objects.filter(customuser=customuser).order_by("date_created").reverse()
+
 #Form
 class CreateFormAPIView(generics.CreateAPIView):
   queryset = Form.objects.all()

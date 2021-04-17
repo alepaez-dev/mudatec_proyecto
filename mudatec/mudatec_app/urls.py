@@ -39,7 +39,6 @@ from .views import (
   UpdateUserCompanyAPIView,
   DestroyUserCompanyAPIView,
   
-
   #Post
   CreatePostAPIView,
   ListPostAPIView,
@@ -47,6 +46,8 @@ from .views import (
   RetrievePostAddressAPIView,
   UpdatePostAddressAPIView,
   ListPostAddressAPIView,
+  RetrievePostAddressUserAPIView,
+
   #Token
   ListTokenUserAPIView,
   RetrieveTokenUserAPIView,
@@ -97,6 +98,7 @@ urlpatterns = [
   path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post"),
   path("post/create/", RetrievePostAddressAPIView.as_view(), name="create_post"),
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
+  path("post/user/<int:pk>/",RetrievePostAddressUserAPIView.as_view(), name="retrieve_budget_company"),
   # Token
   path("token/", ListTokenUserAPIView.as_view(), name="list_token_user"),
   path("token/<str:pk>/", RetrieveTokenUserAPIView.as_view(), name="retrieve_token_user"),
