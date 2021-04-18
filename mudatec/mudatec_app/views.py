@@ -205,6 +205,14 @@ class ListFormAPIView(generics.ListAPIView):
   queryset = Form.objects.all()
   serializer_class = FormSerializer
 
+class UpdateFormAPIView(generics.UpdateAPIView):
+  queryset = Form.objects.all()
+  serializer_class = FormSerializer
+
+class DestroyFormAPIView(generics.DestroyAPIView):
+  queryset = Form.objects.all()
+  serializer_class = FormSerializer
+
 #Token 
 class ListTokenUserAPIView(generics.ListAPIView):
   # permission_classes = [IsAuthenticated]

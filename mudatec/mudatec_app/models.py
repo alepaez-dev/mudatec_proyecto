@@ -61,15 +61,15 @@ class Post(models.Model):
         ("complete", "Complete"),
     )
     status = models.CharField(max_length=50,choices=STATUS_TYPES, default="no_demand")
-    dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
+    dates = ArrayField(ArrayField(models.DateField(max_length=20)))
     edited = models.BooleanField(default=False)
     #User
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     mother_last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True)
-    date_edited = models.DateTimeField(blank=True, null= True)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_edited = models.DateField(blank=True, null= True)
+    date_created = models.DateField(auto_now_add=True)
 
     #Relations
     customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts", blank=True, null=True)
@@ -85,7 +85,7 @@ class Form(models.Model):
     furniture = models.CharField(max_length=50)
     quantity = models.IntegerField(blank=True)
     size = models.CharField(max_length=50)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateField(auto_now_add=True)
 
     #Relations
     post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="forms", blank=True, null=True)

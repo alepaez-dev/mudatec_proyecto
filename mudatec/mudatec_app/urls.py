@@ -47,6 +47,11 @@ from .views import (
   UpdatePostAddressAPIView,
   ListPostAddressAPIView,
   RetrievePostAddressUserAPIView,
+  #Form
+  ListFormAPIView,
+  UpdateFormAPIView,
+  CreateFormAPIView,
+  DestroyFormAPIView,
 
   #Token
   ListTokenUserAPIView,
@@ -99,6 +104,11 @@ urlpatterns = [
   path("post/create/", RetrievePostAddressAPIView.as_view(), name="create_post"),
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),
   path("post/user/<int:pk>/",RetrievePostAddressUserAPIView.as_view(), name="retrieve_budget_company"),
+  #Form
+  path("form/", ListFormAPIView.as_view(), name="list_form"),
+  path("form/create/", CreateFormAPIView.as_view(), name="create_form"),
+  path("form/<int:pk>/update/", UpdateFormAPIView.as_view(), name="update-form"),
+  path("form/<int:pk>/destroy/", DestroyFormAPIView.as_view(), name="destroy-form"),
   # Token
   path("token/", ListTokenUserAPIView.as_view(), name="list_token_user"),
   path("token/<str:pk>/", RetrieveTokenUserAPIView.as_view(), name="retrieve_token_user"),
