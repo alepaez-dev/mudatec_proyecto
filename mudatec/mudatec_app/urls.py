@@ -42,11 +42,13 @@ from .views import (
   #Post
   CreatePostAPIView,
   ListPostAPIView,
+  UpdatePostAPIView,
   CreatePostAddressAPIView,
   RetrievePostAddressAPIView,
   UpdatePostAddressAPIView,
   ListPostAddressAPIView,
   RetrievePostAddressUserAPIView,
+  UpdatePostDatesAPIView,
   #Form
   ListFormAPIView,
   UpdateFormAPIView,
@@ -100,6 +102,8 @@ urlpatterns = [
   path("post/", ListPostAPIView.as_view(), name="list_post"),
   path("post-address/", ListPostAddressAPIView.as_view(), name="list_post_address"),
   path("post/<int:pk>/", RetrievePostAddressAPIView.as_view(), name="retrieve_post"),
+  path("post/<int:pk>/update-normal/", UpdatePostAPIView.as_view(), name="update_post_normal"),
+  path("post/<int:pk>/update-fechas/", UpdatePostDatesAPIView.as_view(), name="update_post_fechas"),
   path("post/<int:pk>/update/", UpdatePostAddressAPIView.as_view(), name="update_post"),
   path("post/create/", RetrievePostAddressAPIView.as_view(), name="create_post"),
   path("post/create-address/", CreatePostAddressAPIView.as_view(), name="create_post_address"),

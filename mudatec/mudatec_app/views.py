@@ -30,6 +30,8 @@ from .serializers import (
   CustomUserCompanyReadSerializer,
   #Post
   PostSerializer,
+  PostUpdateSerializer,
+  PostUpdateDatesSerializer,
   #Post-Address,
   PostAddressSerializer,
   #Form
@@ -170,6 +172,14 @@ class CreatePostAPIView(generics.CreateAPIView):
 class ListPostAPIView(generics.ListAPIView):
   queryset = Post.objects.all()
   serializer_class = PostSerializer
+
+class UpdatePostAPIView(generics.UpdateAPIView):
+  queryset = Post.objects.all()
+  serializer_class = PostUpdateSerializer
+
+class UpdatePostDatesAPIView(generics.UpdateAPIView):
+  queryset = Post.objects.all()
+  serializer_class = PostUpdateDatesSerializer
 
 #POST-ADDRESS
 class ListPostAddressAPIView(generics.ListAPIView):

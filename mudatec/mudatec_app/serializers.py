@@ -276,6 +276,24 @@ class PostSerializer(serializers.ModelSerializer):
     model = Post
     fields = "__all__"
 
+class PostUpdateSerializer(serializers.ModelSerializer):
+  """Post"""
+  class Meta:
+    model = Post
+    fields = [
+      "name",
+      "last_name",
+      "mother_last_name",
+    ]
+
+class PostUpdateDatesSerializer(serializers.ModelSerializer):
+  """Post"""
+  class Meta:
+    model = Post
+    fields = [
+      "dates"
+    ]
+
 #Form
 class FormSerializer(serializers.ModelSerializer):
   """Post"""
@@ -291,6 +309,7 @@ class PostAddressSerializer(serializers.ModelSerializer):
   initial_address = AddressSerializer()
   ending_address = AddressSerializer()
 
+  # date_created = serializers.DateField(format='%m-%d-%y')
   class Meta:
     model = Post
     fields = [

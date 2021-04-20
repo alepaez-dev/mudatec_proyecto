@@ -73,8 +73,8 @@ class Post(models.Model):
 
     #Relations
     customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts", blank=True, null=True)
-    initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts")
-    ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts")
+    initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts", blank=True, null=True)
+    ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts", blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} {self.status}"

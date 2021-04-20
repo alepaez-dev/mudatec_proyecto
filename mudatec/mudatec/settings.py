@@ -143,4 +143,5 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": [],
+    # 'DATE_INPUT_FORMATS': ["%m-%d-%Y", ],
 }
