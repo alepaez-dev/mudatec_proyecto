@@ -13,6 +13,10 @@ class Address(models.Model):
     address = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=5)
     references = models.TextField(blank = True)
+    floor = models.CharField(max_length=50, blank=True, null=True)
+    stairs = models.BooleanField(blank=True, null=True)
+    elevator = models.BooleanField(blank=True, null=True)
+    rope_flow = models.BooleanField(blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -22,7 +26,7 @@ class Address(models.Model):
 class Company(models.Model):
     """Empresas."""
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, blank=True)
     rfc = models.CharField(max_length=13, blank=True)
     social_name = models.CharField(max_length=60,blank=True)
     email = models.EmailField(max_length=60, blank=True)
@@ -46,7 +50,7 @@ class CustomUser(AbstractUser):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    company = models.ForeignKey(Company, on_delete=models.PROTECT, blank=True, null=True, related_name="customuser")
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True, related_name="customuser")
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.email}"
 
@@ -64,6 +68,7 @@ class Post(models.Model):
     dates = ArrayField(ArrayField(models.DateField(max_length=20)))
     edited = models.BooleanField(default=False)
     #User
+    
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     mother_last_name = models.CharField(max_length=50)
@@ -72,9 +77,9 @@ class Post(models.Model):
     date_created = models.DateField(auto_now_add=True)
 
     #Relations
-    customuser = models.OneToOneField(CustomUser, on_delete=models.PROTECT, related_name="posts", blank=True, null=True)
-    initial_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="initial_posts", blank=True, null=True)
-    ending_address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name="ending_posts", blank=True, null=True)
+    customuser = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="posts", blank=True, null=True)
+    initial_address = models.ForeignKey(Address, on_delete=models.CASCADE, related_name="initial_posts", blank=True, null=True)
+    ending_address = models.ForeignKey(Address, on_delete=models.CASCADE, related_name="ending_posts", blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} {self.status}"
@@ -88,7 +93,7 @@ class Form(models.Model):
     date_created = models.DateField(auto_now_add=True)
 
     #Relations
-    post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="forms", blank=True, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="forms", blank=True, null=True)
     
     def __str__(self):
         return f"{self.furniture} {self.quantity} {self.size}"
@@ -108,8 +113,8 @@ class Budget(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     #Relations
-    post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name="budgets")
-    company = models.ForeignKey(Company, on_delete=models.PROTECT, related_name="budgets")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="budgets")
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="budgets")
         
     def __str__(self):
         return f"{self.status} {self.available_dates} {self.amount}"

@@ -27,6 +27,10 @@ class AddressSerializer(serializers.ModelSerializer):
       "address",
       "zip_code",
       "references",
+      "floor",
+      "stairs",
+      "elevator",
+      "rope_flow",
     ]
   
 
@@ -130,7 +134,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     # customuser.save()
     customuser.save()
     return customuser
-  
+
 class CustomUserPassSerializer(serializers.ModelSerializer):
   """User"""
   
@@ -138,17 +142,19 @@ class CustomUserPassSerializer(serializers.ModelSerializer):
       model = CustomUser
       fields = [
         "username",
-        "password",
         "id",
+        "password",
       ]
       
   def update(self, instance, validated_data):
     customuser = super(CustomUserPassSerializer, self).update(instance, validated_data)
+    print("aaaaaaaa",customuser)
     token1 = Token.objects.get(user=customuser)
     print("token11111111", token1)
-    token1 = Token.objects.get(user=customuser).delete()
+    Token.objects.get(user=customuser).delete()
     customuser.set_password(validated_data['password'])
     customuser.save()
+    print(customuser.password)
     token2 = Token.objects.create(user=customuser)
     customuser.save()
     print("token22222222", token2)

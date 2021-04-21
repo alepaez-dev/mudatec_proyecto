@@ -123,6 +123,10 @@ class RetrieveUserWithUsernameAPIView(generics.ListAPIView):
   queryset = CustomUser.objects.all()
   serializer_class = CustomUserReadSerializer
 
+class DestroyNormalUserAPIView(generics.DestroyAPIView):
+  queryset = CustomUser.objects.all()
+  serializer_class = CustomUserSerializer
+
 
 class UpdateUserAPIView(generics.RetrieveUpdateAPIView):
   # permission_classes = [IsAuthenticated]
@@ -225,7 +229,7 @@ class DestroyFormAPIView(generics.DestroyAPIView):
 
 #Token 
 class ListTokenUserAPIView(generics.ListAPIView):
-  # permission_classes = [IsAuthenticated]
+  permission_classes = [IsAuthenticated]
   queryset = Token.objects.all()
   serializer_class = TokenUserSerializer
 
