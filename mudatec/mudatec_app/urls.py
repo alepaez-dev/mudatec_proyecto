@@ -50,6 +50,7 @@ from .views import (
   ListPostAddressAPIView,
   RetrievePostAddressUserAPIView,
   UpdatePostDatesAPIView,
+
   #Form
   ListFormAPIView,
   UpdateFormAPIView,
@@ -66,6 +67,7 @@ from .views import (
   ListBudgetAPIView,
   RetrieveBudgetCompanyAPIView,
   RetrieveBudgetPostAPIView,
+  UpdateBudgetAPIView,
 )
 
 urlpatterns = [
@@ -79,7 +81,6 @@ urlpatterns = [
   path("company/", ListCompanyAPIView.as_view(), name="list_company"),
   path("company-address/", ListCompanyAddressAPIView.as_view(), name="list_company_address"),
   path("company/create/", CreateCompanyAPIView.as_view(), name="create_company"),
-  # path("company/create-company/", CreateCompanyAddressAPIView.as_view(), name="create_company_address"),
   path("company/<int:pk>/", RetrieveCompanyAddressAPIView.as_view(), name="retrieve_company"),
   path("company/<int:pk>/destroy/", DestroyCompanyAPIView.as_view(), name="destroy_company"),
   path("company/<int:pk>/update/", UpdateCompanyAddressAPIView.as_view(), name="update_company"),
@@ -121,7 +122,8 @@ urlpatterns = [
   path("token/company/<str:pk>/", RetrieveTokenUserCompanyAPIView.as_view(), name="retrieve_token_user_company"),
   # Budget
   path("budget/", ListBudgetAPIView.as_view(), name="list_budget"),
-  path("budget/create/", CreateBudgetAPIView.as_view(), name="budget-create"),
+  path("budget/<int:pk>/update/", UpdateBudgetAPIView.as_view(), name="budget-update"),
+  path("budget/create/", CreateBudgetAPIView.as_view(), name="budget-update"),
   path("budget/company/<int:pk>/",RetrieveBudgetCompanyAPIView.as_view(), name="retrieve_budget_company"),
   path("budget/post/<int:pk>/",RetrieveBudgetPostAPIView.as_view(), name="retrieve_budget_post"),
   ]

@@ -108,16 +108,16 @@ class Budget(models.Model):
     )
     status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending")
     # available_dates = ArrayField(ArrayField(models.DateTimeField(max_length=20)))
-    agreed_date = models.DateTimeField(blank=True)
+    agreed_date = models.DateField(blank=True)
     amount = models.DecimalField(max_digits=8, decimal_places=2)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateField(auto_now_add=True)
 
     #Relations
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="budgets")
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="budgets")
         
     def __str__(self):
-        return f"{self.status} {self.available_dates} {self.amount}"
+        return f"{self.status} {self.amount}"
 
 class Review(models.Model):
     """Reviews"""

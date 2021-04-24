@@ -396,3 +396,46 @@ class BudgetSerializer(serializers.ModelSerializer):
   class Meta:
     model = Budget
     fields = "__all__"
+
+  def create(self, validated_data):
+    budget = Budget.objects.create(**validated_data)
+    posteado = validated_data.pop("post")
+    print("Aaaaaaaaaaaaaaaaaaaaaa", posteado)
+    print("iiiiiiiiiiiiiiiii", posteado.id)
+    post = Post.objects.get(id=posteado.id)
+    print("xxxxxxxxxxxxxxxxxxxx", post)
+    post.status = "on_demand"
+    print("xxxxxxxxxxxxxxxxxxxx", post.status)
+    post.save()
+    print("se hizooooo")
+    return budget
+
+class BudgetUpdateSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Budget
+    fields = [
+      "id",
+      "status"
+    ]
+  
+  def update(self, instance, validated_data):
+    print("aaaaaaaaaaaaaaaaaaaaaaa", instance.post.id)
+    print("bbbbbbbbbbbbbbbbbbbbbbb", instance.id)
+    budgets_rejected = list(Budget.objects.filter(post_id=instance.post).exclude(id=instance.id))
+    print("aaaaaaaaaaaaaaaaaaa", budgets_rejected)
+    if(len(budgets_rejected) != 0):
+      print("eeeeeeeentra al post")
+      for budget in budgets_rejected:
+        print("xxxxxxxxxxxxxxxxxxxxxx", budget)
+        budget.status = "rejected"
+        budget.save()
+    print("no entra al post")
+    budget_accepted = Budget.objects.get(id=instance.id)
+    budget_accepted.status = "accepted"
+    post = Post.objects.get(id=instance.post.id)
+    post.status = "complete"
+    post.save()
+    budget_accepted.save()
+    return budget_accepted
+
+    

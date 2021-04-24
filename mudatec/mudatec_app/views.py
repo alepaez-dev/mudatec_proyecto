@@ -41,6 +41,7 @@ from .serializers import (
   TokenUserCompanySerializer,
   #Budget
   BudgetSerializer,
+  BudgetUpdateSerializer,
 )
 
 # Create your views here.
@@ -248,6 +249,10 @@ class CreateBudgetAPIView(generics.CreateAPIView):
   queryset = Budget.objects.all()
   serializer_class = BudgetSerializer
 
+class UpdateBudgetAPIView(generics.UpdateAPIView):
+  queryset = Budget.objects.all()
+  serializer_class = BudgetUpdateSerializer
+
 class ListBudgetAPIView(generics.ListAPIView):
   queryset = Budget.objects.all()
   serializer_class = BudgetSerializer
@@ -266,4 +271,4 @@ class RetrieveBudgetPostAPIView(generics.ListAPIView):
   def get_queryset(self):
     """Filtering with the URL"""
     post = self.kwargs["pk"]
-    return Budget.objects.filter(post=post).order_by("date_created").reverse()
+    return Budget.objects.filter(post=post).order_by('status')
