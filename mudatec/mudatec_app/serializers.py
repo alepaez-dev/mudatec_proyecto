@@ -9,6 +9,7 @@ from .models import (
   Post,
   Form,
   Budget,
+  Transaction,
 )
   
 
@@ -438,4 +439,9 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     budget_accepted.save()
     return budget_accepted
 
-    
+#Transaction
+class TransactionSerializer(serializers.ModelSerializer):
+  """Transaction"""
+  class Meta:
+    model = Transaction
+    fields = '__all__'

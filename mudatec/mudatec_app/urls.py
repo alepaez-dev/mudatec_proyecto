@@ -68,6 +68,10 @@ from .views import (
   RetrieveBudgetCompanyAPIView,
   RetrieveBudgetPostAPIView,
   UpdateBudgetAPIView,
+
+  #Transaction
+  ListTransactionAPIView,
+  CreateTransactionAPIView,
 )
 
 urlpatterns = [
@@ -126,4 +130,7 @@ urlpatterns = [
   path("budget/create/", CreateBudgetAPIView.as_view(), name="budget-update"),
   path("budget/company/<int:pk>/",RetrieveBudgetCompanyAPIView.as_view(), name="retrieve_budget_company"),
   path("budget/post/<int:pk>/",RetrieveBudgetPostAPIView.as_view(), name="retrieve_budget_post"),
+  # Budget
+  path("transaction/", ListTransactionAPIView.as_view(), name="list_transaction"),
+  path("transaction/create/", CreateTransactionAPIView.as_view(), name="create_transaction"),
   ]

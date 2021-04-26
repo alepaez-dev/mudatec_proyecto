@@ -9,6 +9,7 @@ from .models import(
   Post,
   Form,
   Budget,
+  Transaction,
 )
 from rest_framework import viewsets
 
@@ -36,12 +37,14 @@ from .serializers import (
   PostAddressSerializer,
   #Form
   FormSerializer,
-  # Token
+  #Token
   TokenUserSerializer,
   TokenUserCompanySerializer,
   #Budget
   BudgetSerializer,
   BudgetUpdateSerializer,
+  #Transaction
+  TransactionSerializer,
 )
 
 # Create your views here.
@@ -272,3 +275,13 @@ class RetrieveBudgetPostAPIView(generics.ListAPIView):
     """Filtering with the URL"""
     post = self.kwargs["pk"]
     return Budget.objects.filter(post=post).order_by('status')
+
+#Transaction
+
+class ListTransactionAPIView(generics.ListAPIView):
+  queryset = Transaction.objects.all()
+  serializer_class = TransactionSerializer
+
+class CreateTransactionAPIView(generics.CreateAPIView):
+  queryset = Transaction.objects.all()
+  serializer_class = TransactionSerializer
