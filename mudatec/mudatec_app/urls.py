@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken import views 
 from rest_framework.routers import DefaultRouter
+from django.views.decorators.csrf import csrf_exempt
 
 
 from .views import (
@@ -79,7 +80,7 @@ from .views import (
 
 urlpatterns = [
   #Paypal
-  path("pago/", pago, name="pago"),
+  path("pago/", csrf_exempt(pago), name="pago"),
   # path("pago/order/", GetOrder, name="pago-order"),
   # path("pago/capture", CaptureOrder, name="pago-capture-order"),
 

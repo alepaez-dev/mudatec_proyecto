@@ -4,6 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
+from django.http import JsonResponse
 
 
 
@@ -296,12 +297,42 @@ class CreateTransactionAPIView(generics.CreateAPIView):
   serializer_class = TransactionSerializer
 
 def pago(request):
-  cotizacion = Producto.objects.get(pk=1)
+  mudanza1 = Producto.objects.get(pk=1)
   data = json.loads(request.body)
   order_id = data['orderID']
 
   detalle = GetOrder().get_order(order_id)
-  detalle_precio = detalle.result.purchase_units[0].amount.value
+  detalle_precio = float(detalle.result.purchase_units[0].amount.value)
+  print(detalle_precio)
+
+  if detalle_precio == mudanza1.precio:
+    trx = CaptureOrder().capture_order(order_id, debug=True)
+    pedido = Compra(
+      pk = trx.result.id,
+      estado = trx.result.status,
+      # codigo_estado = trx.result.status_code,
+      producto = Producto.objects.get(pk=1),
+      total_de_la_compra = trx.result.purchase_units[0].payments.captures[0].amount.value,
+      nombre_cliente = trx.result.payer.name.given_name,
+      apellido_cliente = trx.result.payer.name.surname,
+      correo_cliente =  trx.result.payer.email_address,
+      direccion_cliente = trx.result.purchase_units[0].shipping.address.address_line_1)
+    pedido.save()
+
+    data = {
+      "id": f"{trx.result.id}",
+      "nombre_cliente": f"{trx.result.payer.name.given_name}",
+      "mensaje": "=D"
+
+    }
+    return JsonResponse(data)
+  else:
+    data = {
+      "mensaje": "ERROR =("
+    }
+    return JsonResponse(data)
+
+
 
 class PayPalClient:
   def __init__(self):
@@ -357,16 +388,17 @@ class GetOrder(PayPalClient):
     request = OrdersGetRequest(order_id)
     #3. Call PayPal to get the transaction
     response = self.client.execute(request)
+    return response
     #4. Save the transaction in your database. Implement logic to save transaction to your database for future reference.
-    print('Status Code: ', response.status_code)
-    print('Status: ', response.result.status)
-    print('Order ID: ', response.result.id)
-    print('Intent: ', response.result.intent)
-    print('Links:')
-    for link in response.result.links:
-      print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
-    print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
-                       response.result.purchase_units[0].amount.value))
+    # print('Status Code: ', response.status_code)
+    # print('Status: ', response.result.status)
+    # print('Order ID: ', response.result.id)
+    # print('Intent: ', response.result.intent)
+    # print('Links:')
+    # for link in response.result.links:
+    #   print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
+    # print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
+    #                    response.result.purchase_units[0].amount.value))
 
 """This driver function invokes the get_order function with
    order ID to retrieve sample order details. """
@@ -407,6 +439,6 @@ class CaptureOrder(PayPalClient):
 
 """This driver function invokes the capture order function.
 Replace Order ID value with the approved order ID. """
-if __name__ == "__main__":
-  order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
-  CaptureOrder().capture_order(order_id, debug=True)
+# if __name__ == "__main__":
+#   order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
+#   CaptureOrder().capture_order(order_id, debug=True)
