@@ -72,9 +72,17 @@ from .views import (
   #Transaction
   ListTransactionAPIView,
   CreateTransactionAPIView,
+  
+  #Paypal
+  pago
 )
 
 urlpatterns = [
+  #Paypal
+  path("pago/", pago, name="pago"),
+  # path("pago/order/", GetOrder, name="pago-order"),
+  # path("pago/capture", CaptureOrder, name="pago-capture-order"),
+
   #Address
   path("address/", ListAddressAPIView.as_view(), name="list_address"),
   path("address/create/", CreateAddressAPIView.as_view(), name="create_address"),

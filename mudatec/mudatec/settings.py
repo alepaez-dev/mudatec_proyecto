@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "rest_framework.authtoken",
     "corsheaders",
+    # "paypal.apps.PaypalConfig",
+    "paypalcheckoutsdk",
 ]
 
 MIDDLEWARE = [

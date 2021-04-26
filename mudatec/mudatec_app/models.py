@@ -156,3 +156,28 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.amount} {self.status} {self.date_created}"
+
+# Transacciones
+class Producto(models.Model):
+    producto = models.CharField(max_length=100, null= False)
+    precio = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.producto
+
+class Compra(models.Model):
+    """Compra"""
+    # id = models.CharField(primary_key=True, max_length=100)
+    estado = models.CharField(primary_key=True, max_length=100)
+    codigo_estado = models.CharField(max_length=100)
+    total_de_la_compra = models.DecimalField(max_digits=5, decimal_places=2)
+    nombre_cliente = models.CharField(max_length=100)
+    apellido_cliente = models.CharField(max_length=100)
+    correo_cliente = models.EmailField(max_length=100)
+    direccion_cliente = models.CharField(max_length=100)
+    
+    #Foreign keys
+    producto = models.ForeignKey(to=Producto, on_delete=models.SET_NULL, null = True)
+    
+    def __str__(self):
+        return self.nombre_cliente
