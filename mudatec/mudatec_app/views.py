@@ -7,7 +7,7 @@ from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 
 
 
-import sys
+import sys, json
 
 from .models import(
   Address,
@@ -17,6 +17,8 @@ from .models import(
   Form,
   Budget,
   Transaction,
+  Producto,
+  Compra,
 )
 from rest_framework import viewsets
 
@@ -294,7 +296,12 @@ class CreateTransactionAPIView(generics.CreateAPIView):
   serializer_class = TransactionSerializer
 
 def pago(request):
-  pass
+  cotizacion = Producto.objects.get(pk=1)
+  data = json.loads(request.body)
+  order_id = data['orderID']
+
+  detalle = GetOrder().get_order(order_id)
+  detalle_precio = detalle.result.purchase_units[0].amount.value
 
 class PayPalClient:
   def __init__(self):
@@ -363,8 +370,8 @@ class GetOrder(PayPalClient):
 
 """This driver function invokes the get_order function with
    order ID to retrieve sample order details. """
-if __name__ == '__main__':
-  GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
+# if __name__ == '__main__':
+#   GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
 
 
 ##Capturar la order
