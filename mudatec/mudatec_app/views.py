@@ -310,7 +310,6 @@ def pago(request):
     pedido = Compra(
       pk = trx.result.id,
       estado = trx.result.status,
-      # codigo_estado = trx.result.status_code,
       producto = Producto.objects.get(pk=1),
       total_de_la_compra = trx.result.purchase_units[0].payments.captures[0].amount.value,
       nombre_cliente = trx.result.payer.name.given_name,
@@ -322,7 +321,7 @@ def pago(request):
     data = {
       "id": f"{trx.result.id}",
       "nombre_cliente": f"{trx.result.payer.name.given_name}",
-      "mensaje": "=D"
+      "mensaje": "Transacción exitosa"
 
     }
     return JsonResponse(data)
@@ -389,21 +388,7 @@ class GetOrder(PayPalClient):
     #3. Call PayPal to get the transaction
     response = self.client.execute(request)
     return response
-    #4. Save the transaction in your database. Implement logic to save transaction to your database for future reference.
-    # print('Status Code: ', response.status_code)
-    # print('Status: ', response.result.status)
-    # print('Order ID: ', response.result.id)
-    # print('Intent: ', response.result.intent)
-    # print('Links:')
-    # for link in response.result.links:
-    #   print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
-    # print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
-    #                    response.result.purchase_units[0].amount.value))
 
-"""This driver function invokes the get_order function with
-   order ID to retrieve sample order details. """
-# if __name__ == '__main__':
-#   GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
 
 
 ##Capturar la order
@@ -431,14 +416,9 @@ class CaptureOrder(PayPalClient):
         for capture in purchase_unit.payments.captures:
           print('\t', capture.id)
       print("Buyer:")
-      # print("\tEmail Address: {}\n\tName: {}\n\tPhone Number: {}".format(response.result.payer.email_address,
-      #   response.result.payer.name.given_name + " " + response.result.payer.name.surname,
-      #   response.result.payer.phone.phone_number.national_number))
+     
     return response
 
 
 """This driver function invokes the capture order function.
 Replace Order ID value with the approved order ID. """
-# if __name__ == "__main__":
-#   order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
-#   CaptureOrder().capture_order(order_id, debug=True)
