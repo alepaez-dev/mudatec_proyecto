@@ -146,6 +146,7 @@ class Transaction(models.Model):
     ("rejected", "Rejected"),
     ("completed", "Completed"),
     )
+    paypal_order = models.CharField(max_length=50, default="pending", blank=True, null=True)
     status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending", blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=100, blank=True, null=True)

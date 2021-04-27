@@ -305,18 +305,22 @@ def pago(request):
   order_id = data['orderID']
   budget = Budget.objects.get(id=id_cotizacion)
   print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",id_cotizacion)
-  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",float(amount))
+  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",float(budget.amount))
 
 
   detalle = GetOrder().get_order(order_id)
   detalle_precio = float(detalle.result.purchase_units[0].amount.value)
   print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",detalle_precio)
 
-  if detalle_precio == float(amount):
+  if detalle_precio == float(budget.amount):
     trx = CaptureOrder().capture_order(order_id, debug=True)
     pedido = Transaction.objects.create(
       # pk = trx.result.id,
       estado = trx.result.status,
+      amount = float(budget.amount),
+      paypal_order = trx.result.id,
+      customuser = budget.post.customuser,
+      company = budget.company,
       budget = budget,
       total_de_la_compra = trx.result.purchase_units[0].payments.captures[0].amount.value,
       nombre_cliente = trx.result.payer.name.given_name,
@@ -333,7 +337,7 @@ def pago(request):
     return JsonResponse(data)
   else:
     data = {
-      "mensaje": "ERROR =("
+      "mensaje": "No son los precios correctos =("
     }
     return JsonResponse(data)
 
