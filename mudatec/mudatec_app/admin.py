@@ -8,5 +8,5 @@ from .models import *
 # admin.site.register(CustomUser)
 
 # Register your models here.
-admin.site.register(Producto)
-admin.site.register(Compra)
+# admin.site.register(Producto)
+# admin.site.register(Compra)

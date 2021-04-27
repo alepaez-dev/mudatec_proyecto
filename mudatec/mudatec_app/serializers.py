@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from django.http import JsonResponse
 
 from .models import (
   Address, 
@@ -416,7 +417,8 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     model = Budget
     fields = [
       "id",
-      "status"
+      "status",
+      "amount"
     ]
   
   def update(self, instance, validated_data):
@@ -437,6 +439,10 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     post.status = "complete"
     post.save()
     budget_accepted.save()
+    # transaction = Transaction.objects.create(budget=budget_accepted, company=budget_accepted.company, customuser=post.customuser)
+    # transaction.amount = budget_accepted.amount
+    # print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", transaction)
+    # transaction.save() 
     return budget_accepted
 
 #Transaction

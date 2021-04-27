@@ -139,20 +139,27 @@ class Review(models.Model):
 class Transaction(models.Model):
     """Transacciones"""
 
-    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    amount = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     STATUS_TYPES = (
     ("pending", "Pending"),
     ("accepted", "Accepted"),
     ("rejected", "Rejected"),
     ("completed", "Completed"),
     )
-    status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending")
+    status = models.CharField(max_length=50, choices=STATUS_TYPES, default="pending", blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
+    estado = models.CharField(max_length=100, blank=True, null=True)
+    codigo_estado = models.CharField(max_length=100, blank=True, null=True)
+    total_de_la_compra = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    nombre_cliente = models.CharField(max_length=100, blank=True, null=True)
+    apellido_cliente = models.CharField(max_length=100, blank=True, null=True)
+    correo_cliente = models.EmailField(max_length=100, blank=True, null=True)
+    direccion_cliente = models.CharField(max_length=100, blank=True, null=True)
 
     #Relations
-    customuser = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name="transactions")
-    budget = models.ForeignKey(Budget, on_delete=models.PROTECT, related_name="transactions")
-    company = models.ForeignKey(Company, on_delete=models.PROTECT, related_name="transactions")
+    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="transactions", blank=True, null=True)
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name="transactions", blank=True, null=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="transactions", blank=True, null=True)
 
     def __str__(self):
         return f"{self.amount} {self.status} {self.date_created}"
@@ -165,19 +172,3 @@ class Producto(models.Model):
     def __str__(self):
         return self.producto
 
-class Compra(models.Model):
-    """Compra"""
-    # id = models.CharField(primary_key=True, max_length=100)
-    estado = models.CharField(primary_key=True, max_length=100)
-    codigo_estado = models.CharField(max_length=100)
-    total_de_la_compra = models.DecimalField(max_digits=5, decimal_places=2)
-    nombre_cliente = models.CharField(max_length=100)
-    apellido_cliente = models.CharField(max_length=100)
-    correo_cliente = models.EmailField(max_length=100)
-    direccion_cliente = models.CharField(max_length=100)
-    
-    #Foreign keys
-    producto = models.ForeignKey(to=Producto, on_delete=models.SET_NULL, null = True)
-    
-    def __str__(self):
-        return self.nombre_cliente

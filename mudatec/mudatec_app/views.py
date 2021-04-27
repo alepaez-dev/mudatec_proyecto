@@ -18,8 +18,8 @@ from .models import(
   Form,
   Budget,
   Transaction,
-  Producto,
-  Compra,
+  # Producto,
+  # Compra,
 )
 from rest_framework import viewsets
 
@@ -297,20 +297,27 @@ class CreateTransactionAPIView(generics.CreateAPIView):
   serializer_class = TransactionSerializer
 
 def pago(request):
-  mudanza1 = Producto.objects.get(pk=1)
+  # producto = Producto.objects.get(pk=1)
+  # print("seeeeelffffffffffffff", self)
   data = json.loads(request.body)
+  id_cotizacion = data['budget_id']
+  amount = data['amount']
   order_id = data['orderID']
+  budget = Budget.objects.get(id=id_cotizacion)
+  print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",id_cotizacion)
+  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",float(amount))
+
 
   detalle = GetOrder().get_order(order_id)
   detalle_precio = float(detalle.result.purchase_units[0].amount.value)
-  print(detalle_precio)
+  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",detalle_precio)
 
-  if detalle_precio == mudanza1.precio:
+  if detalle_precio == float(amount):
     trx = CaptureOrder().capture_order(order_id, debug=True)
-    pedido = Compra(
-      pk = trx.result.id,
+    pedido = Transaction.objects.create(
+      # pk = trx.result.id,
       estado = trx.result.status,
-      producto = Producto.objects.get(pk=1),
+      budget = budget,
       total_de_la_compra = trx.result.purchase_units[0].payments.captures[0].amount.value,
       nombre_cliente = trx.result.payer.name.given_name,
       apellido_cliente = trx.result.payer.name.surname,
@@ -322,7 +329,6 @@ def pago(request):
       "id": f"{trx.result.id}",
       "nombre_cliente": f"{trx.result.payer.name.given_name}",
       "mensaje": "Transacción exitosa"
-
     }
     return JsonResponse(data)
   else:

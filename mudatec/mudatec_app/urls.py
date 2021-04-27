@@ -81,8 +81,6 @@ from .views import (
 urlpatterns = [
   #Paypal
   path("pago/", csrf_exempt(pago), name="pago"),
-  # path("pago/order/", GetOrder, name="pago-order"),
-  # path("pago/capture", CaptureOrder, name="pago-capture-order"),
 
   #Address
   path("address/", ListAddressAPIView.as_view(), name="list_address"),
