@@ -147,3 +147,21 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [],
     # 'DATE_INPUT_FORMATS': ["%m-%d-%Y", ],
 }
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# # EMAIL_HOST_USER = 
+# # EMAIL_HOST_PASSWORD = 
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+FROM_EMAIL = 'al2658451@gmail.com'
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+SENDGRID_SANDBOX_MODE_IN_DEBUG=False
+SENDGRID_ECHO_TO_STDOUT=True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+

@@ -2,6 +2,9 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.http import JsonResponse
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 from .models import (
   Address, 
@@ -389,6 +392,8 @@ class TokenUserCompanySerializer(serializers.ModelSerializer):
     model = Token  
     fields = "__all__"
 
+
+
 # Budget
 class BudgetSerializer(serializers.ModelSerializer):
   """Budget"""
@@ -412,6 +417,17 @@ class BudgetSerializer(serializers.ModelSerializer):
     print("se hizooooo")
     return budget
 
+
+# Funcion para cambiar de ingles a español los estatus
+def StatusEngSpa(status):
+  new_status = ""
+  if(status == "rejected"):
+    new_status = "rechazada"
+  else:
+    new_status = "completada"
+  return new_status
+  
+
 class BudgetUpdateSerializer(serializers.ModelSerializer):
   class Meta:
     model = Budget
@@ -422,27 +438,63 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     ]
   
   def update(self, instance, validated_data):
-    print("aaaaaaaaaaaaaaaaaaaaaaa", instance.post.id)
-    print("bbbbbbbbbbbbbbbbbbbbbbb", instance.id)
     budgets_rejected = list(Budget.objects.filter(post_id=instance.post).exclude(id=instance.id))
-    print("aaaaaaaaaaaaaaaaaaa", budgets_rejected)
+    email_send_2 = instance.company.email 
     if(len(budgets_rejected) != 0):
-      print("eeeeeeeentra al post")
       for budget in budgets_rejected:
-        print("xxxxxxxxxxxxxxxxxxxxxx", budget)
+        # Ponemos el estatus de todas las cotizaciones que no fueron elegidas en rechazado 
         budget.status = "rejected"
         budget.save()
-    print("no entra al post")
+        # Les mandamos notificacion de correo de cotizacion rechaza a todos
+        email_send = budget.company.email
+        if(email_send != ""):
+          new_status = StatusEngSpa(budget.status)
+          mensaje_correo = """
+          <h1>Mudatec</h1>
+          <h2>Hola {}</h2>
+          <strong>La cotizacion que le hiciste al post con titulo {} fue {}</strong>
+          """.format(budget.company.name, budget.post.title, new_status)
+          message = Mail(
+            from_email='al2658451@gmail.com',
+            to_emails = email_send,
+            subject='Notificación Mudatec',
+            html_content = mensaje_correo)
+          try:
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+          except Exception as e:
+            print(e.message)
     budget_accepted = Budget.objects.get(id=instance.id)
     budget_accepted.status = "accepted"
     post = Post.objects.get(id=instance.post.id)
     post.status = "complete"
     post.save()
     budget_accepted.save()
-    # transaction = Transaction.objects.create(budget=budget_accepted, company=budget_accepted.company, customuser=post.customuser)
-    # transaction.amount = budget_accepted.amount
-    # print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", transaction)
-    # transaction.save() 
+    # Notificaciones de correo aceptadas
+    email_send = instance.company.email 
+    if(email_send_2 != ""):
+      new_status = StatusEngSpa(budget_accepted.status)
+      mensaje_correo = """
+      <h1>Mudatec</h1>
+      <h2>Hola {}  </h2>
+      <strong>La cotizacion que le hiciste al post con titulo {} fue {}</strong>
+      """.format(instance.company.name, instance.post.title, new_status)
+      message = Mail(
+        from_email = 'al2658451@gmail.com',
+        to_emails = email_send_2,
+        subject = 'Notificación Mudatec',
+        html_content = mensaje_correo)
+      try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+      except Exception as e:
+        print(e.message)
     return budget_accepted
 
 #Transaction
