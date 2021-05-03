@@ -336,8 +336,11 @@ def pago(request):
       mensaje_correo = """
       <h1>Mudatec</h1>
       <h2>Hola {}</h2>
-      <strong>TU pago a la empresa {} por el monto de {} fue exitoso</strong>
-      """.format(budget.post.customuser.first_name, budget.company.name, detalle_precio)
+      <strong>Mandaste un pago por medio de PAYPAL</strong>
+      <strong>Emisor: {} </strong>
+      <strong>Receptor: {} </strong>
+      <strong>Monto: {} </strong>
+      """.format(budget.post.customuser.first_name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
       message = Mail(
         from_email='al2658451@gmail.com',
         to_emails = email_payer,
@@ -358,8 +361,11 @@ def pago(request):
       mensaje_correo = """
       <h1>Mudatec</h1>
       <h2>Hola {}</h2>
-      <strong>Recibiste un pago de {} por medio de paypal por tu cotizacion de la mudanza con titulo {} </strong>
-      """.format(budget.company.name, detalle_precio, budget.post.title)
+      <strong>Recibiste un pago por medio de PAYPAL</strong>
+      <strong>Emisor: {} </strong>
+      <strong>Receptor: {} </strong>
+      <strong>Monto: {} </strong>
+      """.format(budget.company.name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
       message = Mail(
         from_email='al2658451@gmail.com',
         to_emails = email_company,
