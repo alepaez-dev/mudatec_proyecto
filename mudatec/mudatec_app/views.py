@@ -5,6 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from django.http import JsonResponse
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 
@@ -304,13 +307,12 @@ def pago(request):
   amount = data['amount']
   order_id = data['orderID']
   budget = Budget.objects.get(id=id_cotizacion)
-  print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",id_cotizacion)
-  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",float(budget.amount))
-
-
+  email_payer = budget.post.customuser.email
+  print("emaiiiil payyerrr", email_payer)
+  email_company = budget.company.email
+  print("emaiiiil comppaany", email_company)
   detalle = GetOrder().get_order(order_id)
   detalle_precio = float(detalle.result.purchase_units[0].amount.value)
-  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",detalle_precio)
 
   if detalle_precio == float(budget.amount):
     trx = CaptureOrder().capture_order(order_id, debug=True)
@@ -328,6 +330,50 @@ def pago(request):
       correo_cliente =  trx.result.payer.email_address,
       direccion_cliente = trx.result.purchase_units[0].shipping.address.address_line_1)
     pedido.save()
+
+    # Mandamos correo a cliente
+    if(email_payer != ""):
+      mensaje_correo = """
+      <h1>Mudatec</h1>
+      <h2>Hola {}</h2>
+      <strong>TU pago a la empresa {} por el monto de {} fue exitoso</strong>
+      """.format(budget.post.customuser.first_name, budget.company.name, detalle_precio)
+      message = Mail(
+        from_email='al2658451@gmail.com',
+        to_emails = email_payer,
+        subject='Notificación Mudatec',
+        html_content = mensaje_correo)
+      try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print("EMAIL: ", email_payer)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+      except Exception as e:
+        print(e.message)
+
+    # Mandamos correo a la empresa
+    if(email_company != ""):
+      mensaje_correo = """
+      <h1>Mudatec</h1>
+      <h2>Hola {}</h2>
+      <strong>Recibiste un pago de {} por medio de paypal por tu cotizacion de la mudanza con titulo {} </strong>
+      """.format(budget.company.name, detalle_precio, budget.post.title)
+      message = Mail(
+        from_email='al2658451@gmail.com',
+        to_emails = email_company,
+        subject='Notificación Mudatec',
+        html_content = mensaje_correo)
+      try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print("EMAIL: ", email_company)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+      except Exception as e:
+        print(e.message)
 
     data = {
       "id": f"{trx.result.id}",
