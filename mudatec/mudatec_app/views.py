@@ -349,7 +349,7 @@ def pago(request):
       try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
-        print("EMAIL: ", email_payer)
+        print("EMAIL PAYER: ", email_payer)
         print(response.status_code)
         print(response.body)
         print(response.headers)
@@ -384,12 +384,17 @@ def pago(request):
     data = {
       "id": f"{trx.result.id}",
       "nombre_cliente": f"{trx.result.payer.name.given_name}",
-      "mensaje": "Transacción exitosa"
+      "mensaje": "Transacción exitosa",
+      "completed": True,
+      "recepter_email": email_payer,
+      "company": budget.company.name,
+      "amount": detalle_precio,
     }
     return JsonResponse(data)
   else:
     data = {
-      "mensaje": "No son los precios correctos =("
+      "mensaje": "No son los precios correctos =(",
+      "completed": False
     }
     return JsonResponse(data)
 
