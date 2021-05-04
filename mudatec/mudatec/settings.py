@@ -155,9 +155,9 @@ REST_FRAMEWORK = {
 # EMAIL_USE_TLS = True
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
 FROM_EMAIL = 'al2658451@gmail.com'
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+SENDGRID_API_KEY = "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"
 SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 SENDGRID_ECHO_TO_STDOUT=True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

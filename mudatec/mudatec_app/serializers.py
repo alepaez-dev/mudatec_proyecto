@@ -438,63 +438,81 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     ]
   
   def update(self, instance, validated_data):
+    SENDGRID_API_KEY = "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"
     budgets_rejected = list(Budget.objects.filter(post_id=instance.post).exclude(id=instance.id))
     email_send_2 = instance.company.email 
+    # Correo y template para correos
+    FROM_EMAIL = 'al2658451@gmail.com'
+    TEMPLATE_ID_ACCEPTED = 'd-c762e9d6f0984cdd8264aca158fbee72'
+    TEMPLATE_ID_REJECTED = 'd-81123749ec3848d6934fc0f81df10cfe'
     if(len(budgets_rejected) != 0):
       for budget in budgets_rejected:
         # Ponemos el estatus de todas las cotizaciones que no fueron elegidas en rechazado 
         budget.status = "rejected"
         budget.save()
+
+        # Cambiamos estatus a español para el correo
+        new_status = StatusEngSpa(budget.status)
+
         # Les mandamos notificacion de correo de cotizacion rechaza a todos
-        email_send = budget.company.email
-        if(email_send != ""):
-          new_status = StatusEngSpa(budget.status)
-          mensaje_correo = """
-          <h1>Mudatec</h1>
-          <h2>Hola {}</h2>
-          <strong>La cotizacion que le hiciste al post con titulo {} fue {}</strong>
-          """.format(budget.company.name, budget.post.title, new_status)
+        if(budget.company.email != ""):
           message = Mail(
-            from_email='al2658451@gmail.com',
-            to_emails = email_send,
-            subject='Notificación Mudatec',
-            html_content = mensaje_correo)
+          from_email=FROM_EMAIL,
+          to_emails= budget.company.email,
+          subject='Notificacion Mudatec')
+          newDateString = budget.agreed_date.strftime("%d-%b-%Y")
+          message.dynamic_template_data = {
+          'subject': 'Notificacion Mudatec',
+          'reciever_name': budget.company.name,
+          'post_title' : budget.post.title,
+          'status' : new_status
+          }
+          message.template_id = TEMPLATE_ID_REJECTED
           try:
-            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            sg = SendGridAPIClient(SENDGRID_API_KEY)
             response = sg.send(message)
             print(response.status_code)
+            print("EMAIL_NAME",budget.company.name)
+            print("EMAIL_RECHAZADOS",budget.company.email)
             print(response.body)
             print(response.headers)
           except Exception as e:
             print(e.message)
+
     budget_accepted = Budget.objects.get(id=instance.id)
     budget_accepted.status = "accepted"
     post = Post.objects.get(id=instance.post.id)
     post.status = "complete"
     post.save()
     budget_accepted.save()
+
     # Notificaciones de correo aceptadas
-    email_send = instance.company.email 
     if(email_send_2 != ""):
-      new_status = StatusEngSpa(budget_accepted.status)
-      mensaje_correo = """
-      <h1>Mudatec</h1>
-      <h2>Hola {}  </h2>
-      <strong>La cotizacion que le hiciste al post con titulo {} fue {}</strong>
-      """.format(instance.company.name, instance.post.title, new_status)
+      # Cambiamos estatus a español para el correo
+      new_status = StatusEngSpa(instance.status)
+      newDateString = instance.agreed_date.strftime("%d-%b-%Y")
       message = Mail(
-        from_email = 'al2658451@gmail.com',
-        to_emails = email_send_2,
-        subject = 'Notificación Mudatec',
-        html_content = mensaje_correo)
+        from_email=FROM_EMAIL,
+        to_emails= instance.company.email,
+        subject='Notificacion Mudatec')
+      message.dynamic_template_data = {
+        'subject': 'Notificacion Mudatec',
+        'reciever_name': instance.company.name,
+        'post_title' : instance.post.title,
+        'status' : new_status,
+        'agreed_date' : newDateString
+        }
+      message.template_id = TEMPLATE_ID_ACCEPTED
       try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
         response = sg.send(message)
         print(response.status_code)
+        print("EMAIL_ACEPTADO",instance.company.email)
         print(response.body)
         print(response.headers)
       except Exception as e:
         print(e.message)
+    
     return budget_accepted
 
 #Transaction

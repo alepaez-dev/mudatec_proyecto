@@ -332,54 +332,54 @@ def pago(request):
     pedido.save()
 
     # Mandamos correo a cliente
-    if(email_payer != ""):
-      mensaje_correo = """
-      <h1>Mudatec</h1>
-      <h2>Hola {}</h2>
-      <strong>Mandaste un pago por medio de PAYPAL</strong>
-      <strong>Emisor: {} </strong>
-      <strong>Receptor: {} </strong>
-      <strong>Monto: {} </strong>
-      """.format(budget.post.customuser.first_name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
-      message = Mail(
-        from_email='al2658451@gmail.com',
-        to_emails = email_payer,
-        subject='Notificación Mudatec',
-        html_content = mensaje_correo)
-      try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-        response = sg.send(message)
-        print("EMAIL PAYER: ", email_payer)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-      except Exception as e:
-        print(e.message)
+    # if(email_payer != ""):
+    #   mensaje_correo = """
+    #   <h1>Mudatec</h1>
+    #   <h2>Hola {}</h2>
+    #   <strong>Mandaste un pago por medio de PAYPAL</strong>
+    #   <strong>Emisor: {} </strong>
+    #   <strong>Receptor: {} </strong>
+    #   <strong>Monto: {} </strong>
+    #   """.format(budget.post.customuser.first_name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
+    #   message = Mail(
+    #     from_email='al2658451@gmail.com',
+    #     to_emails = email_payer,
+    #     subject='Notificación Mudatec',
+    #     html_content = mensaje_correo)
+    #   try:
+    #     sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+    #     response = sg.send(message)
+    #     print("EMAIL PAYER: ", email_payer)
+    #     print(response.status_code)
+    #     print(response.body)
+    #     print(response.headers)
+    #   except Exception as e:
+    #     print(e.message)
 
     # Mandamos correo a la empresa
-    if(email_company != ""):
-      mensaje_correo = """
-      <h1>Mudatec</h1>
-      <h2>Hola {}</h2>
-      <strong>Recibiste un pago por medio de PAYPAL</strong>
-      <strong>Emisor: {} </strong>
-      <strong>Receptor: {} </strong>
-      <strong>Monto: {} </strong>
-      """.format(budget.company.name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
-      message = Mail(
-        from_email='al2658451@gmail.com',
-        to_emails = email_company,
-        subject='Notificación Mudatec',
-        html_content = mensaje_correo)
-      try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-        response = sg.send(message)
-        print("EMAIL: ", email_company)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-      except Exception as e:
-        print(e.message)
+    # if(email_company != ""):
+    #   mensaje_correo = """
+    #   <h1>Mudatec</h1>
+    #   <h2>Hola {}</h2>
+    #   <strong>Recibiste un pago por medio de PAYPAL</strong>
+    #   <strong>Emisor: {} </strong>
+    #   <strong>Receptor: {} </strong>
+    #   <strong>Monto: {} </strong>
+    #   """.format(budget.company.name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
+    #   message = Mail(
+    #     from_email='al2658451@gmail.com',
+    #     to_emails = email_company,
+    #     subject='Notificación Mudatec',
+    #     html_content = mensaje_correo)
+    #   try:
+    #     sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+    #     response = sg.send(message)
+    #     print("EMAIL: ", email_company)
+    #     print(response.status_code)
+    #     print(response.body)
+    #     print(response.headers)
+    #   except Exception as e:
+    #     print(e.message)
 
     data = {
       "id": f"{trx.result.id}",
