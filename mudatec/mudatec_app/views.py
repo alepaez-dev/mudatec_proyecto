@@ -8,6 +8,7 @@ from django.http import JsonResponse
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from .serializers import StatusEngSpa
 
 
 
@@ -300,17 +301,18 @@ class CreateTransactionAPIView(generics.CreateAPIView):
   serializer_class = TransactionSerializer
 
 def pago(request):
-  # producto = Producto.objects.get(pk=1)
-  # print("seeeeelffffffffffffff", self)
+  # Correo y template para correos
+  SENDGRID_API_KEY = "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"
+  TEMPLATE_ID_SEND_PAYMENT = "d-d135ee2f049342318a3dbaf068ed0a36"
+  TEMPLATE_ID_RECEIVE_PAYMENT = "d-047f379c4aa24f9f8be4ebed4aec8931"
+  FROM_EMAIL = 'al2658451@gmail.com'
+  
   data = json.loads(request.body)
   id_cotizacion = data['budget_id']
   amount = data['amount']
   order_id = data['orderID']
   budget = Budget.objects.get(id=id_cotizacion)
-  email_payer = budget.post.customuser.email
-  print("emaiiiil payyerrr", email_payer)
-  email_company = budget.company.email
-  print("emaiiiil comppaany", email_company)
+  
   detalle = GetOrder().get_order(order_id)
   detalle_precio = float(detalle.result.purchase_units[0].amount.value)
 
@@ -332,20 +334,19 @@ def pago(request):
     pedido.save()
 
     # Mandamos correo a cliente
+    email_payer = budget.post.customuser.email
     if(email_payer != ""):
-      mensaje_correo = """
-      <h1>Mudatec</h1>
-      <h2>Hola {}</h2>
-      <strong>Mandaste un pago por medio de PAYPAL</strong>
-      <strong>Emisor: {} </strong>
-      <strong>Receptor: {} </strong>
-      <strong>Monto: {} </strong>
-      """.format(budget.post.customuser.first_name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
       message = Mail(
-        from_email='al2658451@gmail.com',
-        to_emails = email_payer,
-        subject='Notificación Mudatec',
-        html_content = mensaje_correo)
+        from_email=FROM_EMAIL,
+        to_emails= email_payer,
+        subject='Notificacion Mudatec')
+      message.dynamic_template_data = {
+      'subject': 'Notificacion Mudatec',
+      'receiver_name': budget.post.customuser.first_name,
+      'payer_name' : budget.company.name,
+      'amount' : detalle_precio
+      }
+      message.template_id = TEMPLATE_ID_SEND_PAYMENT
       try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
@@ -357,24 +358,22 @@ def pago(request):
         print(e.message)
 
     # Mandamos correo a la empresa
+    email_company = budget.company.email
     if(email_company != ""):
-      mensaje_correo = """
-      <h1>Mudatec</h1>
-      <h2>Hola {}</h2>
-      <strong>Recibiste un pago por medio de PAYPAL</strong>
-      <strong>Emisor: {} </strong>
-      <strong>Receptor: {} </strong>
-      <strong>Monto: {} </strong>
-      """.format(budget.company.name, trx.result.payer.name.given_name, budget.company.name, detalle_precio)
       message = Mail(
-        from_email='al2658451@gmail.com',
-        to_emails = email_company,
-        subject='Notificación Mudatec',
-        html_content = mensaje_correo)
+        from_email=FROM_EMAIL,
+        to_emails= email_company,
+        subject='Notificacion Mudatec')
+      message.dynamic_template_data = {
+      'subject': 'Notificacion Mudatec',
+      'receiver_name': budget.company.name,
+      'amount' : detalle_precio
+      }
+      message.template_id = TEMPLATE_ID_RECEIVE_PAYMENT
       try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
-        print("EMAIL: ", email_company)
+        print("EMAIL PAYER: ", email_payer)
         print(response.status_code)
         print(response.body)
         print(response.headers)
