@@ -463,7 +463,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
           newDateString = budget.agreed_date.strftime("%d-%b-%Y")
           message.dynamic_template_data = {
           'subject': 'Notificacion Mudatec',
-          'reciever_name': budget.company.name,
+          'receiver_name': budget.company.name,
           'post_title' : budget.post.title,
           'status' : new_status
           }
@@ -497,7 +497,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         subject='Notificacion Mudatec')
       message.dynamic_template_data = {
         'subject': 'Notificacion Mudatec',
-        'reciever_name': instance.company.name,
+        'receiver_name': instance.company.name,
         'post_title' : instance.post.title,
         'status' : new_status,
         'agreed_date' : newDateString
