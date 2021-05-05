@@ -77,7 +77,7 @@ class CompanyAddressSerializer(serializers.ModelSerializer):
   def create(self, validated_data):
     address_id = self.validated_data.pop("address")
     address = Address.objects.create(**address_id)
-    validated_data.pop("address");
+    validated_data.pop("address")
     company = Company.objects.create(address=address, **validated_data)
     return company
 
@@ -512,7 +512,6 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         print(response.headers)
       except Exception as e:
         print(e.message)
-    
     return budget_accepted
 
 #Transaction
