@@ -455,29 +455,29 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         new_status = StatusEngSpa(budget.status)
 
         # Les mandamos notificacion de correo de cotizacion rechaza a todos
-        ##if(budget.company.email != ""):
-        ##  message = Mail(
-        ##  from_email=FROM_EMAIL,
-        ##  to_emails= budget.company.email,
-        ##  subject='Notificacion Mudatec')
-        ##  newDateString = budget.agreed_date.strftime("%d-%b-%Y")
-        ##  message.dynamic_template_data = {
-        ##  'subject': 'Notificacion Mudatec',
-        ##  'receiver_name': budget.company.name,
-        ##  'post_title' : budget.post.title,
-        ##  'status' : new_status
-        ##  }
-        ##  message.template_id = TEMPLATE_ID_REJECTED
-        ##  try:
-        ##    sg = SendGridAPIClient(SENDGRID_API_KEY)
-        ##    response = sg.send(message)
-        ##    print(response.status_code)
-        ##    print("EMAIL_NAME",budget.company.name)
-        ##    print("EMAIL_RECHAZADOS",budget.company.email)
-        ##    print(response.body)
-        ##    print(response.headers)
-        ##  except Exception as e:
-        ##    print(e.message)
+        if(budget.company.email != ""):
+          message = Mail(
+          from_email=FROM_EMAIL,
+          to_emails= budget.company.email,
+          subject='Notificacion Mudatec')
+          newDateString = budget.agreed_date.strftime("%d-%b-%Y")
+          message.dynamic_template_data = {
+          'subject': 'Notificacion Mudatec',
+          'receiver_name': budget.company.name,
+          'post_title' : budget.post.title,
+          'status' : new_status
+          }
+          message.template_id = TEMPLATE_ID_REJECTED
+          try:
+            sg = SendGridAPIClient(SENDGRID_API_KEY)
+            response = sg.send(message)
+            print(response.status_code)
+            print("EMAIL_NAME",budget.company.name)
+            print("EMAIL_RECHAZADOS",budget.company.email)
+            print(response.body)
+            print(response.headers)
+          except Exception as e:
+            print(e.message)
 
     budget_accepted = Budget.objects.get(id=instance.id)
     budget_accepted.status = "accepted"
@@ -487,31 +487,31 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     budget_accepted.save()
 
     # Notificaciones de correo aceptadas
-    ##if(email_send_2 != ""):
+    if(email_send_2 != ""):
     ##  # Cambiamos estatus a español para el correo
-    ##  new_status = StatusEngSpa(instance.status)
-    ##  newDateString = instance.agreed_date.strftime("%d-%b-%Y")
-    ##  message = Mail(
-    ##    from_email=FROM_EMAIL,
-    ##    to_emails= instance.company.email,
-    ##    subject='Notificacion Mudatec')
-    ##  message.dynamic_template_data = {
-    ##    'subject': 'Notificacion Mudatec',
-    ##    'receiver_name': instance.company.name,
-    ##    'post_title' : instance.post.title,
-    ##    'status' : new_status,
-    ##    'agreed_date' : newDateString
-    ##    }
-    ##  message.template_id = TEMPLATE_ID_ACCEPTED
-    ##  try:
-    ##    sg = SendGridAPIClient(SENDGRID_API_KEY)
-    ##    response = sg.send(message)
-    ##    print(response.status_code)
-    ##    print("EMAIL_ACEPTADO",instance.company.email)
-    ##    print(response.body)
-    ##    print(response.headers)
-    ##  except Exception as e:
-    ##    print(e.message)
+      new_status = StatusEngSpa(instance.status)
+      newDateString = instance.agreed_date.strftime("%d-%b-%Y")
+      message = Mail(
+        from_email=FROM_EMAIL,
+        to_emails= instance.company.email,
+        subject='Notificacion Mudatec')
+      message.dynamic_template_data = {
+        'subject': 'Notificacion Mudatec',
+        'receiver_name': instance.company.name,
+        'post_title' : instance.post.title,
+        'status' : new_status,
+        'agreed_date' : newDateString
+        }
+      message.template_id = TEMPLATE_ID_ACCEPTED
+      try:
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print(response.status_code)
+        print("EMAIL_ACEPTADO",instance.company.email)
+        print(response.body)
+        print(response.headers)
+      except Exception as e:
+        print(e.message)
     return budget_accepted
 
 #Transaction
