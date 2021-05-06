@@ -438,13 +438,12 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
     ]
   
   def update(self, instance, validated_data):
-    SENDGRID_API_KEY = "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"
     budgets_rejected = list(Budget.objects.filter(post_id=instance.post).exclude(id=instance.id))
     email_send_2 = instance.company.email 
     # Correo y template para correos
-    FROM_EMAIL = 'al2658451@gmail.com'
-    TEMPLATE_ID_ACCEPTED = 'd-c762e9d6f0984cdd8264aca158fbee72'
-    TEMPLATE_ID_REJECTED = 'd-81123749ec3848d6934fc0f81df10cfe'
+    FROM_EMAIL = 'mudatecale@gmail.com'
+    TEMPLATE_ID_ACCEPTED = 'd-217736a05bbf450d885a4c42a3368ae5'
+    TEMPLATE_ID_REJECTED = 'd-00a97b25be334663a41f86f3e929386c'
     if(len(budgets_rejected) != 0):
       for budget in budgets_rejected:
         # Ponemos el estatus de todas las cotizaciones que no fueron elegidas en rechazado 
@@ -469,7 +468,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
           }
           message.template_id = TEMPLATE_ID_REJECTED
           try:
-            sg = SendGridAPIClient(SENDGRID_API_KEY)
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
             response = sg.send(message)
             print(response.status_code)
             print("EMAIL_NAME",budget.company.name)
@@ -504,7 +503,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         }
       message.template_id = TEMPLATE_ID_ACCEPTED
       try:
-        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
         print(response.status_code)
         print("EMAIL_ACEPTADO",instance.company.email)
