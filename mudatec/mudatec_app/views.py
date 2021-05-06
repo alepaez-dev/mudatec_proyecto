@@ -302,10 +302,9 @@ class CreateTransactionAPIView(generics.CreateAPIView):
 
 def pago(request):
   # Correo y template para correos
-  SENDGRID_API_KEY = "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"
-  TEMPLATE_ID_SEND_PAYMENT = "d-d135ee2f049342318a3dbaf068ed0a36"
-  TEMPLATE_ID_RECEIVE_PAYMENT = "d-047f379c4aa24f9f8be4ebed4aec8931"
-  FROM_EMAIL = 'al2658451@gmail.com'
+  TEMPLATE_ID_SEND_PAYMENT = "d-863d6064f71945939310d0626055eff7"
+  TEMPLATE_ID_RECEIVE_PAYMENT = "d-2a0773aaab0348018729952f7287697a"
+  FROM_EMAIL = 'mudatecale@gmail.com'
   
   data = json.loads(request.body)
   id_cotizacion = data['budget_id']
