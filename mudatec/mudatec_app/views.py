@@ -287,7 +287,7 @@ class RetrieveBudgetCompanyAPIView(generics.ListAPIView):
     company = self.kwargs["pk"]
     return Budget.objects.filter(company=company).order_by("date_created").reverse()
 
-class RetrievePostBudgetCompanyNewAPIView(generics.ListAPIView):
+class RetrievePostBudgetCompanyNewAPIView(generics.RetrieveAPIView):
   queryset = Post.objects.all()
   serializer_class = PostForBudgetSerializizer
 
