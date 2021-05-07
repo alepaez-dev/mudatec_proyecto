@@ -453,7 +453,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         # Cambiamos estatus a español para el correo
         new_status = StatusEngSpa(budget.status)
 
-        # Les mandamos notificacion de correo de cotizacion rechaza a todos
+        # # Les mandamos notificacion de correo de cotizacion rechaza a todos
         if(budget.company.email != ""):
           message = Mail(
           from_email=FROM_EMAIL,
