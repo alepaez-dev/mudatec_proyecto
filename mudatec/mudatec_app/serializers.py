@@ -5,6 +5,9 @@ from django.http import JsonResponse
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_SENDGRID_API_KEY = os.getenv("SECRET_SENDGRID_API_KEY")
 
 from .models import (
   Address, 
@@ -407,14 +410,9 @@ class BudgetSerializer(serializers.ModelSerializer):
   def create(self, validated_data):
     budget = Budget.objects.create(**validated_data)
     posteado = validated_data.pop("post")
-    print("Aaaaaaaaaaaaaaaaaaaaaa", posteado)
-    print("iiiiiiiiiiiiiiiii", posteado.id)
     post = Post.objects.get(id=posteado.id)
-    print("xxxxxxxxxxxxxxxxxxxx", post)
     post.status = "on_demand"
-    print("xxxxxxxxxxxxxxxxxxxx", post.status)
     post.save()
-    print("se hizooooo")
     return budget
 
 
@@ -468,7 +466,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
           }
           message.template_id = TEMPLATE_ID_REJECTED
           try:
-            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            sg = SendGridAPIClient(SECRET_SENDGRID_API_KEY)
             response = sg.send(message)
             print(response.status_code)
             print("EMAIL_NAME",budget.company.name)
@@ -503,7 +501,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         }
       message.template_id = TEMPLATE_ID_ACCEPTED
       try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient(SECRET_SENDGRID_API_KEY)
         response = sg.send(message)
         print(response.status_code)
         print("EMAIL_ACEPTADO",instance.company.email)

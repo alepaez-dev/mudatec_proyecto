@@ -9,6 +9,9 @@ import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from .serializers import StatusEngSpa
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_SENDGRID_API_KEY = os.getenv("SECRET_SENDGRID_API_KEY")
 
 
 
@@ -347,7 +350,7 @@ def pago(request):
       }
       message.template_id = TEMPLATE_ID_SEND_PAYMENT
       try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient(SECRET_SENDGRID_API_KEY)
         response = sg.send(message)
         print("EMAIL PAYER: ", email_payer)
         print(response.status_code)
@@ -370,7 +373,7 @@ def pago(request):
       }
       message.template_id = TEMPLATE_ID_RECEIVE_PAYMENT
       try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient(SECRET_SENDGRID_API_KEY)
         response = sg.send(message)
         print("EMAIL PAYER: ", email_payer)
         print(response.status_code)

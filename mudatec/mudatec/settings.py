@@ -24,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_SENDGRID_API_KEY = os.getenv("SECRET_SENDGRID_API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG",False)
@@ -159,10 +160,9 @@ REST_FRAMEWORK = {
 
 EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
 FROM_EMAIL = 'mudatecale@gmail.com'
-# SENDGRID_API_KEY = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
 SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 SENDGRID_ECHO_TO_STDOUT=True
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 
 
