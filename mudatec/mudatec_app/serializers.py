@@ -57,6 +57,15 @@ class CompanySerializer(serializers.ModelSerializer):
     model = Company
     fields = "__all__"
 
+class CompanyForBudgetSerializer(serializers.ModelSerializer):
+  """Company"""
+  class Meta:
+    model = Company
+    fields = [
+      "id",
+      "name"
+    ]
+
 class CompanyListSerializer(serializers.ModelSerializer):
   """Company List"""
   class Meta:
@@ -418,6 +427,34 @@ class BudgetSerializer(serializers.ModelSerializer):
     return budget
 
 
+
+
+class BudgetForCompanySerializer(serializers.ModelSerializer):
+  """Budget"""
+  # post = PostSerializer()
+  company = CompanyForBudgetSerializer()
+
+  class Meta:
+    model = Budget
+    fields = [
+      "id",
+      "status",
+      "agreed_date",
+      "amount",
+      "date_created",
+      "company"
+    ]
+
+class PostForBudgetSerializizer(serializers.ModelSerializer):
+  """Post for Budget and Company"""
+  budgets = BudgetForCompanySerializer(many=True)
+  class Meta:
+    model = Post
+    fields = [
+      "id",
+      "budgets"
+    ]
+
 # Funcion para cambiar de ingles a español los estatus
 def StatusEngSpa(status):
   new_status = ""
@@ -453,7 +490,7 @@ class BudgetUpdateSerializer(serializers.ModelSerializer):
         # Cambiamos estatus a español para el correo
         new_status = StatusEngSpa(budget.status)
 
-        # Les mandamos notificacion de correo de cotizacion rechaza a todos
+        # # Les mandamos notificacion de correo de cotizacion rechaza a todos
         if(budget.company.email != ""):
           message = Mail(
           from_email=FROM_EMAIL,
