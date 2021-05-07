@@ -69,6 +69,7 @@ from .views import (
   RetrieveBudgetCompanyAPIView,
   RetrieveBudgetPostAPIView,
   UpdateBudgetAPIView,
+  RetrievePostBudgetCompanyNewAPIView,
 
   #Transaction
   ListTransactionAPIView,
@@ -136,6 +137,7 @@ urlpatterns = [
   path("budget/<int:pk>/update/", UpdateBudgetAPIView.as_view(), name="budget-update"),
   path("budget/create/", CreateBudgetAPIView.as_view(), name="budget-update"),
   path("budget/company/<int:pk>/",RetrieveBudgetCompanyAPIView.as_view(), name="retrieve_budget_company"),
+  path("budget/postcompany/<int:pk>/",RetrievePostBudgetCompanyNewAPIView.as_view(), name="retrieve_budget_company_new"),
   path("budget/post/<int:pk>/",RetrieveBudgetPostAPIView.as_view(), name="retrieve_budget_post"),
   # Budget
   path("transaction/", ListTransactionAPIView.as_view(), name="list_transaction"),

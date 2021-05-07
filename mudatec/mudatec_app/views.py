@@ -47,6 +47,7 @@ from .serializers import (
   PostSerializer,
   PostUpdateSerializer,
   PostUpdateDatesSerializer,
+  PostForBudgetSerializizer,
   #Post-Address,
   PostAddressSerializer,
   #Form
@@ -57,6 +58,7 @@ from .serializers import (
   #Budget
   BudgetSerializer,
   BudgetUpdateSerializer,
+  BudgetForCompanySerializer,
   #Transaction
   TransactionSerializer,
 )
@@ -281,6 +283,15 @@ class RetrieveBudgetCompanyAPIView(generics.ListAPIView):
     """Filtering with the URL"""
     company = self.kwargs["pk"]
     return Budget.objects.filter(company=company).order_by("date_created").reverse()
+
+class RetrievePostBudgetCompanyNewAPIView(generics.ListAPIView):
+  queryset = Post.objects.all()
+  serializer_class = PostForBudgetSerializizer
+
+  # def get_queryset(self):
+  #   """Filtering with the URL"""
+  #   company = self.kwargs["pk"]
+  #   return Budget.objects.filter(company=company).order_by("date_created").reverse()
 
 class RetrieveBudgetPostAPIView(generics.ListAPIView):
   serializer_class = BudgetSerializer

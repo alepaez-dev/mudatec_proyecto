@@ -57,6 +57,15 @@ class CompanySerializer(serializers.ModelSerializer):
     model = Company
     fields = "__all__"
 
+class CompanyForBudgetSerializer(serializers.ModelSerializer):
+  """Company"""
+  class Meta:
+    model = Company
+    fields = [
+      "id",
+      "name"
+    ]
+
 class CompanyListSerializer(serializers.ModelSerializer):
   """Company List"""
   class Meta:
@@ -417,6 +426,34 @@ class BudgetSerializer(serializers.ModelSerializer):
     print("se hizooooo")
     return budget
 
+
+
+
+class BudgetForCompanySerializer(serializers.ModelSerializer):
+  """Budget"""
+  # post = PostSerializer()
+  company = CompanyForBudgetSerializer()
+
+  class Meta:
+    model = Budget
+    fields = [
+      "id",
+      "status",
+      "agreed_date",
+      "amount",
+      "date_created",
+      "company"
+    ]
+
+class PostForBudgetSerializizer(serializers.ModelSerializer):
+  """Post for Budget and Company"""
+  budgets = BudgetForCompanySerializer(many=True)
+  class Meta:
+    model = Post
+    fields = [
+      "id",
+      "budgets"
+    ]
 
 # Funcion para cambiar de ingles a español los estatus
 def StatusEngSpa(status):
